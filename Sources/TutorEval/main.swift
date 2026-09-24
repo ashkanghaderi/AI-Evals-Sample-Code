@@ -25,7 +25,7 @@ import TutorCore
 // tutor-eval rag-grade <file> [--queries <file>] [--json]
 // tutor-eval inject-run --surface direct|notes|tool --out <file> [--sampling greedy|default] [--repeats N] [--variant hardened]
 // tutor-eval inject-grade <file> [--json]
-// tutor-eval voice-status
+// tutor-eval voice-status | voice-install | voice-run --out <file> | voice-grade <file> [--json]
 // tutor-eval model-info [--json]
 // tutor-eval drift <baseline-run.jsonl> <current-run.jsonl> [--json]   (exits 1 on any change)
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
@@ -378,6 +378,24 @@ case "inject-grade":
 
 case "voice-status":
     print(await VoiceEval.status())
+
+case "voice-run":
+    guard let path = value("--out") else { fatalError("voice-run needs --out") }
+    guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+    try await VoiceEval.run(cases: cases, to: URL(fileURLWithPath: path))
+    print("recorded \(path)")
+
+case "voice-grade":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval voice-grade <file>") }
+    let report = VoiceReport(cases: cases, records: try JSONLines.read(VoiceRecord.self, from: URL(fileURLWithPath: arguments[1])))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else { report.print() }
+
+case "voice-install":
+    print(try await VoiceEval.install())
 
 case "drift":
     let paths = arguments.dropFirst().filter { !$0.hasPrefix("--") }
