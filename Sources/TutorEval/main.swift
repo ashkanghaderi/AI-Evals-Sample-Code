@@ -6,6 +6,7 @@ import TutorCore
 // tutor-eval run   [--repeats N] [--sampling default|greedy|seed:N] [--limit N] [--explain-in German]
 // tutor-eval languages [--check fa,de]
 // tutor-eval quotes <english-run.jsonl> <translated-run.jsonl> [--json]
+// tutor-eval checks <run.jsonl> [--labels evals/correction/explanation-labels-v1.jsonl] [--first] [--json]
 // tutor-eval grade <recorded-run.jsonl> [--json]
 // tutor-eval plan  --rate 0.6 --half-width 0.1
 // tutor-eval redaction [--strategy tagger|lowercase-first] [--json]
@@ -44,6 +45,26 @@ case "languages":
     for code in (value("--check") ?? "").split(separator: ",") {
         let supported = model.supportsLocale(Locale(identifier: String(code)))
         print("supportsLocale(\(code)): \(supported)")
+    }
+
+case "checks":
+    // Answer-free checks on every recorded answer, and - given labels - how
+    // often each one is right when it fires.
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval checks <run.jsonl>") }
+    // --first: repetition 0 only, so a greedy run's identical repeats are
+    // not counted three times.
+    let records = try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: arguments[1]))
+        .filter { !arguments.contains("--first") || $0.repetition == 0 }
+    let labels = try value("--labels").map {
+        try JSONLines.read(ExplanationLabel.self, from: URL(fileURLWithPath: $0))
+    } ?? []
+    let report = CheckReport(cases: cases, records: records, labels: labels)
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print()
     }
 
 case "quotes":

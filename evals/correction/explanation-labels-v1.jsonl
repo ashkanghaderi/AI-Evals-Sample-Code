@@ -1,0 +1,29 @@
+{"caseID": "ser-conjugation", "explanation": "The subject pronoun 'yo' does not agree with the verb 'es' in the present tense.", "label": "right", "note": "names the real error: \"es\" does not agree with \"yo\""}
+{"caseID": "estar-state", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct; \"es cansada\" should be \"está cansada\""}
+{"caseID": "article-gender", "explanation": "The verb 'vivimos' does not agree in gender and number with 'casa'.", "label": "wrong", "note": "blames the verb \"vivimos\"; the error is the article \"un\" before the feminine \"casa\""}
+{"caseID": "el-agua", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct; \"agua\" takes \"el\""}
+{"caseID": "mucha-hambre", "explanation": "The sentence lacks the definite article 'el' before 'hambre' for correct grammar.", "label": "wrong", "note": "invents a missing article \"el\"; the error is \"mucho\"/word order"}
+{"caseID": "gustar-agreement", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct; \"gusta\" should be \"gustan\""}
+{"caseID": "preterite", "explanation": "The verb 'como' is incorrect; it should be 'comí' to match the past tense.", "label": "right", "note": "names the real error: present \"como\" for past \"comí\""}
+{"caseID": "plural-verb", "explanation": "The verb 'está' is incorrect; it should be 'están' to agree with the plural subject 'los niños'.", "label": "right", "note": "names the real error: \"está\" should agree with plural \"los niños\""}
+{"caseID": "estar-location", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct; location takes \"estar\""}
+{"caseID": "adjective-gender", "explanation": "The adjective 'alto' must agree in gender and number with the subject 'her sister', so 'alta' is correct.", "label": "right", "note": "names the real error; quotes \"her sister\", an English gloss of \"mi hermana\""}
+{"caseID": "subjunctive", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct, while the correction changes \"vienes\" to \"vengas\""}
+{"caseID": "conditional", "explanation": "The verb 'compraría' is incorrect; it should be the future tense 'compraré' to match the conditional tone of the main clause.", "label": "arguable", "note": "the golden set accepts this fix (\"compraré\"), so blaming \"compraría\" is consistent with an accepted answer; the reason given, \"the conditional tone\", is muddled"}
+{"caseID": "adjective-plural", "explanation": "The sentence is grammatically correct as is.", "label": "wrong", "note": "calls the sentence correct, while the correction fixes \"sucios\""}
+{"caseID": "double-negative-wrong", "explanation": "The sentence uses ", "label": "wrong", "note": "a fragment: \"The sentence uses\""}
+{"caseID": "personal-a", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct; \"ver\" a person takes \"a\""}
+{"caseID": "pensar-en", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct, while the correction fixes \"de\" to \"en\""}
+{"caseID": "gente-singular", "explanation": "The word 'gentes' is incorrect; 'personas' is the correct form.", "label": "arguable", "note": "\"gentes\" is the error, but \"personas\" replaces rather than fixes it"}
+{"caseID": "accent-mexico", "explanation": "The sentence is grammatically correct.", "label": "wrong", "note": "calls the sentence correct, while the correction adds the accent"}
+{"caseID": "inverted-question", "explanation": "The sentence is correct as it uses the correct structure and spelling.", "label": "wrong", "note": "calls the sentence correct; it lacks \"¿\" and the accent on \"Qué\""}
+{"caseID": "gente-verb", "explanation": "The verb 'son' is incorrect; 'es' is the correct form for 'gente' (singular).", "label": "arguable", "note": "names one of two errors: \"son\", but not \"simpáticos\""}
+{"caseID": "ok-el-problema", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-calor", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-playa", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-double-negative", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-aburrido", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-superlative", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-greeting", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-el-mapa", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
+{"caseID": "ok-future", "explanation": "The sentence is grammatically correct.", "label": "right", "note": "correct sentence, correctly called correct"}
