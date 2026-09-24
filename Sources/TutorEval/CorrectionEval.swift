@@ -30,7 +30,9 @@ struct CorrectionReport {
     var correction = (hit: 0, total: 0)
     var preservation = (hit: 0, total: 0)
     var consistency = (hit: 0, total: 0)
+    var coherence = (hit: 0, total: 0)
     var failedCalls = 0
+    var verdicts: [Verdict] = []
     var failures: [(CorrectionCase, CorrectionRecord, String)] = []
     var latencies: [Int] = []
 
@@ -46,6 +48,7 @@ struct CorrectionReport {
                 // errors from the denominator is the most common way an eval
                 // reports a better number than the feature deserves.
                 failedCalls += 1
+                verdicts.append(Verdict(item, record, verdict: "error"))
                 detection.total += 1
                 if item.hasError { correction.total += 1 } else { preservation.total += 1 }
                 failures.append((item, record, "call failed: \(record.error ?? "?")"))
@@ -55,7 +58,19 @@ struct CorrectionReport {
             detection.total += 1
             if output.hasError == item.hasError { detection.hit += 1 }
 
+            // Coherence needs no dataset at all: an answer that claims "no
+            // error" while changing the sentence, or "error" while returning it
+            // unchanged, contradicts itself. Free to check, and a model that
+            // cannot keep its own two fields consistent has told you something.
+            let changed = TextComparison.normalized(output.corrected)
+                != TextComparison.normalized(item.input)
+            coherence.total += 1
+            if output.hasError == changed { coherence.hit += 1 }
+
             let fixed = TextComparison.matches(output.corrected, anyOf: item.accepted)
+            let passed = item.hasError ? fixed : (fixed && !output.hasError)
+            verdicts.append(Verdict(item, record, verdict: passed ? "pass" : "fail",
+                                    coherent: output.hasError == changed))
             if item.hasError {
                 correction.total += 1
                 if fixed { correction.hit += 1 } else {
@@ -97,6 +112,7 @@ struct CorrectionReport {
         line("correction", correction)
         line("preservation", preservation)
         if consistency.total > 0 { line("consistency", consistency) }
+        line("coherence", coherence)
         Swift.print("  failed calls   \(failedCalls)")
         Swift.print("  latency        median \(median) ms, p90 \(p90) ms")
         Swift.print("  explanations   recorded, not graded (needs a calibrated judge)")
@@ -117,5 +133,71 @@ struct CorrectionReport {
                 }
             }
         }
+    }
+}
+
+
+/// One graded call, in full - what the book quotes from.
+///
+/// Chapters print specimens from this rather than from the raw recording, so a
+/// sentence the book calls a failure is one the grader called a failure.
+struct Verdict: Codable {
+    let caseID: String
+    let repetition: Int
+    let category: String
+    let verdict: String
+    let input: String
+    let expectedHasError: Bool
+    let accepted: [String]
+    let hasError: Bool?
+    let corrected: String?
+    let explanation: String?
+    let coherent: Bool?
+    let error: String?
+    let latencyMilliseconds: Int
+
+    init(_ item: CorrectionCase, _ record: CorrectionRecord, verdict: String,
+         coherent: Bool? = nil) {
+        caseID = item.id; repetition = record.repetition; category = item.category
+        self.verdict = verdict; input = item.input
+        expectedHasError = item.hasError; accepted = item.accepted
+        hasError = record.output?.hasError; corrected = record.output?.corrected
+        explanation = record.output?.explanation; self.coherent = coherent
+        error = record.error; latencyMilliseconds = record.latencyMilliseconds
+    }
+}
+
+extension CorrectionReport {
+    struct Metric: Codable {
+        let hit: Int, total: Int, rate: Double, low: Double, high: Double
+        init(_ p: (hit: Int, total: Int)) {
+            let proportion = Proportion(successes: p.hit, trials: p.total)
+            let ci = proportion.interval()
+            hit = p.hit; total = p.total; rate = proportion.rate
+            low = ci.lowerBound; high = ci.upperBound
+        }
+    }
+
+    struct Summary: Codable {
+        let model: String, sampling: String, records: Int, failedCalls: Int
+        let latencyMedian: Int, latencyP90: Int
+        let metrics: [String: Metric]
+        let verdicts: [Verdict]
+    }
+
+    func json(model: String, sampling: String) throws -> String {
+        let sorted = latencies.sorted()
+        let summary = Summary(
+            model: model, sampling: sampling, records: latencies.count,
+            failedCalls: failedCalls,
+            latencyMedian: sorted.isEmpty ? 0 : sorted[sorted.count / 2],
+            latencyP90: sorted.isEmpty ? 0 : sorted[min(sorted.count - 1, sorted.count * 9 / 10)],
+            metrics: ["detection": Metric(detection), "correction": Metric(correction),
+                      "preservation": Metric(preservation), "consistency": Metric(consistency),
+                      "coherence": Metric(coherence)],
+            verdicts: verdicts)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        return String(decoding: try encoder.encode(summary), as: UTF8.self)
     }
 }

@@ -4,7 +4,7 @@ import EvalKit
 import TutorCore
 
 // tutor-eval run   [--repeats N] [--sampling default|greedy|seed:N] [--limit N]
-// tutor-eval grade <recorded-run.jsonl>
+// tutor-eval grade <recorded-run.jsonl> [--json]
 //
 // `run` calls the model and records every output; `grade` reads a recording and
 // grades it without calling anything. Run once, grade forever.
@@ -24,8 +24,12 @@ case "grade":
     let url = URL(fileURLWithPath: arguments[1])
     let records = try JSONLines.read(CorrectionRecord.self, from: url)
     let first = records.first
-    CorrectionReport(cases: cases, records: records)
-        .print(model: first?.model ?? "?", sampling: first?.sampling ?? "?")
+    let report = CorrectionReport(cases: cases, records: records)
+    if arguments.contains("--json") {
+        print(try report.json(model: first?.model ?? "?", sampling: first?.sampling ?? "?"))
+    } else {
+        report.print(model: first?.model ?? "?", sampling: first?.sampling ?? "?")
+    }
 
 case "run":
     let model = SystemLanguageModel.default
