@@ -14,6 +14,8 @@ import TutorCore
 // tutor-eval compare <runA.jsonl> <runB.jsonl> [--rep-a N] [--rep-b N] [--json]
 // tutor-eval perf --out <file> [--repeats N] [--sampling greedy|seed:N] [--max-tokens N] [--prewarm] [--only ID] [--long N]
 // tutor-eval perf-report <file> [--json] | perf-grade <file> [--json] | perf-diff <a> <b> [--json]
+// tutor-eval flashcards-run --schema constrained|prose --out <file> [--sampling greedy|default] [--repeats N]
+// tutor-eval flashcards-grade <file> [--json]
 // tutor-eval model-info [--json]
 // tutor-eval drift <baseline-run.jsonl> <current-run.jsonl> [--json]   (exits 1 on any change)
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
@@ -234,6 +236,29 @@ case "perf-report":
         print(String(decoding: try encoder.encode(report), as: UTF8.self))
     } else {
         report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
+    }
+
+case "flashcards-run", "flashcards-grade":
+    let texts = try JSONLines.read(FlashcardText.self, from: URL(fileURLWithPath:
+        value("--texts") ?? "evals/flashcards/texts-v1.jsonl"))
+    if arguments.first == "flashcards-run" {
+        guard let path = value("--out") else { fatalError("flashcards-run needs --out") }
+        guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+        let options = value("--sampling") == "default" ? GenerationOptions() : GenerationOptions(samplingMode: .greedy)
+        try await FlashcardEval.run(texts: texts, schema: value("--schema") ?? "constrained", options: options,
+                                    repeats: Int(value("--repeats") ?? "1") ?? 1, to: URL(fileURLWithPath: path))
+        print("recorded \(path)")
+    } else {
+        guard arguments.count > 1 else { fatalError("usage: tutor-eval flashcards-grade <file>") }
+        let report = FlashcardReport(texts: texts, records: try JSONLines.read(
+            FlashcardRecord.self, from: URL(fileURLWithPath: arguments[1])))
+        if arguments.contains("--json") {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+            print(String(decoding: try encoder.encode(report), as: UTF8.self))
+        } else {
+            report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
+        }
     }
 
 case "drift":
