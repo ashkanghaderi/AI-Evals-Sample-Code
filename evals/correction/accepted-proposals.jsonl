@@ -1,0 +1,1 @@
+{"caseID": "gente-singular", "proposed": "Hay muchas personas aquí.", "source": "model output, every Part I run", "reason": "correct Spanish that fixes the error by replacing 'gentes' rather than making it singular; the key lacks it, and exact match fails it", "status": "awaiting native review - if accepted, it goes into cases-v2, never into v1"}
