@@ -11,6 +11,7 @@ import TutorCore
 // tutor-eval bare-run --out <file> | bare-requests | bare-grade <file> [--json]
 // tutor-eval review-packet --source <run.jsonl> --out review/packet.html
 // tutor-eval review-compare <tutor-review.json> --source <run.jsonl> [--json]
+// tutor-eval compare <runA.jsonl> <runB.jsonl> [--rep-a N] [--rep-b N] [--json]
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
 // tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
@@ -156,6 +157,26 @@ case "review-compare":
     if arguments.contains("--json") {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(comparison), as: UTF8.self))
+    } else {
+        comparison.print()
+    }
+
+case "compare":
+    let paths = arguments.dropFirst().filter { !$0.hasPrefix("--") && !$0.allSatisfy(\.isNumber) }
+    guard paths.count == 2 else { fatalError("usage: tutor-eval compare <runA> <runB>") }
+    func load(_ path: String, rep: String?) throws -> [CorrectionRecord] {
+        let all = try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: path))
+        guard let rep, let n = Int(rep) else { return all }
+        return all.filter { $0.repetition == n }
+    }
+    let comparison = RunComparison(
+        cases: cases,
+        a: try load(paths[paths.startIndex], rep: value("--rep-a")),
+        b: try load(paths[paths.startIndex + 1], rep: value("--rep-b")))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         print(String(decoding: try encoder.encode(comparison), as: UTF8.self))
     } else {
         comparison.print()
