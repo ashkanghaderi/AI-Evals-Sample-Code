@@ -86,6 +86,29 @@ public struct SentenceCorrector<Model: LanguageModel> {
         return result
     }
 
+    /// One correction with what it cost: the response's token counts, for
+    /// Chapter 13. Same prompt, same session setup as `correct`; with
+    /// `prewarm`, the session is warmed and given a moment before the request,
+    /// as an app would when the learner starts typing. English only - the
+    /// translation step is measured separately if at all.
+    public func measure(_ sentence: String, prewarm: Bool = false) async throws
+        -> (correction: Correction, inputTokens: Int, cachedTokens: Int, outputTokens: Int, milliseconds: Int) {
+        let session = LanguageModelSession(model: model, instructions: Self.instructions)
+        if prewarm {
+            session.prewarm()
+            try await Task.sleep(for: .seconds(2))
+        }
+        let clock = ContinuousClock()
+        let start = clock.now
+        let response = try await session.respond(to: sentence, generating: Correction.self,
+                                                 options: options)
+        let elapsed = clock.now - start
+        return (response.content, response.usage.input.totalTokenCount,
+                response.usage.input.cachedTokenCount, response.usage.output.totalTokenCount,
+                Int(elapsed.components.seconds * 1000
+                    + elapsed.components.attoseconds / 1_000_000_000_000_000))
+    }
+
     func translate(_ explanation: String) async throws -> String {
         let session = LanguageModelSession(model: model, instructions: """
             Translate the user's text from English into \(explanationLanguage). \

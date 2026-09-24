@@ -12,6 +12,8 @@ import TutorCore
 // tutor-eval review-packet --source <run.jsonl> --out review/packet.html
 // tutor-eval review-compare <tutor-review.json> --source <run.jsonl> [--json]
 // tutor-eval compare <runA.jsonl> <runB.jsonl> [--rep-a N] [--rep-b N] [--json]
+// tutor-eval perf --out <file> [--repeats N] [--sampling greedy|seed:N] [--max-tokens N] [--prewarm] [--only ID] [--long N]
+// tutor-eval perf-report <file> [--json] | perf-grade <file> [--json] | perf-diff <a> <b> [--json]
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
 // tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
@@ -180,6 +182,56 @@ case "compare":
         print(String(decoding: try encoder.encode(comparison), as: UTF8.self))
     } else {
         comparison.print()
+    }
+
+case "perf":
+    guard let path = value("--out") else { fatalError("perf needs --out") }
+    guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+    let sampling = value("--sampling") ?? "greedy"
+    let options: GenerationOptions = sampling.hasPrefix("seed:")
+        ? GenerationOptions(samplingMode: .random(top: 50, seed: UInt64(sampling.dropFirst(5)) ?? 0))
+        : GenerationOptions(samplingMode: .greedy)
+    let maxTokens = value("--max-tokens").flatMap(Int.init)
+    let configuration = [sampling, maxTokens.map { "max-tokens:\($0)" }, arguments.contains("--prewarm") ? "prewarm" : nil,
+                         value("--long").map { "long:\($0)" }].compactMap { $0 }.joined(separator: " ")
+    try await Performance.run(cases: cases, repeats: Int(value("--repeats") ?? "1") ?? 1, options: options,
+                              maximumResponseTokens: maxTokens, prewarm: arguments.contains("--prewarm"),
+                              only: value("--only"), long: Int(value("--long") ?? "0") ?? 0,
+                              configuration: configuration, to: URL(fileURLWithPath: path))
+    print("recorded \(path) (\(configuration))")
+
+case "perf-grade":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval perf-grade <file>") }
+    let records = try JSONLines.read(PerfRecord.self, from: URL(fileURLWithPath: arguments[1])).map(\.asRunRecord)
+    let report = CorrectionReport(cases: cases, records: records)
+    if arguments.contains("--json") {
+        print(try report.json(model: "apple-on-device", sampling: records.first?.sampling ?? "?"))
+    } else {
+        report.print(model: "apple-on-device", sampling: records.first?.sampling ?? "?")
+    }
+
+case "perf-diff":
+    let paths = arguments.dropFirst().filter { !$0.hasPrefix("--") }
+    guard paths.count == 2 else { fatalError("usage: tutor-eval perf-diff <a> <b>") }
+    let diff = PerfDiff(try JSONLines.read(PerfRecord.self, from: URL(fileURLWithPath: paths[paths.startIndex])),
+                        try JSONLines.read(PerfRecord.self, from: URL(fileURLWithPath: paths[paths.startIndex + 1])))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        print(String(decoding: try encoder.encode(diff), as: UTF8.self))
+    } else {
+        print("\(diff.sameDecision) of \(diff.compared) same decision, \(diff.sameAnswer) same answer; changed: \(diff.changed.joined(separator: ", "))")
+    }
+
+case "perf-report":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval perf-report <file>") }
+    let report = PerfReport(try JSONLines.read(PerfRecord.self, from: URL(fileURLWithPath: arguments[1])))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
     }
 
 case "agreement":

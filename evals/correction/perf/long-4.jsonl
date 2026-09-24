@@ -1,0 +1,1 @@
+{"cachedTokens":0,"caseID":"long-4","configuration":"greedy long:4","index":0,"inputCharacters":93,"inputTokens":289,"latencyMilliseconds":1153,"output":{"corrected":"Yo soy estudiante. Ella es cansada hoy. Nosotros vivimos en una casa grande. El agua está fría.","explanation":"The verb ","hasError":true},"outputTokens":45,"repetition":0}

@@ -1,0 +1,1 @@
+{"cachedTokens":0,"caseID":"long-1","configuration":"greedy long:1","index":0,"inputCharacters":17,"inputTokens":271,"latencyMilliseconds":1231,"output":{"corrected":"Yo soy estudiante.","explanation":"The subject pronoun 'yo' does not agree with the verb 'es' in the present tense.","hasError":true},"outputTokens":49,"repetition":0}
