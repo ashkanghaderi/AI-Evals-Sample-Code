@@ -1,0 +1,144 @@
+{"inputTokens":113,"latencyMilliseconds":448,"outputTokens":13,"repetition":0,"reply":"Hola, buenos días, Ana. Bienvenido al café.","scriptID":"cafe","turn":0,"user":"Hola, buenos días. Me llamo Ana."}
+{"inputTokens":149,"latencyMilliseconds":462,"outputTokens":15,"repetition":0,"reply":"Aquí tienes tu café con leche y un cruasán.","scriptID":"cafe","turn":1,"user":"Quiero un café con leche y un cruasán, por favor."}
+{"inputTokens":179,"latencyMilliseconds":340,"outputTokens":19,"repetition":0,"reply":"Sí, hay una mesa en la terraza.","scriptID":"cafe","turn":2,"user":"¿Tienen mesa en la terraza?"}
+{"inputTokens":207,"latencyMilliseconds":356,"outputTokens":17,"repetition":0,"reply":"Sí, hace muy buen tiempo hoy.","scriptID":"cafe","turn":3,"user":"Hace muy buen tiempo hoy, ¿verdad?"}
+{"inputTokens":234,"latencyMilliseconds":363,"outputTokens":11,"repetition":0,"reply":"Sí, el cruasán es de chocolate.","scriptID":"cafe","turn":4,"user":"¿El cruasán es de chocolate?"}
+{"inputTokens":268,"latencyMilliseconds":374,"outputTokens":15,"repetition":0,"reply":"Hola, me llamo Juan.","scriptID":"cafe","turn":5,"user":"Perdón, ¿cómo me llamo? Lo olvidé."}
+{"inputTokens":291,"latencyMilliseconds":460,"outputTokens":19,"repetition":0,"reply":"Pedí un café con leche y un cruasán de chocolate.","scriptID":"cafe","turn":6,"user":"¿Y qué pedí?"}
+{"inputTokens":321,"latencyMilliseconds":398,"outputTokens":9,"repetition":0,"reply":"Son tres euros.","scriptID":"cafe","turn":7,"user":"Gracias. ¿Cuánto es?"}
+{"inputTokens":113,"latencyMilliseconds":368,"outputTokens":19,"repetition":0,"reply":"Buenas tardes. Tengo una reserva para García.","scriptID":"hotel","turn":0,"user":"Buenas tardes. Tengo una reserva a nombre de García."}
+{"inputTokens":137,"latencyMilliseconds":370,"outputTokens":15,"repetition":0,"reply":"Para tres noches, por favor.","scriptID":"hotel","turn":1,"user":"Es para tres noches."}
+{"inputTokens":163,"latencyMilliseconds":378,"outputTokens":17,"repetition":0,"reply":"Sí, tiene vistas a la catedral.","scriptID":"hotel","turn":2,"user":"¿La habitación tiene vistas a la catedral?"}
+{"inputTokens":189,"latencyMilliseconds":391,"outputTokens":11,"repetition":0,"reply":"El desayuno es a las siete de la mañana.","scriptID":"hotel","turn":3,"user":"¿A qué hora es el desayuno?"}
+{"inputTokens":216,"latencyMilliseconds":351,"outputTokens":17,"repetition":0,"reply":"Sí, hay aparcamiento cerca.","scriptID":"hotel","turn":4,"user":"¿Hay aparcamiento cerca?"}
+{"inputTokens":243,"latencyMilliseconds":418,"outputTokens":17,"repetition":0,"reply":"La reserva está a nombre de García.","scriptID":"hotel","turn":5,"user":"¿A nombre de quién está la reserva?"}
+{"inputTokens":268,"latencyMilliseconds":380,"outputTokens":11,"repetition":0,"reply":"Es para tres noches.","scriptID":"hotel","turn":6,"user":"¿Para cuántas noches es?"}
+{"inputTokens":286,"latencyMilliseconds":389,"outputTokens":11,"repetition":0,"reply":"De nada. Bienvenido.","scriptID":"hotel","turn":7,"user":"Muchas gracias."}
+{"inputTokens":111,"latencyMilliseconds":431,"outputTokens":19,"repetition":0,"reply":"Buenos días. ¿Cómo se siente hoy?","scriptID":"doctor","turn":0,"user":"Buenos días, doctora."}
+{"inputTokens":139,"latencyMilliseconds":620,"outputTokens":19,"repetition":0,"reply":"Lamento que tenga dolor de cabeza. ¿Ha tomado algún medicamento?","scriptID":"doctor","turn":1,"user":"Me duele la cabeza desde el lunes."}
+{"inputTokens":170,"latencyMilliseconds":379,"outputTokens":19,"repetition":0,"reply":"Entiendo. ¿La fiebre es alta?","scriptID":"doctor","turn":2,"user":"También tengo un poco de fiebre."}
+{"inputTokens":196,"latencyMilliseconds":527,"outputTokens":13,"repetition":0,"reply":"Está bien, vamos a ver cómo podemos ayudarle.","scriptID":"doctor","turn":3,"user":"No, no tomo ningún medicamento."}
+{"inputTokens":221,"latencyMilliseconds":470,"outputTokens":19,"repetition":0,"reply":"No parece grave, pero debemos controlarlo.","scriptID":"doctor","turn":4,"user":"¿Es grave?"}
+{"inputTokens":251,"latencyMilliseconds":452,"outputTokens":19,"repetition":0,"reply":"Desde el lunes, como le mencioné.","scriptID":"doctor","turn":5,"user":"¿Desde qué día le dije que me duele?"}
+{"inputTokens":276,"latencyMilliseconds":360,"outputTokens":13,"repetition":0,"reply":"Me duele la cabeza.","scriptID":"doctor","turn":6,"user":"¿Qué me duele?"}
+{"inputTokens":296,"latencyMilliseconds":460,"outputTokens":17,"repetition":0,"reply":"De nada, siga con sus cuidados.","scriptID":"doctor","turn":7,"user":"Vale, gracias."}
+{"inputTokens":120,"latencyMilliseconds":791,"outputTokens":23,"repetition":0,"reply":"No se preocupe, la estación de tren está cerca.  \n¿Quiere ir hacia allí?","scriptID":"directions","turn":0,"user":"Perdone, estoy en la Plaza Mayor."}
+{"inputTokens":159,"latencyMilliseconds":529,"outputTokens":27,"repetition":0,"reply":"Está un poco más allá de la plaza.  \n¿Necesita ayuda para llegar?","scriptID":"directions","turn":1,"user":"Quiero ir al Museo del Prado."}
+{"inputTokens":191,"latencyMilliseconds":568,"outputTokens":29,"repetition":0,"reply":"Es un poco lejos, pero fácil.  \n¿Quiere que le indique el camino?","scriptID":"directions","turn":2,"user":"¿Está lejos?"}
+{"inputTokens":227,"latencyMilliseconds":641,"outputTokens":29,"repetition":0,"reply":"Sí, puede ir a pie.  \nLa ruta es corta, solo unas pocas calles.","scriptID":"directions","turn":3,"user":"¿Puedo ir a pie?"}
+{"inputTokens":264,"latencyMilliseconds":587,"outputTokens":25,"repetition":0,"reply":"Sí, hay una parada cerca.  \nPuede tomar el metro si prefiere.","scriptID":"directions","turn":4,"user":"¿Hay una parada de metro cerca?"}
+{"inputTokens":298,"latencyMilliseconds":592,"outputTokens":21,"repetition":0,"reply":"Estoy aquí, en esta plaza.  \n¿Viene hacia mí?","scriptID":"directions","turn":5,"user":"¿Dónde le dije que estoy?"}
+{"inputTokens":330,"latencyMilliseconds":580,"outputTokens":25,"repetition":0,"reply":"Usted quiere ir al Museo del Prado.  \nLe muestro el camino.","scriptID":"directions","turn":6,"user":"¿Y adónde quiero ir?"}
+{"inputTokens":363,"latencyMilliseconds":650,"outputTokens":25,"repetition":0,"reply":"De nada, tenga un buen día.  \nEstoy aquí si necesita algo más.","scriptID":"directions","turn":7,"user":"Muchas gracias por su ayuda."}
+{"inputTokens":110,"latencyMilliseconds":520,"outputTokens":19,"repetition":0,"reply":"Hola, tengo unos zapatos negros muy bonitos. ¿Te gustan?","scriptID":"shoes","turn":0,"user":"Hola, busco unos zapatos negros."}
+{"inputTokens":142,"latencyMilliseconds":620,"outputTokens":21,"repetition":0,"reply":"Tenemos zapatos negros de talla treinta y nueve. ¿Quieres probarse unos?","scriptID":"shoes","turn":1,"user":"Uso la talla treinta y nueve."}
+{"inputTokens":174,"latencyMilliseconds":456,"outputTokens":17,"repetition":0,"reply":"Tenemos unos zapatos más cómodos negros. ¿Te interesan?","scriptID":"shoes","turn":2,"user":"¿Tienen algo más cómodo?"}
+{"inputTokens":203,"latencyMilliseconds":561,"outputTokens":15,"repetition":0,"reply":"Estos zapatos cuestan veinte euros. ¿Quieres comprarlos?","scriptID":"shoes","turn":3,"user":"¿Cuánto cuestan estos?"}
+{"inputTokens":232,"latencyMilliseconds":474,"outputTokens":13,"repetition":0,"reply":"Sí, puedes pagar con tarjeta. ¿Quieres hacerlo?","scriptID":"shoes","turn":4,"user":"¿Puedo pagar con tarjeta?"}
+{"inputTokens":259,"latencyMilliseconds":490,"outputTokens":17,"repetition":0,"reply":"Te dije la talla treinta y nueve. ¿Quieres probarlos?","scriptID":"shoes","turn":5,"user":"¿Qué talla le dije?"}
+{"inputTokens":290,"latencyMilliseconds":575,"outputTokens":15,"repetition":0,"reply":"Quería unos zapatos negros. ¿Te los puedo enseñar?","scriptID":"shoes","turn":6,"user":"¿Y de qué color los quería?"}
+{"inputTokens":316,"latencyMilliseconds":468,"outputTokens":11,"repetition":0,"reply":"¡Perfecto! Aquí tienes tus zapatos negros.","scriptID":"shoes","turn":7,"user":"Me los llevo."}
+{"inputTokens":115,"latencyMilliseconds":483,"outputTokens":15,"repetition":0,"reply":"Hola, Marco. Encantado, vivo en Madrid.","scriptID":"friend","turn":0,"user":"Hola, soy Marco. Vivo en Valencia."}
+{"inputTokens":146,"latencyMilliseconds":376,"outputTokens":17,"repetition":0,"reply":"¡Qué bien, Toby suena genial!","scriptID":"friend","turn":1,"user":"Tengo un perro que se llama Toby."}
+{"inputTokens":171,"latencyMilliseconds":406,"outputTokens":11,"repetition":0,"reply":"A mí también me gusta mucho la paella.","scriptID":"friend","turn":2,"user":"Me gusta mucho cocinar paella."}
+{"inputTokens":198,"latencyMilliseconds":491,"outputTokens":19,"repetition":0,"reply":"Soy de Madrid, como te dije antes.","scriptID":"friend","turn":3,"user":"¿Tú de dónde eres?"}
+{"inputTokens":226,"latencyMilliseconds":475,"outputTokens":13,"repetition":0,"reply":"Yo también voy a la playa los fines de semana.","scriptID":"friend","turn":4,"user":"Los fines de semana voy a la playa."}
+{"inputTokens":258,"latencyMilliseconds":484,"outputTokens":19,"repetition":0,"reply":"Sí, Toby, recuerdo bien su nombre.","scriptID":"friend","turn":5,"user":"¿Te acuerdas de cómo se llama mi perro?"}
+{"inputTokens":284,"latencyMilliseconds":316,"outputTokens":9,"repetition":0,"reply":"Vivo en Madrid.","scriptID":"friend","turn":6,"user":"¿Y en qué ciudad vivo?"}
+{"error":"Response may contain sensitive or unsafe content","latencyMilliseconds":500,"repetition":0,"scriptID":"friend","turn":7,"user":"Bueno, me tengo que ir. ¡Hasta luego!"}
+{"inputTokens":113,"latencyMilliseconds":443,"outputTokens":13,"repetition":1,"reply":"Hola, buenos días, Ana. Bienvenido al café.","scriptID":"cafe","turn":0,"user":"Hola, buenos días. Me llamo Ana."}
+{"inputTokens":149,"latencyMilliseconds":540,"outputTokens":23,"repetition":1,"reply":"Aquí tienes tu café con leche y cruasán. ¿Quieres algo más?","scriptID":"cafe","turn":1,"user":"Quiero un café con leche y un cruasán, por favor."}
+{"inputTokens":183,"latencyMilliseconds":497,"outputTokens":19,"repetition":1,"reply":"Sí, hay una mesa en la terraza. ¿Te viene bien?","scriptID":"cafe","turn":2,"user":"¿Tienen mesa en la terraza?"}
+{"inputTokens":216,"latencyMilliseconds":508,"outputTokens":17,"repetition":1,"reply":"Sí, el tiempo está muy bueno hoy. ¿Quieres salir?","scriptID":"cafe","turn":3,"user":"Hace muy buen tiempo hoy, ¿verdad?"}
+{"inputTokens":248,"latencyMilliseconds":484,"outputTokens":19,"repetition":1,"reply":"Sí, el cruasán es de chocolate. ¿Quieres otro?","scriptID":"cafe","turn":4,"user":"¿El cruasán es de chocolate?"}
+{"inputTokens":286,"latencyMilliseconds":377,"outputTokens":11,"repetition":1,"reply":"No te preocupes, te llamo Ana.","scriptID":"cafe","turn":5,"user":"Perdón, ¿cómo me llamo? Lo olvidé."}
+{"inputTokens":312,"latencyMilliseconds":499,"outputTokens":15,"repetition":1,"reply":"Pedí café con leche y cruasán de chocolate.","scriptID":"cafe","turn":6,"user":"¿Y qué pedí?"}
+{"inputTokens":340,"latencyMilliseconds":433,"outputTokens":17,"repetition":1,"reply":"Son dos euros y cinco centavos.","scriptID":"cafe","turn":7,"user":"Gracias. ¿Cuánto es?"}
+{"inputTokens":113,"latencyMilliseconds":439,"outputTokens":13,"repetition":1,"reply":"Buenas tardes. Sí, tengo una reserva para García.","scriptID":"hotel","turn":0,"user":"Buenas tardes. Tengo una reserva a nombre de García."}
+{"inputTokens":139,"latencyMilliseconds":331,"outputTokens":15,"repetition":1,"reply":"Claro, son tres noches.","scriptID":"hotel","turn":1,"user":"Es para tres noches."}
+{"inputTokens":165,"latencyMilliseconds":372,"outputTokens":11,"repetition":1,"reply":"Sí, algunas habitaciones tienen vistas a la catedral.","scriptID":"hotel","turn":2,"user":"¿La habitación tiene vistas a la catedral?"}
+{"inputTokens":193,"latencyMilliseconds":423,"outputTokens":15,"repetition":1,"reply":"El desayuno es a las ocho.","scriptID":"hotel","turn":3,"user":"¿A qué hora es el desayuno?"}
+{"inputTokens":217,"latencyMilliseconds":369,"outputTokens":17,"repetition":1,"reply":"Sí, hay aparcamiento cerca.","scriptID":"hotel","turn":4,"user":"¿Hay aparcamiento cerca?"}
+{"inputTokens":244,"latencyMilliseconds":403,"outputTokens":17,"repetition":1,"reply":"La reserva está a nombre de García.","scriptID":"hotel","turn":5,"user":"¿A nombre de quién está la reserva?"}
+{"inputTokens":269,"latencyMilliseconds":380,"outputTokens":11,"repetition":1,"reply":"Es para tres noches.","scriptID":"hotel","turn":6,"user":"¿Para cuántas noches es?"}
+{"inputTokens":287,"latencyMilliseconds":363,"outputTokens":11,"repetition":1,"reply":"De nada. Bienvenido.","scriptID":"hotel","turn":7,"user":"Muchas gracias."}
+{"inputTokens":111,"latencyMilliseconds":434,"outputTokens":19,"repetition":1,"reply":"Buenos días. ¿Cómo se siente hoy?","scriptID":"doctor","turn":0,"user":"Buenos días, doctora."}
+{"inputTokens":139,"latencyMilliseconds":691,"outputTokens":25,"repetition":1,"reply":"Lamento que tenga dolor de cabeza. ¿Ha tomado algo para aliviarlo?","scriptID":"doctor","turn":1,"user":"Me duele la cabeza desde el lunes."}
+{"inputTokens":173,"latencyMilliseconds":495,"outputTokens":17,"repetition":1,"reply":"Entiendo. ¿La fiebre ha estado presente todo el día?","scriptID":"doctor","turn":2,"user":"También tengo un poco de fiebre."}
+{"inputTokens":203,"latencyMilliseconds":518,"outputTokens":13,"repetition":1,"reply":"Está bien. ¿Ha dormido bien últimamente?","scriptID":"doctor","turn":3,"user":"No, no tomo ningún medicamento."}
+{"inputTokens":228,"latencyMilliseconds":431,"outputTokens":17,"repetition":1,"reply":"No parece grave, pero debe descansar.","scriptID":"doctor","turn":4,"user":"¿Es grave?"}
+{"inputTokens":257,"latencyMilliseconds":531,"outputTokens":15,"repetition":1,"reply":"Desde el lunes, sí. Vamos a revisar su estado.","scriptID":"doctor","turn":5,"user":"¿Desde qué día le dije que me duele?"}
+{"inputTokens":285,"latencyMilliseconds":413,"outputTokens":11,"repetition":1,"reply":"Me duele la cabeza y tiene fiebre leve.","scriptID":"doctor","turn":6,"user":"¿Qué me duele?"}
+{"inputTokens":309,"latencyMilliseconds":446,"outputTokens":11,"repetition":1,"reply":"De nada. Vamos a hacerle una revisión.","scriptID":"doctor","turn":7,"user":"Vale, gracias."}
+{"inputTokens":120,"latencyMilliseconds":621,"outputTokens":25,"repetition":1,"reply":"No se preocupe, está cerca. Vaya hacia la Puerta del Sol.","scriptID":"directions","turn":0,"user":"Perdone, estoy en la Plaza Mayor."}
+{"inputTokens":155,"latencyMilliseconds":547,"outputTokens":15,"repetition":1,"reply":"Está a pocos minutos. Siga por la calle Mayor.","scriptID":"directions","turn":1,"user":"Quiero ir al Museo del Prado."}
+{"inputTokens":181,"latencyMilliseconds":481,"outputTokens":13,"repetition":1,"reply":"No, está cerca. Solo camine un poco.","scriptID":"directions","turn":2,"user":"¿Está lejos?"}
+{"inputTokens":209,"latencyMilliseconds":470,"outputTokens":15,"repetition":1,"reply":"Sí, puede ir a pie. Son solo unos minutos.","scriptID":"directions","turn":3,"user":"¿Puedo ir a pie?"}
+{"inputTokens":239,"latencyMilliseconds":477,"outputTokens":15,"repetition":1,"reply":"Sí, hay una parada cerca. Está a pocos metros.","scriptID":"directions","turn":4,"user":"¿Hay una parada de metro cerca?"}
+{"inputTokens":268,"latencyMilliseconds":556,"outputTokens":17,"repetition":1,"reply":"Estaba en la Plaza Mayor. Ahora está cerca del museo.","scriptID":"directions","turn":5,"user":"¿Dónde le dije que estoy?"}
+{"inputTokens":298,"latencyMilliseconds":465,"outputTokens":13,"repetition":1,"reply":"Quiero ir al Museo del Prado. Está cerca.","scriptID":"directions","turn":6,"user":"¿Y adónde quiero ir?"}
+{"inputTokens":325,"latencyMilliseconds":466,"outputTokens":17,"repetition":1,"reply":"De nada. ¡Buena suerte!","scriptID":"directions","turn":7,"user":"Muchas gracias por su ayuda."}
+{"inputTokens":110,"latencyMilliseconds":515,"outputTokens":19,"repetition":1,"reply":"Hola, tengo unos zapatos negros muy bonitos. ¿Te gustan?","scriptID":"shoes","turn":0,"user":"Hola, busco unos zapatos negros."}
+{"inputTokens":142,"latencyMilliseconds":484,"outputTokens":19,"repetition":1,"reply":"Tengo zapatos negros de talla treinta y nueve. ¿Te sirven?","scriptID":"shoes","turn":1,"user":"Uso la talla treinta y nueve."}
+{"inputTokens":173,"latencyMilliseconds":558,"outputTokens":27,"repetition":1,"reply":"Tenemos unos zapatos más cómodos negros de talla treinta y nueve. ¿Quieres probarlos?","scriptID":"shoes","turn":2,"user":"¿Tienen algo más cómodo?"}
+{"inputTokens":207,"latencyMilliseconds":554,"outputTokens":15,"repetition":1,"reply":"Estos zapatos cuestan veinte euros. ¿Quieres comprarlos?","scriptID":"shoes","turn":3,"user":"¿Cuánto cuestan estos?"}
+{"inputTokens":236,"latencyMilliseconds":473,"outputTokens":13,"repetition":1,"reply":"Sí, puedes pagar con tarjeta. ¿Quieres hacerlo?","scriptID":"shoes","turn":4,"user":"¿Puedo pagar con tarjeta?"}
+{"inputTokens":263,"latencyMilliseconds":523,"outputTokens":17,"repetition":1,"reply":"Te dije la talla treinta y nueve. ¿Te quedan bien?","scriptID":"shoes","turn":5,"user":"¿Qué talla le dije?"}
+{"error":"Response may contain sensitive or unsafe content","latencyMilliseconds":442,"repetition":1,"scriptID":"shoes","turn":6,"user":"¿Y de qué color los quería?"}
+{"inputTokens":290,"latencyMilliseconds":568,"outputTokens":17,"repetition":1,"reply":"¡Perfecto! Aquí tienes tus zapatos. ¿Te gustan?","scriptID":"shoes","turn":7,"user":"Me los llevo."}
+{"inputTokens":115,"latencyMilliseconds":480,"outputTokens":15,"repetition":1,"reply":"Hola, Marco. Encantado, vivo en Madrid.","scriptID":"friend","turn":0,"user":"Hola, soy Marco. Vivo en Valencia."}
+{"inputTokens":146,"latencyMilliseconds":433,"outputTokens":11,"repetition":1,"reply":"¡Qué bien! Toby debe ser muy divertido.","scriptID":"friend","turn":1,"user":"Tengo un perro que se llama Toby."}
+{"inputTokens":173,"latencyMilliseconds":522,"outputTokens":19,"repetition":1,"reply":"¡A mí también me gusta! La paella es deliciosa.","scriptID":"friend","turn":2,"user":"Me gusta mucho cocinar paella."}
+{"inputTokens":204,"latencyMilliseconds":530,"outputTokens":15,"repetition":1,"reply":"Yo soy de Madrid. ¿Y tú de dónde eres?","scriptID":"friend","turn":3,"user":"¿Tú de dónde eres?"}
+{"inputTokens":235,"latencyMilliseconds":367,"outputTokens":11,"repetition":1,"reply":"¡Qué bien! La playa es muy bonita.","scriptID":"friend","turn":4,"user":"Los fines de semana voy a la playa."}
+{"inputTokens":266,"latencyMilliseconds":513,"outputTokens":13,"repetition":1,"reply":"Sí, Toby. ¡Es un perro muy bueno!","scriptID":"friend","turn":5,"user":"¿Te acuerdas de cómo se llama mi perro?"}
+{"inputTokens":294,"latencyMilliseconds":491,"outputTokens":13,"repetition":1,"reply":"Vivo en Madrid. ¿Y tú, dónde vives?","scriptID":"friend","turn":6,"user":"¿Y en qué ciudad vivo?"}
+{"error":"Response may contain sensitive or unsafe content","latencyMilliseconds":500,"repetition":1,"scriptID":"friend","turn":7,"user":"Bueno, me tengo que ir. ¡Hasta luego!"}
+{"inputTokens":113,"latencyMilliseconds":441,"outputTokens":13,"repetition":2,"reply":"Hola, buenos días, Ana. Bienvenido al café.","scriptID":"cafe","turn":0,"user":"Hola, buenos días. Me llamo Ana."}
+{"inputTokens":149,"latencyMilliseconds":533,"outputTokens":23,"repetition":2,"reply":"Aquí tienes tu café con leche y cruasán. ¿Quieres algo más?","scriptID":"cafe","turn":1,"user":"Quiero un café con leche y un cruasán, por favor."}
+{"inputTokens":183,"latencyMilliseconds":462,"outputTokens":19,"repetition":2,"reply":"Sí, hay mesa en la terraza. ¿Te gustaría ir allí?","scriptID":"cafe","turn":2,"user":"¿Tienen mesa en la terraza?"}
+{"inputTokens":216,"latencyMilliseconds":577,"outputTokens":21,"repetition":2,"reply":"Sí, hace muy buen tiempo hoy. ¿Quieres salir a tomar algo?","scriptID":"cafe","turn":3,"user":"Hace muy buen tiempo hoy, ¿verdad?"}
+{"inputTokens":250,"latencyMilliseconds":459,"outputTokens":19,"repetition":2,"reply":"Sí, el cruasán es de chocolate. ¿Quieres otro?","scriptID":"cafe","turn":4,"user":"¿El cruasán es de chocolate?"}
+{"inputTokens":288,"latencyMilliseconds":535,"outputTokens":21,"repetition":2,"reply":"No te preocupes, te llamo Ana. ¿Qué necesitas ahora?","scriptID":"cafe","turn":5,"user":"Perdón, ¿cómo me llamo? Lo olvidé."}
+{"inputTokens":319,"latencyMilliseconds":543,"outputTokens":23,"repetition":2,"reply":"Pedí café con leche y cruasán de chocolate. ¿Quieres más?","scriptID":"cafe","turn":6,"user":"¿Y qué pedí?"}
+{"inputTokens":351,"latencyMilliseconds":472,"outputTokens":11,"repetition":2,"reply":"Son dos euros. ¿Quieres pagar con tarjeta?","scriptID":"cafe","turn":7,"user":"Gracias. ¿Cuánto es?"}
+{"inputTokens":113,"latencyMilliseconds":365,"outputTokens":19,"repetition":2,"reply":"Buenas tardes. Tengo una reserva para García.","scriptID":"hotel","turn":0,"user":"Buenas tardes. Tengo una reserva a nombre de García."}
+{"inputTokens":137,"latencyMilliseconds":368,"outputTokens":15,"repetition":2,"reply":"Para tres noches, por favor.","scriptID":"hotel","turn":1,"user":"Es para tres noches."}
+{"inputTokens":163,"latencyMilliseconds":338,"outputTokens":11,"repetition":2,"reply":"Sí, la habitación tiene vistas a la catedral.","scriptID":"hotel","turn":2,"user":"¿La habitación tiene vistas a la catedral?"}
+{"inputTokens":191,"latencyMilliseconds":477,"outputTokens":13,"repetition":2,"reply":"El desayuno es desde las 7:00.","scriptID":"hotel","turn":3,"user":"¿A qué hora es el desayuno?"}
+{"inputTokens":219,"latencyMilliseconds":368,"outputTokens":17,"repetition":2,"reply":"Sí, hay aparcamiento cerca.","scriptID":"hotel","turn":4,"user":"¿Hay aparcamiento cerca?"}
+{"inputTokens":246,"latencyMilliseconds":404,"outputTokens":17,"repetition":2,"reply":"La reserva está a nombre de García.","scriptID":"hotel","turn":5,"user":"¿A nombre de quién está la reserva?"}
+{"inputTokens":271,"latencyMilliseconds":380,"outputTokens":11,"repetition":2,"reply":"Es para tres noches.","scriptID":"hotel","turn":6,"user":"¿Para cuántas noches es?"}
+{"inputTokens":289,"latencyMilliseconds":426,"outputTokens":15,"repetition":2,"reply":"De nada. Bienvenido al hotel.","scriptID":"hotel","turn":7,"user":"Muchas gracias."}
+{"inputTokens":111,"latencyMilliseconds":432,"outputTokens":19,"repetition":2,"reply":"Buenos días. ¿Cómo se siente hoy?","scriptID":"doctor","turn":0,"user":"Buenos días, doctora."}
+{"inputTokens":139,"latencyMilliseconds":594,"outputTokens":17,"repetition":2,"reply":"Entiendo. ¿Ha tomado algo para aliviar el dolor?","scriptID":"doctor","turn":1,"user":"Me duele la cabeza desde el lunes."}
+{"inputTokens":169,"latencyMilliseconds":523,"outputTokens":17,"repetition":2,"reply":"Es importante descansar y tomar líquidos. ¿Ha tenido fiebre antes?","scriptID":"doctor","turn":2,"user":"También tengo un poco de fiebre."}
+{"inputTokens":199,"latencyMilliseconds":564,"outputTokens":19,"repetition":2,"reply":"Vamos a revisar sus síntomas. ¿Ha dormido bien últimamente?","scriptID":"doctor","turn":3,"user":"No, no tomo ningún medicamento."}
+{"inputTokens":227,"latencyMilliseconds":719,"outputTokens":23,"repetition":2,"reply":"No parece grave, pero debemos vigilarlo. ¿Ha tenido náuseas o vómitos?","scriptID":"doctor","turn":4,"user":"¿Es grave?"}
+{"inputTokens":269,"latencyMilliseconds":588,"outputTokens":19,"repetition":2,"reply":"Desde el lunes, ¿verdad? Vamos a hacer una revisión rápida.","scriptID":"doctor","turn":5,"user":"¿Desde qué día le dije que me duele?"}
+{"inputTokens":299,"latencyMilliseconds":563,"outputTokens":19,"repetition":2,"reply":"Me duele la cabeza y tengo fiebre. Vamos a controlar eso.","scriptID":"doctor","turn":6,"user":"¿Qué me duele?"}
+{"inputTokens":327,"latencyMilliseconds":432,"outputTokens":11,"repetition":2,"reply":"De nada. Volvamos a revisar sus síntomas.","scriptID":"doctor","turn":7,"user":"Vale, gracias."}
+{"inputTokens":120,"latencyMilliseconds":771,"outputTokens":25,"repetition":2,"reply":"No se preocupe, la Puerta del Sol está cerca.  \n¿Quiere ir hacia allí?","scriptID":"directions","turn":0,"user":"Perdone, estoy en la Plaza Mayor."}
+{"inputTokens":160,"latencyMilliseconds":636,"outputTokens":23,"repetition":2,"reply":"Está a poca distancia, siga por la calle Alcalá.  \n¿Necesita ayuda para llegar?","scriptID":"directions","turn":1,"user":"Quiero ir al Museo del Prado."}
+{"inputTokens":195,"latencyMilliseconds":558,"outputTokens":19,"repetition":2,"reply":"No, está a unos minutos andando.  \n¿Va bien?","scriptID":"directions","turn":2,"user":"¿Está lejos?"}
+{"inputTokens":226,"latencyMilliseconds":604,"outputTokens":29,"repetition":2,"reply":"Sí, puede ir a pie.  \n¿Quiere que le muestre el camino?","scriptID":"directions","turn":3,"user":"¿Puedo ir a pie?"}
+{"inputTokens":263,"latencyMilliseconds":622,"outputTokens":27,"repetition":2,"reply":"Sí, hay una parada cerca.  \n¿Prefiere caminar o tomar el metro?","scriptID":"directions","turn":4,"user":"¿Hay una parada de metro cerca?"}
+{"inputTokens":298,"latencyMilliseconds":456,"outputTokens":21,"repetition":2,"reply":"Estoy en la Plaza Mayor.  \n¿Quiere ir hacia allí?","scriptID":"directions","turn":5,"user":"¿Dónde le dije que estoy?"}
+{"inputTokens":330,"latencyMilliseconds":609,"outputTokens":27,"repetition":2,"reply":"Quiero ir al Museo del Prado.  \n¿Puede ayudarme con el camino?","scriptID":"directions","turn":6,"user":"¿Y adónde quiero ir?"}
+{"inputTokens":364,"latencyMilliseconds":569,"outputTokens":13,"repetition":2,"reply":"De nada.  \n¿Necesita algo más?","scriptID":"directions","turn":7,"user":"Muchas gracias por su ayuda."}
+{"inputTokens":110,"latencyMilliseconds":523,"outputTokens":19,"repetition":2,"reply":"Hola, tengo unos zapatos negros muy bonitos. ¿Te gustan?","scriptID":"shoes","turn":0,"user":"Hola, busco unos zapatos negros."}
+{"inputTokens":142,"latencyMilliseconds":486,"outputTokens":17,"repetition":2,"reply":"Tenemos zapatos negros de talla treinta y nueve. ¿Te parecen?","scriptID":"shoes","turn":1,"user":"Uso la talla treinta y nueve."}
+{"inputTokens":172,"latencyMilliseconds":526,"outputTokens":19,"repetition":2,"reply":"Sí, tengo unos zapatos más cómodos. ¿Quieres probarlos?","scriptID":"shoes","turn":2,"user":"¿Tienen algo más cómodo?"}
+{"inputTokens":202,"latencyMilliseconds":504,"outputTokens":19,"repetition":2,"reply":"Estos zapatos cuestan cincuenta euros. ¿Quieres comprarlos?","scriptID":"shoes","turn":3,"user":"¿Cuánto cuestan estos?"}
+{"inputTokens":233,"latencyMilliseconds":471,"outputTokens":13,"repetition":2,"reply":"Sí, puedes pagar con tarjeta. ¿Quieres hacerlo?","scriptID":"shoes","turn":4,"user":"¿Puedo pagar con tarjeta?"}
+{"inputTokens":260,"latencyMilliseconds":525,"outputTokens":17,"repetition":2,"reply":"Te dije la talla treinta y nueve. ¿Te convienen?","scriptID":"shoes","turn":5,"user":"¿Qué talla le dije?"}
+{"error":"Response may contain sensitive or unsafe content","latencyMilliseconds":449,"repetition":2,"scriptID":"shoes","turn":6,"user":"¿Y de qué color los quería?"}
+{"inputTokens":287,"latencyMilliseconds":460,"outputTokens":19,"repetition":2,"reply":"¡Genial! Aquí tienes tus zapatos.","scriptID":"shoes","turn":7,"user":"Me los llevo."}
+{"inputTokens":115,"latencyMilliseconds":482,"outputTokens":15,"repetition":2,"reply":"Hola, Marco. Encantado, vivo en Madrid.","scriptID":"friend","turn":0,"user":"Hola, soy Marco. Vivo en Valencia."}
+{"inputTokens":146,"latencyMilliseconds":624,"outputTokens":25,"repetition":2,"reply":"¡Qué bien, Toby es genial! Yo tengo un gato llamado Lluvia.","scriptID":"friend","turn":1,"user":"Tengo un perro que se llama Toby."}
+{"inputTokens":180,"latencyMilliseconds":534,"outputTokens":25,"repetition":2,"reply":"A mí también me gusta mucho la paella. ¿Has cocinado alguna vez?","scriptID":"friend","turn":2,"user":"Me gusta mucho cocinar paella."}
+{"inputTokens":214,"latencyMilliseconds":570,"outputTokens":19,"repetition":2,"reply":"Yo soy de Madrid. ¿Y tú de dónde eres, Marco?","scriptID":"friend","turn":3,"user":"¿Tú de dónde eres?"}
+{"inputTokens":247,"latencyMilliseconds":523,"outputTokens":21,"repetition":2,"reply":"¡Qué bien! Yo también voy a la playa los fines de semana.","scriptID":"friend","turn":4,"user":"Los fines de semana voy a la playa."}
+{"inputTokens":283,"latencyMilliseconds":420,"outputTokens":17,"repetition":2,"reply":"¡Claro! Se llama Toby.","scriptID":"friend","turn":5,"user":"¿Te acuerdas de cómo se llama mi perro?"}
+{"inputTokens":308,"latencyMilliseconds":317,"outputTokens":9,"repetition":2,"reply":"Vivo en Madrid.","scriptID":"friend","turn":6,"user":"¿Y en qué ciudad vivo?"}
+{"error":"Response may contain sensitive or unsafe content","latencyMilliseconds":488,"repetition":2,"scriptID":"friend","turn":7,"user":"Bueno, me tengo que ir. ¡Hasta luego!"}
