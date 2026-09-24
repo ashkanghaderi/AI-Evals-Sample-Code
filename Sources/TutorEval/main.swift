@@ -20,6 +20,9 @@ import TutorCore
 // tutor-eval conversation-grade <file> --scripts <file> [--json]
 // tutor-eval tools-run --out <file> [--sampling greedy|default] [--repeats N] [--variant strict]
 // tutor-eval tools-grade <file> [--json]
+// tutor-eval retrieval-eval --retriever keyword|embedding [--queries <file>] [--json]
+// tutor-eval rag-run --mode oracle|distractor|keyword|embedding --out <file> [--queries <file>]
+// tutor-eval rag-grade <file> [--queries <file>] [--json]
 // tutor-eval model-info [--json]
 // tutor-eval drift <baseline-run.jsonl> <current-run.jsonl> [--json]   (exits 1 on any change)
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
@@ -315,6 +318,37 @@ case "tools-run", "tools-grade":
         } else {
             report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
         }
+    }
+
+case "retrieval-eval", "rag-run", "rag-grade":
+    let notes = try JSONLines.read(GrammarNote.self, from: URL(fileURLWithPath: "evals/retrieval/notes-v1.jsonl"))
+    let queries = try JSONLines.read(GrammarQuery.self, from: URL(fileURLWithPath:
+        value("--queries") ?? "evals/retrieval/queries-v1.jsonl"))
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+    switch arguments.first {
+    case "retrieval-eval":
+        let retriever: any NoteRetriever = value("--retriever") == "embedding" ? EmbeddingRetriever() : KeywordRetriever()
+        let report = RetrievalReport(retriever: retriever, notes: notes, queries: queries)
+        if arguments.contains("--json") { print(String(decoding: try encoder.encode(report), as: UTF8.self)) }
+        else {
+            print(String(format: "%d queries: right note first %d, in the top three %d, MRR %.2f; keyword overlap with the note %.0f%%",
+                         report.queries, report.hitAt1, report.hitAt3, report.meanReciprocalRank, report.meanOverlap * 100))
+            for row in report.rows where row.rank != 1 {
+                print("  \(row.queryID): rank \(row.rank.map(String.init) ?? "-"), top \(row.top.joined(separator: ", "))")
+            }
+        }
+    case "rag-run":
+        guard let path = value("--out") else { fatalError("rag-run needs --out") }
+        guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+        try await RagEval.run(queries: queries, notes: notes, mode: value("--mode") ?? "keyword",
+                              to: URL(fileURLWithPath: path))
+        print("recorded \(path)")
+    default:
+        guard arguments.count > 1 else { fatalError("usage: tutor-eval rag-grade <file>") }
+        let report = RagReport(queries: queries, records: try JSONLines.read(RagRecord.self, from: URL(fileURLWithPath: arguments[1])))
+        if arguments.contains("--json") { print(String(decoding: try encoder.encode(report), as: UTF8.self)) }
+        else { report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent) }
     }
 
 case "drift":

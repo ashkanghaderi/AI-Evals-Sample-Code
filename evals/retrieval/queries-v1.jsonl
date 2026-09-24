@@ -1,0 +1,24 @@
+{"id": "q-tired", "query": "Why do I say 'estoy cansado' and not 'soy cansado'?", "relevant": ["ser-estar"], "answerMustContain": ["estar"], "provenance": "drafted by the authors"}
+{"id": "q-location", "query": "Is it 'soy en Madrid' or 'estoy en Madrid'?", "relevant": ["ser-estar"], "answerMustContain": ["estoy en madrid", "estar"], "provenance": "drafted by the authors"}
+{"id": "q-gustan", "query": "Why is it 'me gustan los perros' with an n?", "relevant": ["gustar"], "answerMustContain": ["plural", "perros", "agrees"], "provenance": "drafted by the authors"}
+{"id": "q-ayer", "query": "How do I talk about what I ate yesterday?", "relevant": ["preterite"], "answerMustContain": ["preterite", "comí"], "provenance": "drafted by the authors"}
+{"id": "q-vengas", "query": "Why 'quiero que vengas' and not 'quiero que vienes'?", "relevant": ["subjunctive-querer"], "answerMustContain": ["subjunctive"], "provenance": "drafted by the authors"}
+{"id": "q-a-juan", "query": "Why do you need 'a' in 'vi a Juan'?", "relevant": ["personal-a"], "answerMustContain": ["personal a", "person"], "provenance": "drafted by the authors"}
+{"id": "q-el-agua", "query": "Why is it 'el agua' if agua is feminine?", "relevant": ["el-agua"], "answerMustContain": ["stressed"], "provenance": "drafted by the authors"}
+{"id": "q-el-mapa", "query": "Why is it 'el mapa' and not 'la mapa'?", "relevant": ["gender-exceptions"], "answerMustContain": ["masculine"], "provenance": "drafted by the authors"}
+{"id": "q-pensar", "query": "Is it 'pienso de ti' or 'pienso en ti'?", "relevant": ["pensar-en"], "answerMustContain": ["pienso en ti", "pensar en"], "provenance": "drafted by the authors"}
+{"id": "q-nadie", "query": "Can I say 'nadie no vino'?", "relevant": ["double-negation"], "answerMustContain": ["nadie vino"], "provenance": "drafted by the authors"}
+{"id": "q-gente", "query": "Should I say 'la gente es' or 'la gente son'?", "relevant": ["gente"], "answerMustContain": ["es", "singular"], "provenance": "drafted by the authors"}
+{"id": "q-sucias", "query": "Why 'las manos sucias' and not 'sucios'?", "relevant": ["adjective-agreement"], "answerMustContain": ["feminine"], "provenance": "drafted by the authors"}
+{"id": "q-question", "query": "Why is there an upside-down question mark?", "relevant": ["questions"], "answerMustContain": ["¿"], "provenance": "drafted by the authors"}
+{"id": "q-si", "query": "How do I say 'if I had money, I would buy a car'?", "relevant": ["si-clauses"], "answerMustContain": ["tuviera", "compraría"], "provenance": "drafted by the authors"}
+{"id": "q-por-para", "query": "What's the difference between por and para?", "relevant": ["por-para"], "answerMustContain": ["purpose", "cause"], "provenance": "drafted by the authors"}
+{"id": "q-mucha-hambre", "query": "Is it 'mucho hambre' or 'mucha hambre'?", "relevant": ["mucho", "el-agua"], "answerMustContain": ["mucha hambre"], "provenance": "drafted by the authors"}
+{"id": "q-hungry", "query": "How do I say 'I am hungry' in Spanish?", "relevant": ["tener-expressions"], "answerMustContain": ["tengo hambre"], "provenance": "drafted by the authors"}
+{"id": "q-hay", "query": "When do I use 'hay' and when 'está'?", "relevant": ["hay-estar"], "answerMustContain": ["exist", "where"], "provenance": "drafted by the authors"}
+{"id": "q-al", "query": "Why do I say 'voy al cine' but 'voy a la playa'?", "relevant": ["contractions"], "answerMustContain": ["a + el", "al"], "provenance": "drafted by the authors"}
+{"id": "q-mexico", "query": "Does México have an accent?", "relevant": ["accents-countries"], "answerMustContain": ["méxico"], "provenance": "drafted by the authors"}
+{"id": "q-soy", "query": "How do I conjugate ser in the present tense?", "relevant": ["conjugation-ser"], "answerMustContain": ["soy", "eres"], "provenance": "drafted by the authors"}
+{"id": "q-es-profession", "query": "Do I say 'soy profesor' or 'estoy profesor'?", "relevant": ["ser-estar"], "answerMustContain": ["soy profesor", "ser"], "provenance": "drafted by the authors"}
+{"id": "q-es-verdad", "query": "¿Por qué se dice 'me gusta el libro' pero 'me gustan los libros'?", "relevant": ["gustar"], "answerMustContain": ["plural", "libros"], "provenance": "drafted by the authors"}
+{"id": "q-el-dia", "query": "Is 'día' masculine or feminine?", "relevant": ["gender-exceptions"], "answerMustContain": ["masculine"], "provenance": "drafted by the authors"}

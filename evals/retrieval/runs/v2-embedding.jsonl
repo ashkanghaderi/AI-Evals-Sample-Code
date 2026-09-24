@@ -1,0 +1,24 @@
+{"answer":"The notes do not cover why the app changed the sentence.","mode":"embedding","notesGiven":["pensar-en","subjunctive-querer","questions"],"queryID":"v2-enfermo"}
+{"answer":"The notes do not cover the use of \"estar\" versus \"ser\" for locations. \"El banco está cerca de aquí\" is the correct form using \"estar\" for a specific location.","mode":"embedding","notesGiven":["pensar-en","subjunctive-querer","hay-estar"],"queryID":"v2-cerca"}
+{"answer":"The notes explain that gustar agrees with the thing that is liked, not the person. \"Las fresas\" is the thing being liked, so \"me gusta\" is correct. \"Me gusta las fresas\" is correct because \"las fresas\" is the subject. The phrase sounds right because gustar uses the third person singular with the thing as the subject.","mode":"embedding","notesGiven":["personal-a","subjunctive-querer","gustar"],"queryID":"v2-fresas"}
+{"answer":"The notes do not cover how to tell a friend what you did last weekend.","mode":"embedding","notesGiven":["pensar-en","hay-estar","por-para"],"queryID":"v2-weekend"}
+{"answer":"The notes do not cover this construction. The correct form is: Quiero que estudies más.","mode":"embedding","notesGiven":["pensar-en","subjunctive-querer","questions"],"queryID":"v2-espero"}
+{"answer":"The notes do not cover this question.","mode":"embedding","notesGiven":["subjunctive-querer","pensar-en","mucho"],"queryID":"v2-madre"}
+{"answer":"The notes do not cover the gender of nouns or why \"el hacha\" is used.","mode":"embedding","notesGiven":["hay-estar","mucho","pensar-en"],"queryID":"v2-hacha"}
+{"answer":"The notes do not cover whether to use 'la tema' or 'el tema'.","mode":"embedding","notesGiven":["pensar-en","mucho","conjugation-ser"],"queryID":"v2-tema"}
+{"answer":"Use \"pensar en\" to say you keep thinking about someone: Pienso en alguien que te pones mucho.","mode":"embedding","notesGiven":["pensar-en","subjunctive-querer","personal-a"],"queryID":"v2-miss"}
+{"answer":"The notes do not cover negative sentences with 'no'.","mode":"embedding","notesGiven":["pensar-en","questions","subjunctive-querer"],"queryID":"v2-nunca"}
+{"answer":"The notes do not cover verb forms with 'la gente'.","mode":"embedding","notesGiven":["subjunctive-querer","mucho","adjective-agreement"],"queryID":"v2-gente"}
+{"answer":"The notes do not cover the use of articles with adjectives.","mode":"embedding","notesGiven":["personal-a","gustar","contractions"],"queryID":"v2-rojo"}
+{"answer":"The notes do not cover why Spanish questions have a mark at the start.","mode":"embedding","notesGiven":["questions","pensar-en","personal-a"],"queryID":"v2-mark"}
+{"answer":"The notes do not cover conditional sentences or hypothetical situations.","mode":"embedding","notesGiven":["pensar-en","questions","por-para"],"queryID":"v2-lottery"}
+{"answer":"The notes do not cover this.","mode":"embedding","notesGiven":["pensar-en","questions","conjugation-ser"],"queryID":"v2-gracias"}
+{"answer":"The notes do not cover this. \"Mucho\" agrees with the noun it modifies, and \"gracias\" is a noun here, so it is \"muchas gracias.\"","mode":"embedding","notesGiven":["personal-a","double-negation","mucho"],"queryID":"v2-muchas"}
+{"answer":"The notes do not cover how to express being thirsty.","mode":"embedding","notesGiven":["pensar-en","subjunctive-querer","personal-a"],"queryID":"v2-thirsty"}
+{"answer":"The notes do not cover this. The sentence uses \"hay,\" which is for things existing (indefinite nouns), but \"el banco\" is a specific noun.","mode":"embedding","notesGiven":["pensar-en","hay-estar","personal-a"],"queryID":"v2-banco"}
+{"answer":"The notes explain that \"al\" and \"del\" are contractions of \"a + el\" and \"de + el,\" respectively. \"Del\" is the contraction of \"de + el,\" so it is written as one word because there is no contraction with la, los, or las.","mode":"embedding","notesGiven":["personal-a","contractions","subjunctive-querer"],"queryID":"v2-del"}
+{"answer":"Yes, Peru has an accent mark in Spanish: Perú.","mode":"embedding","notesGiven":["questions","accents-countries","pensar-en"],"queryID":"v2-peru"}
+{"answer":"The notes do not cover the 'we' form of ser.","mode":"embedding","notesGiven":["personal-a","subjunctive-querer","hay-estar"],"queryID":"v2-somos"}
+{"answer":"The notes indicate that ser is used for identity, origin, profession and permanent characteristics. Since a job is a profession, you would use ser.","mode":"embedding","notesGiven":["pensar-en","por-para","ser-estar"],"queryID":"v2-job"}
+{"answer":"The notes do not cover the use of 'le' in this context.","mode":"embedding","notesGiven":["pensar-en","questions","conjugation-ser"],"queryID":"v2-gatos"}
+{"answer":"No, 'problema' is masculine because the notes state that some common nouns ending in -a are masculine, and many come from Greek and end in -ma.","mode":"embedding","notesGiven":["mucho","preterite","gender-exceptions"],"queryID":"v2-problema"}
