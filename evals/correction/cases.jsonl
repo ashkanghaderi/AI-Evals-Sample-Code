@@ -1,0 +1,29 @@
+{"id": "ser-conjugation", "input": "Yo es estudiante.", "hasError": true, "accepted": ["Yo soy estudiante.", "Soy estudiante."], "category": "verb-form"}
+{"id": "estar-state", "input": "Ella es cansada hoy.", "hasError": true, "accepted": ["Ella está cansada hoy.", "Hoy ella está cansada."], "category": "ser-estar"}
+{"id": "article-gender", "input": "Nosotros vivimos en un casa grande.", "hasError": true, "accepted": ["Nosotros vivimos en una casa grande.", "Vivimos en una casa grande."], "category": "agreement"}
+{"id": "el-agua", "input": "La agua está fría.", "hasError": true, "accepted": ["El agua está fría."], "category": "agreement"}
+{"id": "mucha-hambre", "input": "Tengo hambre mucho.", "hasError": true, "accepted": ["Tengo mucha hambre."], "category": "word-order"}
+{"id": "gustar-agreement", "input": "Me gusta los perros.", "hasError": true, "accepted": ["Me gustan los perros."], "category": "verb-form"}
+{"id": "preterite", "input": "Ayer yo como pizza.", "hasError": true, "accepted": ["Ayer yo comí pizza.", "Ayer comí pizza.", "Yo comí pizza ayer."], "category": "verb-form"}
+{"id": "plural-verb", "input": "Los niños está jugando.", "hasError": true, "accepted": ["Los niños están jugando."], "category": "agreement"}
+{"id": "estar-location", "input": "Soy en Madrid.", "hasError": true, "accepted": ["Estoy en Madrid."], "category": "ser-estar"}
+{"id": "adjective-gender", "input": "Mi hermana es más alto que yo.", "hasError": true, "accepted": ["Mi hermana es más alta que yo."], "category": "agreement"}
+{"id": "subjunctive", "input": "Quiero que tú vienes.", "hasError": true, "accepted": ["Quiero que tú vengas.", "Quiero que vengas."], "category": "verb-form"}
+{"id": "conditional", "input": "Si tengo dinero, compraría un coche.", "hasError": true, "accepted": ["Si tuviera dinero, compraría un coche.", "Si tuviese dinero, compraría un coche.", "Si tengo dinero, compraré un coche."], "category": "verb-form"}
+{"id": "adjective-plural", "input": "Las manos están sucios.", "hasError": true, "accepted": ["Las manos están sucias."], "category": "agreement"}
+{"id": "double-negative-wrong", "input": "Nadie no vino.", "hasError": true, "accepted": ["Nadie vino.", "No vino nadie."], "category": "negation"}
+{"id": "personal-a", "input": "Vi Juan en el parque.", "hasError": true, "accepted": ["Vi a Juan en el parque."], "category": "preposition"}
+{"id": "pensar-en", "input": "Pienso de ti.", "hasError": true, "accepted": ["Pienso en ti."], "category": "preposition"}
+{"id": "gente-singular", "input": "Hay muchas gentes aquí.", "hasError": true, "accepted": ["Hay mucha gente aquí."], "category": "agreement"}
+{"id": "accent-mexico", "input": "Ellos son de Mexico.", "hasError": true, "accepted": ["Ellos son de México."], "category": "orthography"}
+{"id": "inverted-question", "input": "Que hora es?", "hasError": true, "accepted": ["¿Qué hora es?"], "category": "orthography"}
+{"id": "gente-verb", "input": "La gente son simpáticos.", "hasError": true, "accepted": ["La gente es simpática."], "category": "agreement"}
+{"id": "ok-el-problema", "input": "El problema es muy difícil.", "hasError": false, "accepted": ["El problema es muy difícil."], "category": "control"}
+{"id": "ok-calor", "input": "Hace mucho calor hoy.", "hasError": false, "accepted": ["Hace mucho calor hoy."], "category": "control"}
+{"id": "ok-playa", "input": "Voy a la playa mañana.", "hasError": false, "accepted": ["Voy a la playa mañana."], "category": "control"}
+{"id": "ok-double-negative", "input": "Yo no sé nada.", "hasError": false, "accepted": ["Yo no sé nada."], "category": "control"}
+{"id": "ok-aburrido", "input": "Este libro es aburrido.", "hasError": false, "accepted": ["Este libro es aburrido."], "category": "control"}
+{"id": "ok-superlative", "input": "Ella es la más inteligente de la clase.", "hasError": false, "accepted": ["Ella es la más inteligente de la clase."], "category": "control"}
+{"id": "ok-greeting", "input": "Buenos días, ¿cómo estás?", "hasError": false, "accepted": ["Buenos días, ¿cómo estás?"], "category": "control"}
+{"id": "ok-el-mapa", "input": "El mapa está en la mesa.", "hasError": false, "accepted": ["El mapa está en la mesa."], "category": "control"}
+{"id": "ok-future", "input": "Mañana voy a ir al cine con mis amigos.", "hasError": false, "accepted": ["Mañana voy a ir al cine con mis amigos."], "category": "control"}
