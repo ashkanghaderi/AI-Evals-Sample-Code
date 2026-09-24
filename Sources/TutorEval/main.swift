@@ -14,6 +14,8 @@ import TutorCore
 // tutor-eval compare <runA.jsonl> <runB.jsonl> [--rep-a N] [--rep-b N] [--json]
 // tutor-eval perf --out <file> [--repeats N] [--sampling greedy|seed:N] [--max-tokens N] [--prewarm] [--only ID] [--long N]
 // tutor-eval perf-report <file> [--json] | perf-grade <file> [--json] | perf-diff <a> <b> [--json]
+// tutor-eval model-info [--json]
+// tutor-eval drift <baseline-run.jsonl> <current-run.jsonl> [--json]   (exits 1 on any change)
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
 // tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
@@ -234,6 +236,27 @@ case "perf-report":
         report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
     }
 
+case "drift":
+    let paths = arguments.dropFirst().filter { !$0.hasPrefix("--") }
+    guard paths.count == 2 else { fatalError("usage: tutor-eval drift <baseline> <current>") }
+    let report = DriftReport(
+        baseline: try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: paths[paths.startIndex])),
+        current: try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: paths[paths.startIndex + 1])))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print()
+        exit(report.drifted ? 1 : 0)
+    }
+
+case "model-info":
+    let info = ModelInfo()
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+    print(String(decoding: try encoder.encode(info), as: UTF8.self))
+
 case "agreement":
     let paths = arguments.dropFirst().filter { !$0.hasPrefix("--") }
     guard let firstPath = paths.first else { fatalError("usage: tutor-eval agreement <judge-run>") }
@@ -408,7 +431,11 @@ case "grade":
     }
 
 case "run":
-    let model = SystemLanguageModel.default
+    // --use-case contentTagging: the same framework and OS, a differently
+    // specialised model - Chapter 14's stand-in for "the model changed".
+    let useCase = value("--use-case") ?? "general"
+    let model = useCase == "contentTagging" ? SystemLanguageModel(useCase: .contentTagging) : .default
+    let modelName = useCase == "general" ? "apple-on-device" : "apple-on-device \(useCase)"
     guard case .available = model.availability else {
         print("The on-device model is not available: \(model.availability)")
         print("Enable Apple Intelligence in System Settings and try again.")
@@ -455,7 +482,7 @@ case "run":
                          + elapsed.components.attoseconds / 1_000_000_000_000_000)
             let record = CorrectionRecord(
                 caseID: item.id, repetition: repetition, output: output, error: failure,
-                latencyMilliseconds: ms, model: "apple-on-device", sampling: samplingName,
+                latencyMilliseconds: ms, model: modelName, sampling: samplingName,
                 prompt: corrector.promptVersion)
             try JSONLines.append(record, to: out)
             records.append(record)
@@ -465,7 +492,7 @@ case "run":
     }
     FileHandle.standardError.write(Data("\n".utf8))
     print("recorded \(records.count) calls to \(out.path)")
-    CorrectionReport(cases: cases, records: records).print(model: "apple-on-device",
+    CorrectionReport(cases: cases, records: records).print(model: modelName,
                                                            sampling: samplingName)
 
 default:
