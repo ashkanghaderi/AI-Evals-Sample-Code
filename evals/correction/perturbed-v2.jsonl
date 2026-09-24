@@ -1,0 +1,45 @@
+{"accepted":["Yo soy estudiante.","Soy estudiante."],"category":"verb-person","hasError":true,"id":"p-ser-conjugation-verb-person","input":"Yo es estudiante."}
+{"accepted":["Ella está cansada hoy.","Hoy ella está cansada."],"category":"verb-person","hasError":true,"id":"p-estar-state-verb-person","input":"Ella están cansada hoy."}
+{"accepted":["Ella está cansada hoy.","Hoy ella está cansada."],"category":"accent-drop","hasError":true,"id":"p-estar-state-accent-drop","input":"Ella esta cansada hoy."}
+{"accepted":["Nosotros vivimos en una casa grande.","Vivimos en una casa grande."],"category":"article-gender","hasError":true,"id":"p-article-gender-article-gender","input":"Nosotros vivimos en un casa grande."}
+{"accepted":["Nosotros vivimos en una casa grande.","Vivimos en una casa grande."],"category":"verb-person","hasError":true,"id":"p-article-gender-verb-person","input":"Nosotros viven en una casa grande."}
+{"accepted":["El agua está fría."],"category":"article-gender","hasError":true,"id":"p-el-agua-article-gender","input":"La agua está fría."}
+{"accepted":["El agua está fría."],"category":"verb-person","hasError":true,"id":"p-el-agua-verb-person","input":"El agua están fría."}
+{"accepted":["El agua está fría."],"category":"accent-drop","hasError":true,"id":"p-el-agua-accent-drop","input":"El agua esta fría."}
+{"accepted":["Me gustan los perros."],"category":"article-gender","hasError":true,"id":"p-gustar-agreement-article-gender","input":"Me gustan las perros."}
+{"accepted":["Ayer yo comí pizza.","Ayer comí pizza.","Yo comí pizza ayer."],"category":"verb-person","hasError":true,"id":"p-preterite-verb-person","input":"Ayer yo comió pizza."}
+{"accepted":["Ayer yo comí pizza.","Ayer comí pizza.","Yo comí pizza ayer."],"category":"accent-drop","hasError":true,"id":"p-preterite-accent-drop","input":"Ayer yo comi pizza."}
+{"accepted":["Los niños están jugando."],"category":"article-gender","hasError":true,"id":"p-plural-verb-article-gender","input":"Las niños están jugando."}
+{"accepted":["Los niños están jugando."],"category":"verb-person","hasError":true,"id":"p-plural-verb-verb-person","input":"Los niños está jugando."}
+{"accepted":["Los niños están jugando."],"category":"accent-drop","hasError":true,"id":"p-plural-verb-accent-drop","input":"Los niños estan jugando."}
+{"accepted":["Mi hermana es más alta que yo."],"category":"verb-person","hasError":true,"id":"p-adjective-gender-verb-person","input":"Mi hermana son más alta que yo."}
+{"accepted":["Mi hermana es más alta que yo."],"category":"accent-drop","hasError":true,"id":"p-adjective-gender-accent-drop","input":"Mi hermana es mas alta que yo."}
+{"accepted":["Quiero que tú vengas.","Quiero que vengas."],"category":"accent-drop","hasError":true,"id":"p-subjunctive-accent-drop","input":"Quiero que tu vengas."}
+{"accepted":["Si tuviera dinero, compraría un coche.","Si tuviese dinero, compraría un coche.","Si tengo dinero, compraré un coche."],"category":"article-gender","hasError":true,"id":"p-conditional-article-gender","input":"Si tuviera dinero, compraría una coche."}
+{"accepted":["Si tuviera dinero, compraría un coche.","Si tuviese dinero, compraría un coche.","Si tengo dinero, compraré un coche."],"category":"accent-drop","hasError":true,"id":"p-conditional-accent-drop","input":"Si tuviera dinero, compraria un coche."}
+{"accepted":["Las manos están sucias."],"category":"article-gender","hasError":true,"id":"p-adjective-plural-article-gender","input":"Los manos están sucias."}
+{"accepted":["Las manos están sucias."],"category":"verb-person","hasError":true,"id":"p-adjective-plural-verb-person","input":"Las manos está sucias."}
+{"accepted":["Las manos están sucias."],"category":"accent-drop","hasError":true,"id":"p-adjective-plural-accent-drop","input":"Las manos estan sucias."}
+{"accepted":["Nadie vino.","No vino nadie."],"category":"verb-person","hasError":true,"id":"p-double-negative-wrong-verb-person","input":"Nadie vinieron."}
+{"accepted":["Vi a Juan en el parque."],"category":"article-gender","hasError":true,"id":"p-personal-a-article-gender","input":"Vi a Juan en la parque."}
+{"accepted":["Hay mucha gente aquí."],"category":"accent-drop","hasError":true,"id":"p-gente-singular-accent-drop","input":"Hay mucha gente aqui."}
+{"accepted":["Ellos son de México."],"category":"verb-person","hasError":true,"id":"p-accent-mexico-verb-person","input":"Ellos es de México."}
+{"accepted":["Ellos son de México."],"category":"accent-drop","hasError":true,"id":"p-accent-mexico-accent-drop","input":"Ellos son de Mexico."}
+{"accepted":["¿Qué hora es?"],"category":"accent-drop","hasError":true,"id":"p-inverted-question-accent-drop","input":"¿Que hora es?"}
+{"accepted":["La gente es simpática."],"category":"article-gender","hasError":true,"id":"p-gente-verb-article-gender","input":"El gente es simpática."}
+{"accepted":["La gente es simpática."],"category":"verb-person","hasError":true,"id":"p-gente-verb-verb-person","input":"La gente son simpática."}
+{"accepted":["La gente es simpática."],"category":"accent-drop","hasError":true,"id":"p-gente-verb-accent-drop","input":"La gente es simpatica."}
+{"accepted":["El problema es muy difícil."],"category":"article-gender","hasError":true,"id":"p-ok-el-problema-article-gender","input":"La problema es muy difícil."}
+{"accepted":["El problema es muy difícil."],"category":"verb-person","hasError":true,"id":"p-ok-el-problema-verb-person","input":"El problema son muy difícil."}
+{"accepted":["El problema es muy difícil."],"category":"accent-drop","hasError":true,"id":"p-ok-el-problema-accent-drop","input":"El problema es muy dificil."}
+{"accepted":["Voy a la playa mañana."],"category":"article-gender","hasError":true,"id":"p-ok-playa-article-gender","input":"Voy a el playa mañana."}
+{"accepted":["Yo no sé nada."],"category":"verb-person","hasError":true,"id":"p-ok-double-negative-verb-person","input":"Yo no sabe nada."}
+{"accepted":["Yo no sé nada."],"category":"accent-drop","hasError":true,"id":"p-ok-double-negative-accent-drop","input":"Yo no se nada."}
+{"accepted":["Este libro es aburrido."],"category":"verb-person","hasError":true,"id":"p-ok-aburrido-verb-person","input":"Este libro son aburrido."}
+{"accepted":["Ella es la más inteligente de la clase."],"category":"article-gender","hasError":true,"id":"p-ok-superlative-article-gender","input":"Ella es el más inteligente de la clase."}
+{"accepted":["Ella es la más inteligente de la clase."],"category":"verb-person","hasError":true,"id":"p-ok-superlative-verb-person","input":"Ella son la más inteligente de la clase."}
+{"accepted":["Ella es la más inteligente de la clase."],"category":"accent-drop","hasError":true,"id":"p-ok-superlative-accent-drop","input":"Ella es la mas inteligente de la clase."}
+{"accepted":["Buenos días, ¿cómo estás?"],"category":"accent-drop","hasError":true,"id":"p-ok-greeting-accent-drop","input":"Buenos dias, ¿cómo estás?"}
+{"accepted":["El mapa está en la mesa."],"category":"article-gender","hasError":true,"id":"p-ok-el-mapa-article-gender","input":"La mapa está en la mesa."}
+{"accepted":["El mapa está en la mesa."],"category":"verb-person","hasError":true,"id":"p-ok-el-mapa-verb-person","input":"El mapa están en la mesa."}
+{"accepted":["El mapa está en la mesa."],"category":"accent-drop","hasError":true,"id":"p-ok-el-mapa-accent-drop","input":"El mapa esta en la mesa."}

@@ -1,0 +1,30 @@
+{"accepted":["Yo quiero ir al cine hoy."],"category":"verb tense","hasError":true,"id":"syn-01","input":"Yo quiero ir al cine hoy.","source":"apple-on-device seed:1000"}
+{"accepted":["Yo quiero ir a la escuela hoy."],"category":"verb tense","hasError":true,"id":"syn-02","input":"Yo quiero ir a la escuela hoy.","source":"apple-on-device seed:1001"}
+{"accepted":["Yo quiero ir al parque hoy."],"category":"Verb tense","hasError":true,"id":"syn-03","input":"Yo quiero ir al parque hoy.","source":"apple-on-device seed:1002"}
+{"accepted":["Yo tengo hambre pero puedo comer."],"category":"verb tense","hasError":true,"id":"syn-04","input":"Yo tengo hambre pero no puedo comer.","source":"apple-on-device seed:1003"}
+{"accepted":["Yo quiero ir al café hoy."],"category":"verb tense","hasError":true,"id":"syn-05","input":"Yo quiero ir al café hoy.","source":"apple-on-device seed:1004"}
+{"accepted":["Yo quiero ir al parque hoy."],"category":"verb tense","hasError":true,"id":"syn-06","input":"Yo quiero ir al parque hoy.","source":"apple-on-device seed:1005"}
+{"accepted":["Yo quiero ir al parque por la mañana."],"category":"verb tense","hasError":true,"id":"syn-07","input":"Yo quiero ir al parque por la mañana.","source":"apple-on-device seed:1006"}
+{"accepted":["Yo quiero ir a la playa hoy."],"category":"Grammar","hasError":true,"id":"syn-08","input":"Yo quiero ir a la playa hoy.","source":"apple-on-device seed:1007"}
+{"accepted":["Yo quiero ir al parque hoy."],"category":"verb tense","hasError":true,"id":"syn-09","input":"Yo quiero ir al parque hoy.","source":"apple-on-device seed:1008"}
+{"accepted":["Hoy como mucho carne."],"category":"verb tense","hasError":true,"id":"syn-10","input":"Yo com mucho carne hoy.","source":"apple-on-device seed:1009"}
+{"accepted":["Yo quiero ir a la escuela hoy."],"category":"verb tense","hasError":true,"id":"syn-11","input":"Yo quiero ir a la escuela hoy.","source":"apple-on-device seed:1010"}
+{"accepted":["Yo como una manzana, y entiendo por qué."],"category":"verb tense","hasError":true,"id":"syn-12","input":"Yo como una manzana, pero no entiendo por qué.","source":"apple-on-device seed:1011"}
+{"accepted":["Yo como mucha fruta todos los días."],"category":"verb tense","hasError":true,"id":"syn-13","input":"Yo com mucha fruta todos los días.","source":"apple-on-device seed:1012"}
+{"accepted":["Yo como el pan muy bien."],"category":"Verb tense","hasError":true,"id":"syn-14","input":"Yo como el pan muy bueno.","source":"apple-on-device seed:1013"}
+{"accepted":["Yo quiero ir a la escuela a tiempo."],"category":"article misuse","hasError":true,"id":"syn-15","input":"Yo quiero ir a la escuela a tiempo.","source":"apple-on-device seed:1014"}
+{"accepted":["Yo quiero ir a la escuela hoy."],"category":"verb tense","hasError":true,"id":"syn-16","input":"Yo quiero ir a la escuela hoy.","source":"apple-on-device seed:1015"}
+{"accepted":["Yo quiero ir a la playa."],"category":"verb usage","hasError":true,"id":"syn-17","input":"Yo quiero ir a la playa","source":"apple-on-device seed:1016"}
+{"accepted":["Yo quiero aprender español muy rápido."],"category":"verb tense","hasError":true,"id":"syn-18","input":"Yo quiero aprender español muy rápido","source":"apple-on-device seed:1017"}
+{"accepted":["Yo quiero ir al cine hoy."],"category":"verb tense","hasError":true,"id":"syn-19","input":"Yo quiero ir al cine hoy.","source":"apple-on-device seed:1018"}
+{"accepted":["Yo quiero ir a la escuela hoy."],"category":"verb tense","hasError":true,"id":"syn-20","input":"Yo quiero ir a la escuela hoy.","source":"apple-on-device seed:1019"}
+{"accepted":["Yo quiero ir a la escuela hoy, pero no tengo mi uniforme."],"category":"verb tense","hasError":true,"id":"syn-21","input":"Yo quiero ir a la escuela hoy, pero no tengo mi uniforme.","source":"apple-on-device seed:1020"}
+{"accepted":["Yo quiero ir a la escuela hoy."],"category":"verb tense","hasError":true,"id":"syn-22","input":"Yo quiero ir a la escuela hoy.","source":"apple-on-device seed:1021"}
+{"accepted":["Yo como pescado todos los días."],"category":"verb tense","hasError":true,"id":"syn-23","input":"Yo com pescado todos los días.","source":"apple-on-device seed:1022"}
+{"accepted":["Yo quiero comer el pan."],"category":"verb use","hasError":true,"id":"syn-24","input":"Yo quiero comer el pan.","source":"apple-on-device seed:1023"}
+{"accepted":["Yo quiero ir a la escuela hoy."],"category":"verb tense","hasError":true,"id":"syn-25","input":"Yo quiero ir a la escuela hoy.","source":"apple-on-device seed:1024"}
+{"accepted":["Yo quiero ir al parque hoy."],"category":"verb tense","hasError":true,"id":"syn-26","input":"Yo quiero ir al parque hoy.","source":"apple-on-device seed:1025"}
+{"accepted":["Yo quiero ir a la escuela a las ocho"],"category":"tense misuse","hasError":true,"id":"syn-27","input":"Yo quiero ir a la escuela a las ocho","source":"apple-on-device seed:1026"}
+{"accepted":["Yo quiero ir a la escuela hoy."],"category":"verb tense","hasError":true,"id":"syn-28","input":"Yo quiero ir a la escuela hoy.","source":"apple-on-device seed:1027"}
+{"accepted":["Hoy como un perro."],"category":"verb tense","hasError":true,"id":"syn-29","input":"Yo como un perro hoy.","source":"apple-on-device seed:1028"}
+{"accepted":["Yo como mucho pan en el desayuno"],"category":"verb tense","hasError":true,"id":"syn-30","input":"Yo com mucho pan en el desayuno","source":"apple-on-device seed:1029"}

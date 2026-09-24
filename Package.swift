@@ -30,6 +30,9 @@ let package = Package(
         .executableTarget(name: "MinimalEval", dependencies: ["TutorCore"]),
         .testTarget(name: "EvalKitTests", dependencies: ["EvalKit"]),
         .testTarget(name: "TutorCoreTests", dependencies: ["TutorCore"]),
+        // Chapter 6: the code that makes and audits datasets is tested like
+        // any other code, because a wrong dataset is a wrong score.
+        .testTarget(name: "TutorEvalTests", dependencies: ["TutorEval"]),
     ],
     swiftLanguageModes: [.v6]
 )

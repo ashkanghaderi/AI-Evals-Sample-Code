@@ -1,0 +1,54 @@
+{"id": "p-ser-conjugation-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-estar-state-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-estar-state-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-article-gender-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-article-gender-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-el-agua-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-el-agua-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-el-agua-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-mucha-hambre-verb-person", "containsError": "no", "answerRight": null, "note": "\"Tiene mucha hambre.\" is correct: she is hungry - Spanish drops the subject, so another person's verb is another correct sentence", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-gustar-agreement-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-gustar-agreement-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-preterite-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-preterite-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-plural-verb-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-plural-verb-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-plural-verb-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-estar-location-verb-person", "containsError": "no", "answerRight": null, "note": "\"Está en Madrid.\" is correct: he is in Madrid - Spanish drops the subject, so another person's verb is another correct sentence", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-adjective-gender-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-adjective-gender-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-subjunctive-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-conditional-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-conditional-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-adjective-plural-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-adjective-plural-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-adjective-plural-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-double-negative-wrong-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-personal-a-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-personal-a-verb-person", "containsError": "no", "answerRight": null, "note": "\"Vio a Juan en el parque.\" is correct: she saw Juan - Spanish drops the subject, so another person's verb is another correct sentence", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-pensar-en-verb-person", "containsError": "no", "answerRight": null, "note": "\"Piensa en ti.\" is correct: he thinks of you - Spanish drops the subject, so another person's verb is another correct sentence", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-gente-singular-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-accent-mexico-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-accent-mexico-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-inverted-question-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-inverted-question-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-gente-verb-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-gente-verb-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-gente-verb-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-el-problema-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-el-problema-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-el-problema-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-calor-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-playa-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-playa-verb-person", "containsError": "no", "answerRight": null, "note": "\"Va a la playa mañana.\" is correct: she is going to the beach - Spanish drops the subject, so another person's verb is another correct sentence", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-double-negative-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-double-negative-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-aburrido-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-superlative-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-superlative-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-superlative-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-greeting-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-el-mapa-article-gender", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-el-mapa-verb-person", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-el-mapa-accent-drop", "containsError": "yes", "answerRight": true, "note": "", "reviewer": "authors, not native speakers - provisional until native review"}
+{"id": "p-ok-future-verb-person", "containsError": "no", "answerRight": null, "note": "\"Mañana va a ir al cine...\" is correct: he is going to the cinema - Spanish drops the subject, so another person's verb is another correct sentence", "reviewer": "authors, not native speakers - provisional until native review"}

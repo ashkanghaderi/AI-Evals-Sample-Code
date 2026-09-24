@@ -7,6 +7,9 @@ import TutorCore
 // tutor-eval grade <recorded-run.jsonl> [--json]
 // tutor-eval plan  --rate 0.6 --half-width 0.1
 // tutor-eval redaction [--strategy tagger|lowercase-first] [--json]
+// tutor-eval audit [--against evals/correction/cases-v1.jsonl]   (audits --cases)
+// tutor-eval perturb --out evals/correction/perturbed-v2.jsonl [--naive]  (from --cases)
+// tutor-eval synthesize --count 30 --seed 1000 --out evals/correction/synthetic-v1.jsonl
 //
 // `run` calls the model and records every output; `grade` reads a recording and
 // grades it without calling anything. Run once, grade forever.
@@ -25,6 +28,46 @@ let casesURL = URL(fileURLWithPath: value("--cases") ?? "evals/correction/cases-
 let cases = try JSONLines.read(CorrectionCase.self, from: casesURL)
 
 switch arguments.first {
+case "synthesize":
+    // The model writes its own test cases. Chapter 6 grades the corrector on
+    // them and on the hand-written set, side by side, to see what they are worth.
+    guard let path = value("--out") else { fatalError("synthesize needs --out") }
+    let url = URL(fileURLWithPath: path)
+    guard !FileManager.default.fileExists(atPath: url.path) else {
+        fatalError("\(path) exists; datasets are never overwritten")
+    }
+    try await Synthesizer.generate(count: Int(value("--count") ?? "30") ?? 30,
+                                   firstSeed: UInt64(value("--seed") ?? "1000") ?? 1000,
+                                   to: url)
+    print("wrote \(path)")
+
+case "audit":
+    // Checks a dataset without grading anything. Exits non-zero on any
+    // problem, so it can guard a dataset the way tests guard code.
+    // A dataset always overlaps itself; auditing against itself checks nothing.
+    let againstURL = value("--against").map { URL(fileURLWithPath: $0).standardizedFileURL }
+    let other = try againstURL.flatMap { $0 == casesURL.standardizedFileURL ? nil : $0 }
+        .map { try JSONLines.read(CorrectionCase.self, from: $0) } ?? []
+    let audit = DatasetAudit(cases, against: other)
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        print(String(decoding: try encoder.encode(audit), as: UTF8.self))
+    } else {
+        audit.print()
+    }
+    exit(audit.problems.isEmpty ? 0 : 1)
+
+case "perturb":
+    guard let path = value("--out") else { fatalError("perturb needs --out") }
+    let url = URL(fileURLWithPath: path)
+    guard !FileManager.default.fileExists(atPath: url.path) else {
+        fatalError("\(path) exists; datasets are never overwritten")
+    }
+    let made = Perturbation.cases(from: cases, naive: arguments.contains("--naive"))
+    for item in made { try JSONLines.append(item, to: url) }
+    print("wrote \(made.count) cases to \(path)")
+
 case "redaction":
     // The redactor is a model too, and gets an eval of its own. No language
     // model is called and nothing is random, so there is no recording: the
