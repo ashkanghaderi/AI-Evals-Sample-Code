@@ -86,9 +86,15 @@ struct PerfReport: Codable {
     /// Output tokens per second of latency, median over calls.
     var medianTokensPerSecond = 0.0
     var totalSeconds = 0.0
+    /// Characters sent, and characters of correction returned, summed: a
+    /// correction far shorter than its input has dropped the learner's text.
+    var inputCharacters = 0
+    var returnedCharacters = 0
 
     init(_ records: [PerfRecord]) {
         calls = records.count
+        inputCharacters = records.map(\.inputCharacters).reduce(0, +)
+        returnedCharacters = records.compactMap { $0.output?.corrected.count }.reduce(0, +)
         let ok = records.filter { $0.error == nil }
         failed = calls - ok.count
         failures = records.filter { $0.error != nil }.map { "\($0.caseID): \($0.error!.prefix(160))" }
