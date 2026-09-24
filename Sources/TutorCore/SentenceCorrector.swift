@@ -56,7 +56,7 @@ public struct SentenceCorrector<Model: LanguageModel> {
     /// correction and a cut-off explanation that Chapter 8's check catches.
     /// Capped and uncapped greedy runs gave identical answers on all 29
     /// sentences. Options that set their own cap keep it.
-    public static let maximumResponseTokens = 256
+    public static var maximumResponseTokens: Int { 256 }
 
     var effectiveOptions: GenerationOptions {
         var options = self.options
