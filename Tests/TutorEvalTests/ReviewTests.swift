@@ -42,3 +42,41 @@ struct ReviewTests {
         #expect(c.sentencesAnswered == 0 && c.explanationsAnswered == 0 && c.disagreements.isEmpty)
     }
 }
+
+@Suite("Review packet")
+struct ReviewPacketTests {
+    let cases = (1...12).map {
+        CorrectionCase(id: "case-\($0)", input: "Frase \($0).", hasError: $0.isMultiple(of: 2),
+                       accepted: ["Frase \($0)."], category: "c")
+    }
+
+    @Test("The page gives nothing away: no case id appears in it")
+    func opaque() throws {
+        let page = try ReviewPacket.html(cases: cases, explanations: cases.map {
+            ($0.id, $0.input, $0.input, "Explicación \($0.id).".replacingOccurrences(of: "case-", with: "#"))
+        })
+        #expect(cases.allSatisfy { !page.contains("\"\($0.id)\"") })
+        #expect(page.contains("\"s01\"") && page.contains("\"e01\""))
+    }
+
+    /// review-compare recomputes the explanations' order from case ids alone,
+    /// so the shuffle must depend only on the count and the seed.
+    @Test("An opaque explanation id maps back to the item it was shown with")
+    func mapping() {
+        let tuples = cases.map { ($0.id, $0.input, "x", "y") }
+        let shown = ReviewPacket.explanationOrder(tuples)
+        let recomputed = ReviewPacket.explanationOrder(cases.map(\.id))
+        #expect(shown.map { $0.1.0 } == recomputed.map { $0.1 })
+        #expect(shown.map(\.0) == recomputed.map(\.0))
+    }
+
+    @Test("Opaque sentence ids are compared as the cases they stand for")
+    func compareOpaque() {
+        let order = ReviewPacket.sentenceOrder(cases)
+        let review = ReviewFile(reviewer: "r", native: nil, packet: ReviewPacket.version,
+            sentences: order.map { .init(caseID: $0.0, hasError: $0.1.hasError, accepted: $0.1.hasError ? $0.1.accepted : [], note: nil) },
+            explanations: [])
+        let c = ReviewComparison(review: review, cases: cases, labels: [])
+        #expect(c.sentencesAnswered == cases.count && c.hasErrorAgree == cases.count)
+    }
+}

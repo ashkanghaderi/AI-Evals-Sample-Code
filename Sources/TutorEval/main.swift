@@ -10,7 +10,7 @@ import TutorCore
 // tutor-eval judge-requests --source <run.jsonl> [--reference] [--mismatched]   (JSON lines to stdout)
 // tutor-eval bare-run --out <file> | bare-requests | bare-grade <file> [--json]
 // tutor-eval review-packet --source <run.jsonl> --out review/packet.html
-// tutor-eval review-compare <tutor-review.json> [--json]
+// tutor-eval review-compare <tutor-review.json> --source <run.jsonl> [--json]
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
 // tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
@@ -145,7 +145,14 @@ case "review-compare":
     let review = try JSONDecoder().decode(ReviewFile.self, from: Data(contentsOf: URL(fileURLWithPath: arguments[1])))
     let labels = try JSONLines.read(ExplanationLabel.self, from: URL(fileURLWithPath:
         value("--labels") ?? "evals/correction/explanation-labels-v1.jsonl"))
-    let comparison = ReviewComparison(review: review, cases: cases, labels: labels)
+    // The explanations' packet order, for opaque ids: repetition 0 of the
+    // run the packet was built from.
+    let explanationCases = try value("--source").map { source in
+        try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: source))
+            .filter { $0.repetition == 0 && $0.output != nil }.map(\.caseID)
+    } ?? []
+    let comparison = ReviewComparison(review: review, cases: cases, labels: labels,
+                                      explanationCases: explanationCases)
     if arguments.contains("--json") {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]

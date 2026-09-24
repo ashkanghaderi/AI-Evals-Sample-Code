@@ -1,0 +1,407 @@
+{
+  "reviewer": "Claude (Anthropic model), fresh session, blind to the key, labels and model outputs; not a human, not a native speaker",
+  "native": false,
+  "packet": "review-v1",
+  "sentences": [
+    {
+      "caseID": "adjective-gender",
+      "hasError": true,
+      "accepted": [
+        "Mi hermana es más alta que yo."
+      ],
+      "note": "The adjective must agree with the feminine noun 'hermana'."
+    },
+    {
+      "caseID": "estar-location",
+      "hasError": true,
+      "accepted": [
+        "Estoy en Madrid."
+      ],
+      "note": "Location of a person uses 'estar', not 'ser'."
+    },
+    {
+      "caseID": "gente-verb",
+      "hasError": true,
+      "accepted": [
+        "La gente es simpática."
+      ],
+      "note": "'Gente' is a grammatically singular feminine collective noun, so both the verb and the adjective must be singular feminine."
+    },
+    {
+      "caseID": "gente-singular",
+      "hasError": true,
+      "accepted": [
+        "Hay mucha gente aquí.",
+        "Hay muchas personas aquí."
+      ],
+      "note": "'Gente' as a collective noun is singular. The plural 'gentes' does exist, meaning peoples or nations, and survives regionally, but a teacher would not accept it here. 'Mucha gente' is the minimal fix."
+    },
+    {
+      "caseID": "estar-state",
+      "hasError": true,
+      "accepted": [
+        "Ella está cansada hoy.",
+        "Está cansada hoy."
+      ],
+      "note": "A temporary state uses 'estar'. 'Ser cansado/a' means 'to be tiresome', which does not fit with 'hoy'."
+    },
+    {
+      "caseID": "inverted-question",
+      "hasError": true,
+      "accepted": [
+        "¿Qué hora es?"
+      ],
+      "note": "The sentence needs the opening '¿' and the accent on the interrogative 'qué'."
+    },
+    {
+      "caseID": "mucha-hambre",
+      "hasError": true,
+      "accepted": [
+        "Tengo mucha hambre."
+      ],
+      "note": "The quantifier goes before the noun. 'Hambre' is feminine, so the normative form is 'mucha'. 'Mucho hambre' is heard colloquially but is not standard."
+    },
+    {
+      "caseID": "ok-aburrido",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct: 'ser aburrido' means boring."
+    },
+    {
+      "caseID": "pensar-en",
+      "hasError": true,
+      "accepted": [
+        "Pienso en ti."
+      ],
+      "note": "'Pensar en' means 'to think about someone'. 'Pensar de' is used for opinions ('¿Qué piensas de...?')."
+    },
+    {
+      "caseID": "ok-future",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct."
+    },
+    {
+      "caseID": "double-negative-wrong",
+      "hasError": true,
+      "accepted": [
+        "Nadie vino.",
+        "No vino nadie."
+      ],
+      "note": "When 'nadie' comes before the verb, it cannot also take 'no'. Double negation only works with 'nadie' after the verb."
+    },
+    {
+      "caseID": "preterite",
+      "hasError": true,
+      "accepted": [
+        "Ayer yo comí pizza.",
+        "Ayer comí pizza."
+      ],
+      "note": "'Ayer' calls for the preterite."
+    },
+    {
+      "caseID": "ok-el-mapa",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct. 'Mapa' is masculine despite ending in -a, and 'en la mesa' is fine."
+    },
+    {
+      "caseID": "ser-conjugation",
+      "hasError": true,
+      "accepted": [
+        "Yo soy estudiante.",
+        "Soy estudiante."
+      ],
+      "note": "The verb must be first person, 'soy'."
+    },
+    {
+      "caseID": "subjunctive",
+      "hasError": true,
+      "accepted": [
+        "Quiero que tú vengas.",
+        "Quiero que vengas."
+      ],
+      "note": "'Querer que' with a different subject requires the subjunctive."
+    },
+    {
+      "caseID": "gustar-agreement",
+      "hasError": true,
+      "accepted": [
+        "Me gustan los perros."
+      ],
+      "note": "The verb agrees with the plural subject 'los perros'."
+    },
+    {
+      "caseID": "ok-double-negative",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct. Double negation with 'nada' after the verb is standard."
+    },
+    {
+      "caseID": "adjective-plural",
+      "hasError": true,
+      "accepted": [
+        "Las manos están sucias."
+      ],
+      "note": "'Mano' is feminine despite ending in -o, so the adjective is 'sucias'."
+    },
+    {
+      "caseID": "ok-superlative",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct superlative construction."
+    },
+    {
+      "caseID": "ok-greeting",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct, including the punctuation and accents."
+    },
+    {
+      "caseID": "ok-calor",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct weather expression."
+    },
+    {
+      "caseID": "accent-mexico",
+      "hasError": true,
+      "accepted": [
+        "Ellos son de México.",
+        "Son de México."
+      ],
+      "note": "'México' needs its written accent. The grammar is fine."
+    },
+    {
+      "caseID": "ok-el-problema",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct. 'Problema' is masculine."
+    },
+    {
+      "caseID": "conditional",
+      "hasError": true,
+      "accepted": [
+        "Si tengo dinero, compraré un coche.",
+        "Si tuviera dinero, compraría un coche.",
+        "Si tuviese dinero, compraría un coche."
+      ],
+      "note": "The tenses don't match: a present indicative 'si' clause takes a future (or present) in the main clause, while the conditional needs an imperfect subjunctive 'si' clause. Either repair is minimal, and the intended meaning is unclear."
+    },
+    {
+      "caseID": "ok-playa",
+      "hasError": false,
+      "accepted": [],
+      "note": "Correct. The present tense with a future meaning is normal."
+    },
+    {
+      "caseID": "personal-a",
+      "hasError": true,
+      "accepted": [
+        "Vi a Juan en el parque."
+      ],
+      "note": "A specific person as direct object needs the personal 'a'."
+    },
+    {
+      "caseID": "el-agua",
+      "hasError": true,
+      "accepted": [
+        "El agua está fría."
+      ],
+      "note": "'Agua' begins with a stressed a-, so it takes 'el' in the singular but stays feminine ('fría')."
+    },
+    {
+      "caseID": "article-gender",
+      "hasError": true,
+      "accepted": [
+        "Nosotros vivimos en una casa grande.",
+        "Vivimos en una casa grande."
+      ],
+      "note": "'Casa' is feminine and needs 'una'."
+    },
+    {
+      "caseID": "plural-verb",
+      "hasError": true,
+      "accepted": [
+        "Los niños están jugando."
+      ],
+      "note": "The auxiliary must be plural to agree with 'los niños'."
+    }
+  ],
+  "explanations": [
+    {
+      "caseID": "gente-singular",
+      "explanation": "The word 'gentes' is incorrect; 'personas' is the correct form.",
+      "label": "right",
+      "note": "It correctly points to 'gentes' as the error. It does not explain that 'gente' is a singular collective noun, and calling 'personas' its 'correct form' is loose wording, but the error it identifies is the right one."
+    },
+    {
+      "caseID": "ok-el-mapa",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "estar-location",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It misses that location requires 'estar' ('Estoy en Madrid')."
+    },
+    {
+      "caseID": "ok-greeting",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "ok-superlative",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "adjective-plural",
+      "explanation": "The sentence is grammatically correct as is.",
+      "label": "wrong",
+      "note": "It says there is no error, but 'sucios' must be 'sucias' to agree with the feminine 'manos'."
+    },
+    {
+      "caseID": "adjective-gender",
+      "explanation": "The adjective 'alto' must agree in gender and number with the subject 'her sister', so 'alta' is correct.",
+      "label": "right",
+      "note": "It correctly identifies the gender agreement error with 'hermana'. 'Her sister' is just an English gloss."
+    },
+    {
+      "caseID": "ok-double-negative",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "personal-a",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It misses the missing personal 'a' before 'Juan'."
+    },
+    {
+      "caseID": "conditional",
+      "explanation": "The verb 'compraría' is incorrect; it should be the future tense 'compraré' to match the conditional tone of the main clause.",
+      "label": "arguable",
+      "note": "It correctly flags the tense mismatch around 'compraría', but its reasoning ('to match the conditional tone of the main clause') is confused, since 'compraría' is the main clause. It also ignores the equally valid fix of changing the 'si' clause to 'tuviera'."
+    },
+    {
+      "caseID": "estar-state",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It misses that a temporary state requires 'estar' ('está cansada')."
+    },
+    {
+      "caseID": "plural-verb",
+      "explanation": "The verb 'está' is incorrect; it should be 'están' to agree with the plural subject 'los niños'.",
+      "label": "right",
+      "note": "It correctly identifies the subject-verb number agreement error."
+    },
+    {
+      "caseID": "ok-playa",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "article-gender",
+      "explanation": "The verb 'vivimos' does not agree in gender and number with 'casa'.",
+      "label": "wrong",
+      "note": "The error is the article 'un' with the feminine 'casa', not the verb 'vivimos', which cannot agree with 'casa' in gender anyway."
+    },
+    {
+      "caseID": "preterite",
+      "explanation": "The verb 'como' is incorrect; it should be 'comí' to match the past tense.",
+      "label": "right",
+      "note": "It correctly identifies that 'ayer' needs the preterite 'comí'."
+    },
+    {
+      "caseID": "accent-mexico",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It says the sentence is correct, but 'Mexico' is missing its accent, which is the very change the app made."
+    },
+    {
+      "caseID": "subjunctive",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It says there is no error, but 'querer que' requires the subjunctive 'vengas'."
+    },
+    {
+      "caseID": "ok-aburrido",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "pensar-en",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It says there is no error, but 'pensar de' should be 'pensar en' here."
+    },
+    {
+      "caseID": "el-agua",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It misses that 'agua' takes 'el' in the singular."
+    },
+    {
+      "caseID": "mucha-hambre",
+      "explanation": "The sentence lacks the definite article 'el' before 'hambre' for correct grammar.",
+      "label": "wrong",
+      "note": "The error is word order ('mucha' goes before 'hambre'), not a missing 'el'. 'Tengo el hambre' would be wrong."
+    },
+    {
+      "caseID": "ok-future",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "inverted-question",
+      "explanation": "The sentence is correct as it uses the correct structure and spelling.",
+      "label": "wrong",
+      "note": "It misses the missing '¿' and the missing accent on 'qué'."
+    },
+    {
+      "caseID": "gente-verb",
+      "explanation": "The verb 'son' is incorrect; 'es' is the correct form for 'gente' (singular).",
+      "label": "right",
+      "note": "It correctly identifies that 'gente' is singular, so the verb must be 'es'. It does not mention the adjective agreement, but it names the core error."
+    },
+    {
+      "caseID": "ser-conjugation",
+      "explanation": "The subject pronoun 'yo' does not agree with the verb 'es' in the present tense.",
+      "label": "right",
+      "note": "It correctly identifies the person agreement error between 'yo' and 'es'."
+    },
+    {
+      "caseID": "double-negative-wrong",
+      "explanation": "The sentence uses ",
+      "label": "wrong",
+      "note": "The explanation is cut off and never identifies the double-negation error."
+    },
+    {
+      "caseID": "gustar-agreement",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "wrong",
+      "note": "It misses that 'gusta' must be 'gustan' to agree with 'los perros'."
+    },
+    {
+      "caseID": "ok-el-problema",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    },
+    {
+      "caseID": "ok-calor",
+      "explanation": "The sentence is grammatically correct.",
+      "label": "right",
+      "note": "The sentence has no error."
+    }
+  ]
+}

@@ -33,19 +33,35 @@ struct ReviewFile: Codable {
 }
 
 enum ReviewPacket {
-    static let version = "review-v1"
+    static let version = "review-v2"
 
     static func shuffled<T>(_ items: [T], seed: UInt64) -> [T] {
         var generator = SplitMix64(seed: seed)
         return items.shuffled(using: &generator)
     }
 
+    /// The order the reviewer sees, and the opaque id each item carries.
+    ///
+    /// The first packet used the dataset's case IDs - "ok-calor",
+    /// "estar-state" - which are invisible on the page but sit in its source
+    /// and in the export, and give the answers away to anyone, or anything,
+    /// that reads the file. Items are now "s01", "e01"..., and the mapping back
+    /// is recomputed from the same seeded shuffle, never shipped.
+    static func sentenceOrder(_ cases: [CorrectionCase]) -> [(String, CorrectionCase)] {
+        shuffled(cases, seed: 11).enumerated().map { (String(format: "s%02d", $0.offset + 1), $0.element) }
+    }
+
+    static func explanationOrder<T>(_ items: [T]) -> [(String, T)] {
+        shuffled(items, seed: 12).enumerated().map { (String(format: "e%02d", $0.offset + 1), $0.element) }
+    }
+
     static func html(cases: [CorrectionCase], explanations: [(String, String, String, String)]) throws -> String {
         struct S: Encodable { let id: String; let sentence: String }
         struct E: Encodable { let id: String; let sentence: String; let correction: String; let explanation: String }
-        let sentences = shuffled(cases.map { S(id: $0.id, sentence: $0.input) }, seed: 11)
-        let items = shuffled(explanations.map { E(id: $0.0, sentence: $0.1, correction: $0.2, explanation: $0.3) },
-                             seed: 12)
+        let sentences = sentenceOrder(cases).map { S(id: $0.0, sentence: $0.1.input) }
+        let items = explanationOrder(explanations).map {
+            E(id: $0.0, sentence: $0.1.1, correction: $0.1.2, explanation: $0.1.3)
+        }
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.withoutEscapingSlashes]
         let data = """
@@ -182,17 +198,23 @@ struct ReviewComparison: Codable {
     var labelKappa: Double?
     var disagreements: [Disagreement] = []
 
-    init(review: ReviewFile, cases: [CorrectionCase], labels: [ExplanationLabel]) {
+    init(review: ReviewFile, cases: [CorrectionCase], labels: [ExplanationLabel],
+         explanationCases: [String] = []) {
         reviewer = review.reviewer
         native = review.native
-        let byID = Dictionary(uniqueKeysWithValues: cases.map { ($0.id, $0) })
+        var byID = Dictionary(uniqueKeysWithValues: cases.map { ($0.id, $0) })
+        // Opaque packet ids map back through the same seeded shuffle.
+        for (opaque, item) in ReviewPacket.sentenceOrder(cases) { byID[opaque] = item }
+        let explanationIDs = Dictionary(uniqueKeysWithValues:
+            ReviewPacket.explanationOrder(explanationCases).map { ($0.0, $0.1) })
         var pairs: [Agreement.Pair] = []
         for s in review.sentences {
             guard let item = byID[s.caseID], let theirs = s.hasError else { continue }
+            let caseID = item.id
             sentencesAnswered += 1
             pairs.append(Agreement.Pair(item.hasError, theirs))
             if theirs == item.hasError { hasErrorAgree += 1 } else {
-                disagreements.append(Disagreement(caseID: s.caseID, part: "has an error",
+                disagreements.append(Disagreement(caseID: caseID, part: "has an error",
                                                   ours: "\(item.hasError)", theirs: "\(theirs)", note: s.note))
             }
             guard item.hasError && theirs else { continue }
@@ -202,7 +224,7 @@ struct ReviewComparison: Codable {
             theirsNotOurs += extra.count
             if !missing.isEmpty || !extra.isEmpty {
                 disagreements.append(Disagreement(
-                    caseID: s.caseID, part: "accepted answers",
+                    caseID: caseID, part: "accepted answers",
                     ours: item.accepted.joined(separator: " | "),
                     theirs: s.accepted.joined(separator: " | "), note: s.note))
             }
@@ -213,10 +235,11 @@ struct ReviewComparison: Codable {
                                   uniquingKeysWith: { a, _ in a })
         var labelPairs: [Agreement.Pair] = []
         for x in review.explanations {
-            guard let theirs = x.label, let ours = labelFor["\(x.caseID)|\(x.explanation)"] else { continue }
+            let caseID = explanationIDs[x.caseID] ?? x.caseID
+            guard let theirs = x.label, let ours = labelFor["\(caseID)|\(x.explanation)"] else { continue }
             explanationsAnswered += 1
             if theirs == ours { labelAgree += 1 } else {
-                disagreements.append(Disagreement(caseID: x.caseID, part: "explanation label",
+                disagreements.append(Disagreement(caseID: caseID, part: "explanation label",
                                                   ours: ours, theirs: theirs, note: x.note))
             }
             if ours != "arguable" && theirs != "arguable" {

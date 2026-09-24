@@ -21,7 +21,7 @@ swift test --build-system native            # EvalKit's own tests
 ./scripts/eval.sh judge-grade <judge-run>.jsonl            # the judge, graded against the labels
 ./scripts/eval.sh agreement <judge-run>.jsonl [<other>.jsonl]   # how much the labels can say
 ./scripts/eval.sh review-packet --source evals/correction/runs/<file>.jsonl --out review/packet.html
-./scripts/eval.sh review-compare tutor-review.json         # a reviewer's answers against ours
+./scripts/eval.sh review-compare tutor-review.json --source evals/correction/runs/<file>.jsonl
 ```
 
 Chapter 10's open-weights judge is the one part that is not Swift. It is
@@ -52,6 +52,9 @@ Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
 | `review/packet.html` | Chapter 11: a blind review page for a native speaker (generated; not committed) |
 | `evals/correction/judge-requests/` | Chapter 10: the exact requests every judge was sent |
 | `evals/correction/judge-runs/` | Chapter 10: a model's verdicts on explanations, recorded like any run |
+| `evals/correction/reviews/` | Reviews as returned, with who did them. So far one blind AI review; no native one yet |
+| `evals/correction/adjudication-v2.jsonl` | Every disagreement with that review, and what was decided and why |
+| `evals/correction/cases-v2.jsonl` | The key after adjudication. v1 is kept, and grades the runs made against it |
 | `evals/correction/accepted-proposals.jsonl` | Chapter 9: answers the key may be missing, waiting for a reviewer |
 | `evals/correction/prompt-history.md` | Every prompt a recorded run used, word for word |
 | `evals/<feature>/runs/` | Recorded model outputs, committed on purpose |
