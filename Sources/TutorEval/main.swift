@@ -15,7 +15,11 @@ func value(_ flag: String) -> String? {
     return arguments[i + 1]
 }
 
-let casesURL = URL(fileURLWithPath: value("--cases") ?? "evals/correction/cases.jsonl")
+// Datasets are versioned, never edited. Changing expected answers in place would
+// silently re-grade every earlier run against answers it was never judged by.
+// A corrected dataset is a new file; old runs keep being graded by the version
+// they were run against.
+let casesURL = URL(fileURLWithPath: value("--cases") ?? "evals/correction/cases-v1.jsonl")
 let cases = try JSONLines.read(CorrectionCase.self, from: casesURL)
 
 switch arguments.first {
