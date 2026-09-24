@@ -5,6 +5,7 @@ import TutorCore
 
 // tutor-eval run   [--repeats N] [--sampling default|greedy|seed:N] [--limit N]
 // tutor-eval grade <recorded-run.jsonl> [--json]
+// tutor-eval plan  --rate 0.6 --half-width 0.1
 //
 // `run` calls the model and records every output; `grade` reads a recording and
 // grades it without calling anything. Run once, grade forever.
@@ -23,6 +24,18 @@ let casesURL = URL(fileURLWithPath: value("--cases") ?? "evals/correction/cases-
 let cases = try JSONLines.read(CorrectionCase.self, from: casesURL)
 
 switch arguments.first {
+case "plan":
+    // How many independent cases a dataset needs to measure an expected rate
+    // to within plus or minus a half-width. Cases, not calls: repeating a case
+    // does not add an independent observation.
+    let rate = Double(value("--rate") ?? "0.6") ?? 0.6
+    let width = Double(value("--half-width") ?? "0.1") ?? 0.1
+    if let n = SampleSize.needed(expectedRate: rate, halfWidth: width) {
+        print("\(n) cases to measure \(Int(rate * 100))% to within ±\(Int((width * 100).rounded())) points")
+    } else {
+        print("more than 100,000 cases")
+    }
+
 case "grade":
     guard arguments.count > 1 else { fatalError("usage: tutor-eval grade <run.jsonl>") }
     let url = URL(fileURLWithPath: arguments[1])

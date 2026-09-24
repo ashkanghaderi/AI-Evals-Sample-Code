@@ -99,9 +99,15 @@ struct CorrectionReport {
     }
 
     func print(model: String, sampling: String) {
+        let sentenceLevel = clusteredMetrics
         func line(_ name: String, _ p: (hit: Int, total: Int)) {
             Swift.print("  \(name.padding(toLength: 14, withPad: " ", startingAt: 0)) "
                         + Proportion(successes: p.hit, trials: p.total).description)
+            if let c = sentenceLevel[name], c.clusters.count < p.total {
+                let ci = c.interval()
+                Swift.print(String(format: "                 by sentence: %.1f–%.1f%% (%d sentences)",
+                                   ci.lowerBound * 100, ci.upperBound * 100, c.clusters.count))
+            }
         }
         let sorted = latencies.sorted()
         let median = sorted.isEmpty ? 0 : sorted[sorted.count / 2]
@@ -170,11 +176,17 @@ struct Verdict: Codable {
 extension CorrectionReport {
     struct Metric: Codable {
         let hit: Int, total: Int, rate: Double, low: Double, high: Double
-        init(_ p: (hit: Int, total: Int)) {
+        /// The same rate's interval with calls grouped by sentence - the
+        /// honest one when each sentence was asked more than once.
+        let sentences: Int?, sentenceLow: Double?, sentenceHigh: Double?
+        init(_ p: (hit: Int, total: Int), clustered: ClusteredProportion? = nil) {
             let proportion = Proportion(successes: p.hit, trials: p.total)
             let ci = proportion.interval()
             hit = p.hit; total = p.total; rate = proportion.rate
             low = ci.lowerBound; high = ci.upperBound
+            let sentenceCI = clustered?.interval()
+            sentences = clustered?.clusters.count
+            sentenceLow = sentenceCI?.lowerBound; sentenceHigh = sentenceCI?.upperBound
         }
     }
 
@@ -192,12 +204,50 @@ extension CorrectionReport {
             failedCalls: failedCalls,
             latencyMedian: sorted.isEmpty ? 0 : sorted[sorted.count / 2],
             latencyP90: sorted.isEmpty ? 0 : sorted[min(sorted.count - 1, sorted.count * 9 / 10)],
-            metrics: ["detection": Metric(detection), "correction": Metric(correction),
-                      "preservation": Metric(preservation), "consistency": Metric(consistency),
-                      "coherence": Metric(coherence)],
+            metrics: {
+                let c = clusteredMetrics
+                return ["detection": Metric(detection, clustered: c["detection"]),
+                        "correction": Metric(correction, clustered: c["correction"]),
+                        "preservation": Metric(preservation, clustered: c["preservation"]),
+                        "consistency": Metric(consistency),
+                        "coherence": Metric(coherence, clustered: c["coherence"])]
+            }(),
             verdicts: verdicts)
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
         return String(decoding: try encoder.encode(summary), as: UTF8.self)
+    }
+}
+
+
+// MARK: - Sentence-level intervals
+
+extension CorrectionReport {
+    /// A metric's intervals when its calls are grouped by sentence.
+    ///
+    /// `select` returns nil for calls the metric does not cover, and otherwise
+    /// whether the call counts as a hit. Built from the verdicts, so it counts
+    /// exactly what the call-level metric counts - only the uncertainty differs.
+    func clustered(_ select: (Verdict) -> Bool?) -> ClusteredProportion {
+        var byCase: [String: (hit: Int, total: Int)] = [:]
+        var order: [String] = []
+        for verdict in verdicts {
+            guard let hit = select(verdict) else { continue }
+            if byCase[verdict.caseID] == nil { order.append(verdict.caseID) }
+            byCase[verdict.caseID, default: (0, 0)].total += 1
+            if hit { byCase[verdict.caseID, default: (0, 0)].hit += 1 }
+        }
+        return ClusteredProportion(order.map {
+            .init(successes: byCase[$0]!.hit, trials: byCase[$0]!.total)
+        })
+    }
+
+    var clusteredMetrics: [String: ClusteredProportion] {
+        [
+            "detection": clustered { v in v.hasError.map { $0 == v.expectedHasError } ?? false },
+            "correction": clustered { $0.expectedHasError ? $0.verdict == "pass" : nil },
+            "preservation": clustered { $0.expectedHasError ? nil : $0.verdict == "pass" },
+            "coherence": clustered { $0.coherent },
+        ]
     }
 }
