@@ -29,6 +29,7 @@ let package = Package(
         // Chapter 2: the whole idea in one file, with no EvalKit at all.
         .executableTarget(name: "MinimalEval", dependencies: ["TutorCore"]),
         .testTarget(name: "EvalKitTests", dependencies: ["EvalKit"]),
+        .testTarget(name: "TutorCoreTests", dependencies: ["TutorCore"]),
     ],
     swiftLanguageModes: [.v6]
 )

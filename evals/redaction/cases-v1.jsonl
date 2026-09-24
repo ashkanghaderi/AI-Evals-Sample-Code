@@ -1,0 +1,31 @@
+{"id": "name-and-city", "text": "Me llamo Carlos y vivo en Madrid.", "mustRemove": ["Carlos", "Madrid"], "mustKeep": ["llamo"]}
+{"id": "name-and-company", "text": "Mi hermana Lucía trabaja en Google.", "mustRemove": ["Lucía", "Google"], "mustKeep": ["hermana"]}
+{"id": "name-after-a", "text": "Ayer vi a Juan en el parque.", "mustRemove": ["Juan"], "mustKeep": ["Ayer"]}
+{"id": "full-name", "text": "Mi amigo se llama Pedro Martínez.", "mustRemove": ["Pedro", "Martínez"], "mustKeep": ["amigo"]}
+{"id": "verb-first-then-name", "text": "Vivo en Barcelona con mi novia Ana.", "mustRemove": ["Barcelona", "Ana"], "mustKeep": ["Vivo"]}
+{"id": "name-first", "text": "Carlos vive en Sevilla.", "mustRemove": ["Carlos", "Sevilla"], "mustKeep": ["vive"]}
+{"id": "name-first-2", "text": "Roberto trabaja en Madrid.", "mustRemove": ["Roberto", "Madrid"], "mustKeep": ["trabaja"]}
+{"id": "name-first-3", "text": "Ana y yo estudiamos juntas.", "mustRemove": ["Ana"], "mustKeep": ["estudiamos"]}
+{"id": "email", "text": "Mi correo es ana.lopez@gmail.com.", "mustRemove": ["ana.lopez@gmail.com"], "mustKeep": ["correo"]}
+{"id": "email-2", "text": "Escríbeme a jose@empresa.es, por favor.", "mustRemove": ["jose@empresa.es"], "mustKeep": ["Escríbeme", "favor"]}
+{"id": "phone-spaced", "text": "Llámame al 612 345 678 mañana.", "mustRemove": ["612 345 678"], "mustKeep": ["Llámame", "mañana"]}
+{"id": "phone-intl", "text": "Mi número es +34 612345678.", "mustRemove": ["612345678"], "mustKeep": ["número"]}
+{"id": "url", "text": "Visita www.miblog.com para ver mis fotos.", "mustRemove": ["www.miblog.com"], "mustKeep": ["Visita", "fotos"]}
+{"id": "org-and-year", "text": "Trabajo en Telefónica desde 2019.", "mustRemove": ["Telefónica"], "mustKeep": ["Trabajo", "2019"]}
+{"id": "age", "text": "Tengo 25 años.", "mustRemove": [], "mustKeep": ["Tengo", "25"]}
+{"id": "city-and-name", "text": "Mañana voy a Valencia con Marta.", "mustRemove": ["Valencia", "Marta"], "mustKeep": ["Mañana"]}
+{"id": "greeting-name", "text": "Hola, soy Diego.", "mustRemove": ["Diego"], "mustKeep": ["Hola"]}
+{"id": "greeting-full-name", "text": "Buenos días, me llamo Sofía Ramírez.", "mustRemove": ["Sofía", "Ramírez"], "mustKeep": ["Buenos", "días"]}
+{"id": "university", "text": "Estudio en la Universidad de Salamanca.", "mustRemove": ["Salamanca"], "mustKeep": ["Estudio"]}
+{"id": "mother", "text": "Mi madre se llama Carmen.", "mustRemove": ["Carmen"], "mustKeep": ["madre"]}
+{"id": "two-word-city", "text": "Quiero visitar Buenos Aires.", "mustRemove": ["Buenos Aires"], "mustKeep": ["Quiero", "visitar"]}
+{"id": "vocative", "text": "Pienso en ti, Laura.", "mustRemove": ["Laura"], "mustKeep": ["Pienso"]}
+{"id": "city-accent", "text": "Nosotros vivimos en Bogotá.", "mustRemove": ["Bogotá"], "mustKeep": ["Nosotros"]}
+{"id": "country", "text": "Soy de México y hablo inglés.", "mustRemove": ["México"], "mustKeep": ["Soy", "hablo"]}
+{"id": "clean-hace", "text": "Hace mucho calor hoy.", "mustRemove": [], "mustKeep": ["Hace", "calor"]}
+{"id": "clean-tengo", "text": "Tengo hambre.", "mustRemove": [], "mustKeep": ["Tengo", "hambre"]}
+{"id": "clean-los", "text": "Los niños están jugando.", "mustRemove": [], "mustKeep": ["Los", "niños"]}
+{"id": "clean-quiero", "text": "Quiero que vengas.", "mustRemove": [], "mustKeep": ["Quiero", "vengas"]}
+{"id": "clean-estoy", "text": "Estoy cansada.", "mustRemove": [], "mustKeep": ["Estoy", "cansada"]}
+{"id": "clean-vivo", "text": "Vivo cerca del mar.", "mustRemove": [], "mustKeep": ["Vivo", "mar"]}
+{"id": "clean-gusta", "text": "Me gusta el café.", "mustRemove": [], "mustKeep": ["Me", "café"]}

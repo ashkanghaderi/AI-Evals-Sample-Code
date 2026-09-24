@@ -6,6 +6,7 @@ import TutorCore
 // tutor-eval run   [--repeats N] [--sampling default|greedy|seed:N] [--limit N]
 // tutor-eval grade <recorded-run.jsonl> [--json]
 // tutor-eval plan  --rate 0.6 --half-width 0.1
+// tutor-eval redaction [--strategy tagger|lowercase-first] [--json]
 //
 // `run` calls the model and records every output; `grade` reads a recording and
 // grades it without calling anything. Run once, grade forever.
@@ -24,6 +25,22 @@ let casesURL = URL(fileURLWithPath: value("--cases") ?? "evals/correction/cases-
 let cases = try JSONLines.read(CorrectionCase.self, from: casesURL)
 
 switch arguments.first {
+case "redaction":
+    // The redactor is a model too, and gets an eval of its own. No language
+    // model is called and nothing is random, so there is no recording: the
+    // result is a pure function of the dataset and the redactor.
+    let url = URL(fileURLWithPath: value("--redaction-cases") ?? "evals/redaction/cases-v1.jsonl")
+    let redactionCases = try JSONLines.read(RedactionCase.self, from: url)
+    let strategy = Redactor.Strategy(rawValue: value("--strategy") ?? "tagger") ?? .tagger
+    let report = RedactionReport(cases: redactionCases, redactor: Redactor(strategy: strategy))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print()
+    }
+
 case "plan":
     // How many independent cases a dataset needs to measure an expected rate
     // to within plus or minus a half-width. Cases, not calls: repeating a case

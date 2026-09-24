@@ -18,6 +18,10 @@ struct CorrectSentenceView: View {
     @State private var failure: String?
     @State private var isWorking = false
 
+    /// Off until the learner turns it on. Nothing is recorded without it, and
+    /// what is recorded is redacted first - input, correction and explanation.
+    @AppStorage("shareSentencesForImprovement") private var shareSentences = false
+
     private let model = SystemLanguageModel.default
 
     var body: some View {
@@ -42,6 +46,12 @@ struct CorrectSentenceView: View {
                     }
                 }
                 if let failure { Section { Text(failure).foregroundStyle(.red) } }
+                Section {
+                    Toggle("Help improve Tutor", isOn: $shareSentences)
+                } footer: {
+                    Text("Keeps an anonymised copy of your sentences on this device, with names, "
+                         + "places and contact details removed, to test future versions of Tutor.")
+                }
             }
             .navigationTitle("Tutor")
         }
@@ -58,7 +68,13 @@ struct CorrectSentenceView: View {
         Task {
             defer { isWorking = false }
             do {
-                result = try await SentenceCorrector(model: model).correct(sentence)
+                let output = try await SentenceCorrector(model: model).correct(sentence)
+                result = output
+                try? InteractionLog(url: .applicationSupportDirectory
+                    .appending(path: "interactions.jsonl"))
+                    .record(input: sentence, output: output, consented: shareSentences,
+                            appVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+                                as? String ?? "?")
             } catch {
                 failure = String(describing: error)
             }
