@@ -31,6 +31,8 @@ struct CorrectionReport {
     var preservation = (hit: 0, total: 0)
     var consistency = (hit: 0, total: 0)
     var coherence = (hit: 0, total: 0)
+    /// Explanations in the language the run asked for, among non-empty ones.
+    var language = (hit: 0, total: 0)
     var failedCalls = 0
     var verdicts: [Verdict] = []
     var failures: [(CorrectionCase, CorrectionRecord, String)] = []
@@ -71,6 +73,10 @@ struct CorrectionReport {
             let passed = item.hasError ? fixed : (fixed && !output.hasError)
             verdicts.append(Verdict(item, record, verdict: passed ? "pass" : "fail",
                                     coherent: output.hasError == changed))
+            if let detected = verdicts.last?.explanationLanguage {
+                language.total += 1
+                if detected == ExplanationLanguage.expected(from: record.prompt) { language.hit += 1 }
+            }
             if item.hasError {
                 correction.total += 1
                 if fixed { correction.hit += 1 } else {
@@ -119,6 +125,7 @@ struct CorrectionReport {
         line("preservation", preservation)
         if consistency.total > 0 { line("consistency", consistency) }
         line("coherence", coherence)
+        line("language", language)
         Swift.print("  failed calls   \(failedCalls)")
         Swift.print("  latency        median \(median) ms, p90 \(p90) ms")
         Swift.print("  explanations   recorded, not graded (needs a calibrated judge)")
@@ -161,6 +168,10 @@ struct Verdict: Codable {
     let coherent: Bool?
     let error: String?
     let latencyMilliseconds: Int
+    /// The prompt version the call was made with; nil means v1.
+    let prompt: String?
+    /// The explanation's language as detected, nil when there is none.
+    let explanationLanguage: String?
 
     init(_ item: CorrectionCase, _ record: CorrectionRecord, verdict: String,
          coherent: Bool? = nil) {
@@ -170,6 +181,8 @@ struct Verdict: Codable {
         hasError = record.output?.hasError; corrected = record.output?.corrected
         explanation = record.output?.explanation; self.coherent = coherent
         error = record.error; latencyMilliseconds = record.latencyMilliseconds
+        prompt = record.prompt
+        explanationLanguage = record.output.flatMap { ExplanationLanguage.detect($0.explanation) }
     }
 }
 
@@ -210,7 +223,8 @@ extension CorrectionReport {
                         "correction": Metric(correction, clustered: c["correction"]),
                         "preservation": Metric(preservation, clustered: c["preservation"]),
                         "consistency": Metric(consistency),
-                        "coherence": Metric(coherence, clustered: c["coherence"])]
+                        "coherence": Metric(coherence, clustered: c["coherence"]),
+                        "language": Metric(language)]
             }(),
             verdicts: verdicts)
         let encoder = JSONEncoder()

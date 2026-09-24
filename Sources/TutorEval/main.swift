@@ -3,7 +3,9 @@ import FoundationModels
 import EvalKit
 import TutorCore
 
-// tutor-eval run   [--repeats N] [--sampling default|greedy|seed:N] [--limit N]
+// tutor-eval run   [--repeats N] [--sampling default|greedy|seed:N] [--limit N] [--explain-in German]
+// tutor-eval languages [--check fa,de]
+// tutor-eval quotes <english-run.jsonl> <translated-run.jsonl> [--json]
 // tutor-eval grade <recorded-run.jsonl> [--json]
 // tutor-eval plan  --rate 0.6 --half-width 0.1
 // tutor-eval redaction [--strategy tagger|lowercase-first] [--json]
@@ -28,6 +30,36 @@ let casesURL = URL(fileURLWithPath: value("--cases") ?? "evals/correction/cases-
 let cases = try JSONLines.read(CorrectionCase.self, from: casesURL)
 
 switch arguments.first {
+case "languages":
+    // What the on-device model says it supports, as the API reports it on
+    // this machine and OS. Check this before writing a dataset in a language.
+    let model = SystemLanguageModel.default
+    let names = model.supportedLanguages.map { language -> String in
+        let code = language.minimalIdentifier
+        let name = Locale(identifier: "en").localizedString(forIdentifier: code) ?? code
+        return "\(name) (\(code))"
+    }.sorted()
+    print("\(names.count) languages:")
+    for name in names { print("  \(name)") }
+    for code in (value("--check") ?? "").split(separator: ",") {
+        let supported = model.supportsLocale(Locale(identifier: String(code)))
+        print("supportsLocale(\(code)): \(supported)")
+    }
+
+case "quotes":
+    guard arguments.count > 2 else { fatalError("usage: tutor-eval quotes <english> <translated>") }
+    let report = QuoteReport(
+        source: try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: arguments[1])),
+        translated: try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: arguments[2])),
+        cases: cases)
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print()
+    }
+
 case "synthesize":
     // The model writes its own test cases. Chapter 6 grades the corrector on
     // them and on the hand-written set, side by side, to see what they are worth.
@@ -128,7 +160,8 @@ case "run":
         GenerationOptions()
     }
 
-    let corrector = SentenceCorrector(model: model, options: options)
+    let corrector = SentenceCorrector(model: model, options: options,
+                                      explanationLanguage: value("--explain-in") ?? "English")
     let stamp = ISO8601DateFormatter().string(from: Date())
         .replacingOccurrences(of: ":", with: "")
     let out = URL(fileURLWithPath: value("--out")
@@ -155,7 +188,8 @@ case "run":
                          + elapsed.components.attoseconds / 1_000_000_000_000_000)
             let record = CorrectionRecord(
                 caseID: item.id, repetition: repetition, output: output, error: failure,
-                latencyMilliseconds: ms, model: "apple-on-device", sampling: samplingName)
+                latencyMilliseconds: ms, model: "apple-on-device", sampling: samplingName,
+                prompt: corrector.promptVersion)
             try JSONLines.append(record, to: out)
             records.append(record)
             done += 1

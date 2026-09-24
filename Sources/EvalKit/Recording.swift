@@ -14,11 +14,15 @@ public struct RunRecord<Output: Codable & Sendable>: Codable, Sendable {
     public let latencyMilliseconds: Int
     public let model: String
     public let sampling: String
+    /// Which prompt produced this output. Optional because Part I's runs
+    /// predate it; a missing value means prompt v1.
+    public let prompt: String?
     public let osVersion: String
     public let recordedAt: Date
 
     public init(caseID: String, repetition: Int, output: Output?, error: String?,
                 latencyMilliseconds: Int, model: String, sampling: String,
+                prompt: String? = nil,
                 osVersion: String = ProcessInfo.processInfo.operatingSystemVersionString,
                 recordedAt: Date = Date()) {
         self.caseID = caseID
@@ -28,6 +32,7 @@ public struct RunRecord<Output: Codable & Sendable>: Codable, Sendable {
         self.latencyMilliseconds = latencyMilliseconds
         self.model = model
         self.sampling = sampling
+        self.prompt = prompt
         self.osVersion = osVersion
         self.recordedAt = recordedAt
     }

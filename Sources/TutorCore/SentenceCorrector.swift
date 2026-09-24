@@ -33,10 +33,20 @@ public struct Correction: Sendable, Codable, Equatable {
 public struct SentenceCorrector<Model: LanguageModel> {
     public let model: Model
     public var options: GenerationOptions
+    /// The learner's language, named in English: "English", "German", ...
+    public var explanationLanguage: String
 
-    public init(model: Model, options: GenerationOptions = GenerationOptions()) {
+    public init(model: Model, options: GenerationOptions = GenerationOptions(),
+                explanationLanguage: String = "English") {
         self.model = model
         self.options = options
+        self.explanationLanguage = explanationLanguage
+    }
+
+    /// Recorded with every eval run, so a score can always be traced to the
+    /// exact prompts that produced it. Change a prompt, change this.
+    public var promptVersion: String {
+        explanationLanguage == "English" ? "v1" : "v1 + translate explanation:\(explanationLanguage)"
     }
 
     public static var instructions: String {
@@ -52,9 +62,36 @@ public struct SentenceCorrector<Model: LanguageModel> {
     /// One fresh session per sentence. Reusing a session would let earlier
     /// sentences leak into later answers, and an eval would then be measuring
     /// the order of its own dataset.
+    ///
+    /// The explanation is written in English and translated afterwards, in a
+    /// separate session. Chapter 7 tried naming the learner's language in the
+    /// correction prompt instead, twice; both versions started flagging correct
+    /// sentences as errors. Kept apart, the decision - error or not, and the
+    /// fix - is produced by exactly the prompt Part I measured, whatever
+    /// language the learner reads.
     public func correct(_ sentence: String) async throws -> Correction {
         let session = LanguageModelSession(model: model, instructions: Self.instructions)
-        return try await session.respond(to: sentence, generating: Correction.self,
-                                         options: options).content
+        var result = try await session.respond(to: sentence, generating: Correction.self,
+                                               options: options).content
+        if explanationLanguage != "English" && !result.explanation.isEmpty {
+            // A failed translation must not cost the learner a correct
+            // correction. In Chapter 7 a guardrail refused to translate a
+            // grammar note into Turkish, and the whole answer was lost. The
+            // English explanation is a worse answer, not a wrong one - and the
+            // eval's language check counts every time it happens.
+            if let translated = try? await translate(result.explanation) {
+                result.explanation = translated
+            }
+        }
+        return result
+    }
+
+    func translate(_ explanation: String) async throws -> String {
+        let session = LanguageModelSession(model: model, instructions: """
+            Translate the user's text from English into \(explanationLanguage). \
+            Keep Spanish words and quoted examples exactly as they are. Reply \
+            with the translation only.
+            """)
+        return try await session.respond(to: explanation, options: options).content
     }
 }

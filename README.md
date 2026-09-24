@@ -14,6 +14,8 @@ swift test --build-system native            # EvalKit's own tests
 ./scripts/eval.sh run --repeats 3           # evaluate "Correct my sentence" (~5 min)
 ./scripts/eval.sh grade evals/correction/runs/<file>.jsonl   # re-grade, no model needed
 ./scripts/eval.sh audit --cases evals/correction/<dataset>.jsonl   # check a dataset before trusting it
+./scripts/eval.sh run --sampling greedy --explain-in German         # explanations in the learner's language
+./scripts/eval.sh languages --check fa,de                           # what the on-device model supports
 ```
 
 Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
@@ -31,6 +33,7 @@ Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
 | `evals/correction/synthetic-v1.jsonl` | Chapter 6: 30 cases the model wrote for itself, kept as a warning |
 | `evals/correction/perturbed-vN.jsonl` | Chapter 6: cases made by breaking correct sentences in code |
 | `evals/correction/*-review.jsonl` | Our reading of generated cases, case by case |
+| `evals/correction/prompt-history.md` | Every prompt a recorded run used, word for word |
 | `evals/<feature>/runs/` | Recorded model outputs, committed on purpose |
 | `ios/` | The Tutor app |
 
