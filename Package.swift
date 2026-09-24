@@ -20,11 +20,14 @@ let package = Package(
         .library(name: "TutorCore", targets: ["TutorCore"]),
         .library(name: "EvalKit", targets: ["EvalKit"]),
         .executable(name: "tutor-eval", targets: ["TutorEval"]),
+        .executable(name: "minimal-eval", targets: ["MinimalEval"]),
     ],
     targets: [
         .target(name: "TutorCore"),
         .target(name: "EvalKit"),
         .executableTarget(name: "TutorEval", dependencies: ["TutorCore", "EvalKit"]),
+        // Chapter 2: the whole idea in one file, with no EvalKit at all.
+        .executableTarget(name: "MinimalEval", dependencies: ["TutorCore"]),
         .testTarget(name: "EvalKitTests", dependencies: ["EvalKit"]),
     ],
     swiftLanguageModes: [.v6]

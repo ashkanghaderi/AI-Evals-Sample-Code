@@ -25,6 +25,7 @@ Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
 | `Sources/TutorCore` | The app's AI features — the same code the app ships |
 | `Sources/EvalKit` | Recording, statistics, text comparison. No model inside |
 | `Sources/TutorEval` | The eval runner: `run` and `grade` |
+| `Sources/MinimalEval` | Chapter 2: a complete eval in one file, with no EvalKit |
 | `evals/<feature>/cases-vN.jsonl` | Golden datasets — versioned, never edited in place |
 | `evals/<feature>/runs/` | Recorded model outputs, committed on purpose |
 | `ios/` | The Tutor app |
