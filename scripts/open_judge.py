@@ -28,6 +28,16 @@ from mlx_lm.sample_utils import make_sampler
 MODEL = "mlx-community/Qwen2.5-7B-Instruct-4bit"
 JUDGE = "qwen2.5-7b-instruct-4bit"
 
+# --bare: Chapter 10's knowledge-or-deference test. The requests come from
+# `tutor-eval bare-requests`, and the fields are BareVerdict's.
+BARE = "--bare" in sys.argv
+BARE_FORMAT = (
+    "Reply with only a JSON object with two keys, in this order: "
+    '"reasoning": whether the sentence contains any error in grammar, agreement, '
+    "verb form, word choice, spelling, accents or punctuation, and which; "
+    '"sentenceIsCorrect": true only if the sentence is correct Spanish with no error.'
+)
+
 # The same two fields as JudgeVerdict, described with its @Guide text, in the
 # same order: reasoning first, so the verdict can depend on it.
 FORMAT = (
@@ -39,6 +49,9 @@ FORMAT = (
 )
 
 
+FIELD = "sentenceIsCorrect" if BARE else "explanationIsRight"
+
+
 def strict(text: str):
     """The reply as the JSON object that was asked for, or None."""
     match = re.search(r"\{.*\}", text, re.DOTALL)
@@ -48,9 +61,9 @@ def strict(text: str):
         data = json.loads(match.group(0))
     except json.JSONDecodeError:
         return None
-    if not isinstance(data.get("explanationIsRight"), bool) or not isinstance(data.get("reasoning"), str):
+    if not isinstance(data.get(FIELD), bool) or not isinstance(data.get("reasoning"), str):
         return None
-    return {"reasoning": data["reasoning"], "explanationIsRight": data["explanationIsRight"]}
+    return {"reasoning": data["reasoning"], FIELD: data[FIELD]}
 
 
 def lenient(text: str):
@@ -63,16 +76,17 @@ def lenient(text: str):
     failed call. Whether each verdict came from `strict` or from this is
     recorded, so format failures are still counted.
     """
-    verdicts = re.findall(r'"explanationIsRight"\s*:\s*(true|false)\b', text)
+    verdicts = re.findall(r'"' + FIELD + r'"\s*:\s*(true|false)\b', text)
     if len(verdicts) != 1:
         return None
-    reasoning = re.search(r'"reasoning"\s*:\s*"?(.*?)"?\s*,?\s*"explanationIsRight"', text, re.DOTALL)
+    reasoning = re.search(r'"reasoning"\s*:\s*"?(.*?)"?\s*,?\s*"' + FIELD + '"', text, re.DOTALL)
     return {"reasoning": reasoning.group(1).strip() if reasoning else "",
-            "explanationIsRight": verdicts[0] == "true"}
+            FIELD: verdicts[0] == "true"}
 
 
 def main() -> None:
-    requests_path, out_path = Path(sys.argv[1]), Path(sys.argv[2])
+    paths = [a for a in sys.argv[1:] if not a.startswith("--")]
+    requests_path, out_path = Path(paths[0]), Path(paths[1])
     if out_path.exists():
         sys.exit(f"{out_path} exists; recordings are never overwritten")
     requests = [json.loads(line) for line in requests_path.read_text().splitlines() if line.strip()]
@@ -82,7 +96,7 @@ def main() -> None:
     with out_path.open("w") as out:
         for index, item in enumerate(requests, start=1):
             messages = [
-                {"role": "system", "content": item["instructions"] + "\n\n" + FORMAT},
+                {"role": "system", "content": item["instructions"] + "\n\n" + (BARE_FORMAT if BARE else FORMAT)},
                 {"role": "user", "content": item["request"]},
             ]
             prompt = tokenizer.apply_chat_template(messages, add_generation_prompt=True)
@@ -92,6 +106,17 @@ def main() -> None:
             parsed = strict(reply)
             format_ok = parsed is not None
             parsed = parsed or lenient(reply)
+            if BARE:
+                record = {
+                    "caseID": item["caseID"], "input": item["input"], "judge": JUDGE,
+                    "output": parsed, "error": None if parsed else f"unreadable reply: {reply[:300]}",
+                    "latencyMilliseconds": elapsed, "prompt": item["prompt"] + " + json",
+                    "formatFollowed": format_ok, "reply": reply,
+                }
+                out.write(json.dumps(record, ensure_ascii=False) + "\n")
+                out.flush()
+                print(f"\r  {index}/{len(requests)}", end="", file=sys.stderr, flush=True)
+                continue
             record = {
                 "caseID": item["caseID"], "input": item["input"], "corrected": item["corrected"],
                 "hasError": item["hasError"], "explanation": item["explanation"],

@@ -72,3 +72,19 @@ struct JudgeBaselineTests {
         #expect(items.allSatisfy { $0.2 })
     }
 }
+
+@Suite("Bare judge")
+struct BareReportTests {
+    @Test("A failed call is counted as failed, not as either answer")
+    func failedCall() {
+        let cases = [CorrectionCase(id: "a", input: "Ellos son de Mexico.", hasError: true,
+                                    accepted: ["Ellos son de México."], category: "orthography")]
+        let records = [BareRecord(caseID: "a", input: "Ellos son de Mexico.", judge: "t",
+                                  output: nil, error: "May contain unsafe content",
+                                  latencyMilliseconds: 0, prompt: "t")]
+        let report = BareReport(cases: cases, records: records)
+        #expect(report.failed == 1)
+        #expect(report.errorsFound == 0)
+        #expect(report.rows.first?.saidCorrect == nil)
+    }
+}

@@ -8,6 +8,7 @@ import TutorCore
 // tutor-eval quotes <english-run.jsonl> <translated-run.jsonl> [--json]
 // tutor-eval judge-run --source <run.jsonl> --judge on-device|cloud [--reference] [--mismatched] --out <file>
 // tutor-eval judge-requests --source <run.jsonl> [--reference] [--mismatched]   (JSON lines to stdout)
+// tutor-eval bare-run --out <file> | bare-requests | bare-grade <file> [--json]
 // tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
 // tutor-eval budget <run.jsonl> [--slack 1] [--json]
@@ -92,6 +93,31 @@ case "judge-requests":
                                   withReference: arguments.contains("--reference"),
                                   mismatched: arguments.contains("--mismatched")) {
         print(String(decoding: try encoder.encode(request), as: UTF8.self))
+    }
+
+case "bare-run":
+    guard let path = value("--out") else { fatalError("bare-run needs --out") }
+    guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+    try await BareJudge.run(cases: cases, to: URL(fileURLWithPath: path))
+    print("recorded \(path)")
+
+case "bare-requests":
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = [.sortedKeys, .withoutEscapingSlashes]
+    for request in BareJudge.requests(cases: cases) {
+        print(String(decoding: try encoder.encode(request), as: UTF8.self))
+    }
+
+case "bare-grade":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval bare-grade <file>") }
+    let report = BareReport(cases: cases, records: try JSONLines.read(
+        BareRecord.self, from: URL(fileURLWithPath: arguments[1])))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
     }
 
 case "judge-grade":
