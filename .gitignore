@@ -4,3 +4,4 @@
 ios/Info.plist
 DerivedData/
 .DS_Store
+review/*.html

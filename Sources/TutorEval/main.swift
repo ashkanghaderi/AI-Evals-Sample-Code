@@ -9,6 +9,9 @@ import TutorCore
 // tutor-eval judge-run --source <run.jsonl> --judge on-device|cloud [--reference] [--mismatched] --out <file>
 // tutor-eval judge-requests --source <run.jsonl> [--reference] [--mismatched]   (JSON lines to stdout)
 // tutor-eval bare-run --out <file> | bare-requests | bare-grade <file> [--json]
+// tutor-eval review-packet --source <run.jsonl> --out review/packet.html
+// tutor-eval review-compare <tutor-review.json> [--json]
+// tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
 // tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
 // tutor-eval budget <run.jsonl> [--slack 1] [--json]
@@ -118,6 +121,55 @@ case "bare-grade":
         print(String(decoding: try encoder.encode(report), as: UTF8.self))
     } else {
         report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
+    }
+
+case "review-packet":
+    guard let source = value("--source"), let path = value("--out") else {
+        fatalError("review-packet needs --source and --out")
+    }
+    // The explanations to label: repetition 0 of the run, as the labels were.
+    let records = try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: source))
+    let byID = Dictionary(uniqueKeysWithValues: cases.map { ($0.id, $0) })
+    let explanations = records.filter { $0.repetition == 0 }.compactMap { r -> (String, String, String, String)? in
+        guard let o = r.output, let item = byID[r.caseID] else { return nil }
+        return (r.caseID, item.input, o.corrected, o.explanation)
+    }
+    let url = URL(fileURLWithPath: path)
+    try FileManager.default.createDirectory(at: url.deletingLastPathComponent(),
+                                            withIntermediateDirectories: true)
+    try ReviewPacket.html(cases: cases, explanations: explanations).write(to: url, atomically: true, encoding: .utf8)
+    print("wrote \(path): \(cases.count) sentences, \(explanations.count) explanations")
+
+case "review-compare":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval review-compare <tutor-review.json>") }
+    let review = try JSONDecoder().decode(ReviewFile.self, from: Data(contentsOf: URL(fileURLWithPath: arguments[1])))
+    let labels = try JSONLines.read(ExplanationLabel.self, from: URL(fileURLWithPath:
+        value("--labels") ?? "evals/correction/explanation-labels-v1.jsonl"))
+    let comparison = ReviewComparison(review: review, cases: cases, labels: labels)
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(comparison), as: UTF8.self))
+    } else {
+        comparison.print()
+    }
+
+case "agreement":
+    let paths = arguments.dropFirst().filter { !$0.hasPrefix("--") }
+    guard let firstPath = paths.first else { fatalError("usage: tutor-eval agreement <judge-run>") }
+    let labels = try JSONLines.read(ExplanationLabel.self, from: URL(fileURLWithPath:
+        value("--labels") ?? "evals/correction/explanation-labels-v1.jsonl"))
+    let first = try JSONLines.read(JudgeRecord.self, from: URL(fileURLWithPath: firstPath))
+    let second = try paths.dropFirst().first.map {
+        try JSONLines.read(JudgeRecord.self, from: URL(fileURLWithPath: $0))
+    }
+    let report = AgreementReport(first: first, second: second, labels: labels)
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print()
     }
 
 case "judge-grade":
