@@ -46,7 +46,22 @@ public struct SentenceCorrector<Model: LanguageModel> {
     /// Recorded with every eval run, so a score can always be traced to the
     /// exact prompts that produced it. Change a prompt, change this.
     public var promptVersion: String {
-        explanationLanguage == "English" ? "v1" : "v1 + translate explanation:\(explanationLanguage)"
+        let base = "v1 cap:\(effectiveOptions.maximumResponseTokens.map(String.init) ?? "none")"
+        return explanationLanguage == "English" ? base : "\(base) + translate explanation:\(explanationLanguage)"
+    }
+
+    /// Chapter 13: the longest normal answer measured was 61 tokens; the cap
+    /// is four times that. Uncapped, one sentence ran for three minutes into
+    /// the context limit; capped, it returns in seconds with a right
+    /// correction and a cut-off explanation that Chapter 8's check catches.
+    /// Capped and uncapped greedy runs gave identical answers on all 29
+    /// sentences. Options that set their own cap keep it.
+    public static let maximumResponseTokens = 256
+
+    var effectiveOptions: GenerationOptions {
+        var options = self.options
+        if options.maximumResponseTokens == nil { options.maximumResponseTokens = Self.maximumResponseTokens }
+        return options
     }
 
     public static var instructions: String {
@@ -72,7 +87,7 @@ public struct SentenceCorrector<Model: LanguageModel> {
     public func correct(_ sentence: String) async throws -> Correction {
         let session = LanguageModelSession(model: model, instructions: Self.instructions)
         var result = try await session.respond(to: sentence, generating: Correction.self,
-                                               options: options).content
+                                               options: effectiveOptions).content
         if explanationLanguage != "English" && !result.explanation.isEmpty {
             // A failed translation must not cost the learner a correct
             // correction. In Chapter 7 a guardrail refused to translate a
@@ -90,7 +105,9 @@ public struct SentenceCorrector<Model: LanguageModel> {
     /// Chapter 13. Same prompt, same session setup as `correct`; with
     /// `prewarm`, the session is warmed and given a moment before the request,
     /// as an app would when the learner starts typing. English only - the
-    /// translation step is measured separately if at all.
+    /// translation step is measured separately if at all. Uses `options`
+    /// exactly as given, without the default cap, so uncapped behaviour can
+    /// still be measured.
     public func measure(_ sentence: String, prewarm: Bool = false) async throws
         -> (correction: Correction, inputTokens: Int, cachedTokens: Int, outputTokens: Int, milliseconds: Int) {
         let session = LanguageModelSession(model: model, instructions: Self.instructions)
