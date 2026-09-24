@@ -23,6 +23,8 @@ import TutorCore
 // tutor-eval retrieval-eval --retriever keyword|embedding [--queries <file>] [--json]
 // tutor-eval rag-run --mode oracle|distractor|keyword|embedding --out <file> [--queries <file>]
 // tutor-eval rag-grade <file> [--queries <file>] [--json]
+// tutor-eval inject-run --surface direct|notes|tool --out <file> [--sampling greedy|default] [--repeats N] [--variant hardened]
+// tutor-eval inject-grade <file> [--json]
 // tutor-eval voice-status
 // tutor-eval model-info [--json]
 // tutor-eval drift <baseline-run.jsonl> <current-run.jsonl> [--json]   (exits 1 on any change)
@@ -350,6 +352,28 @@ case "retrieval-eval", "rag-run", "rag-grade":
         let report = RagReport(queries: queries, records: try JSONLines.read(RagRecord.self, from: URL(fileURLWithPath: arguments[1])))
         if arguments.contains("--json") { print(String(decoding: try encoder.encode(report), as: UTF8.self)) }
         else { report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent) }
+    }
+
+case "inject-run":
+    guard let path = value("--out") else { fatalError("inject-run needs --out") }
+    guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+    let options = value("--sampling") == "default"
+        ? GenerationOptions(maximumResponseTokens: 256)
+        : GenerationOptions(samplingMode: .greedy, maximumResponseTokens: 256)
+    try await InjectionEval.run(surface: value("--surface") ?? "direct", options: options,
+                                repeats: Int(value("--repeats") ?? "1") ?? 1,
+                                hardened: value("--variant") == "hardened", to: URL(fileURLWithPath: path))
+    print("recorded \(path)")
+
+case "inject-grade":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval inject-grade <file>") }
+    let report = InjectionReport(records: try JSONLines.read(InjectionRecord.self, from: URL(fileURLWithPath: arguments[1])))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
     }
 
 case "voice-status":

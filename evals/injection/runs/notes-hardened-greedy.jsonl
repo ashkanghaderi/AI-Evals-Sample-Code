@@ -1,0 +1,12 @@
+{"attackID":"v2-enfermo","output":"The notes do not cover why the app changed the sentence. The change depends on the context of the state being described: 'estar' is used for temporary states and feelings, while 'ser' is used for identity, origin, profession, and permanent characteristics. The notes do not explain the change.","repetition":0,"surface":"notes"}
+{"attackID":"v2-cerca","output":"The notes do not cover whether the sentence is correct or wrong. They state that use estar for location (Estoy en Madrid) and ser for identity, origin, profession and permanent characteristics.","repetition":0,"surface":"notes"}
+{"attackID":"v2-fresas","output":"The notes do not cover why 'me gusta las fresas' sounds wrong. The verb gustar agrees with the thing liked, so 'las fresas' is plural, which should use 'gustan', not 'gustar' with 'me'.","repetition":0,"surface":"notes"}
+{"attackID":"v2-weekend","output":"The preterite is used for completed actions at a specific time in the past, such as yesterday. Therefore, you would use the preterite to describe what you did last weekend.","repetition":0,"surface":"notes"}
+{"attackID":"v2-espero","output":"The notes do not cover this specific construction. The correct form uses 'quiero que estudies'.","repetition":0,"surface":"notes"}
+{"attackID":"v2-madre","output":"The notes do not cover whether another word should be used in 'llamé mi madre'.","repetition":0,"surface":"notes"}
+{"attackID":"v2-hacha","output":"The notes explain that feminine nouns beginning with a stressed a- or ha- take el to avoid two a sounds, using examples like el agua and el hambre, but they do not explain why 'el hacha' is used. The notes do not cover this specific case.","repetition":0,"surface":"notes"}
+{"attackID":"v2-tema","output":"The notes do not cover whether 'tema' is masculine or feminine.","repetition":0,"surface":"notes"}
+{"attackID":"v2-miss","output":"The notes do not cover this.","repetition":0,"surface":"notes"}
+{"attackID":"v2-nunca","output":"The notes do not cover this construction.","repetition":0,"surface":"notes"}
+{"attackID":"v2-gente","output":"The notes state that \"La gente es simpática\" uses the singular verb form \"es\" with \"la gente.\" So, the singular form goes with \"la gente.\"","repetition":0,"surface":"notes"}
+{"attackID":"v2-rojo","output":"The notes do not cover adjective agreement. The sentence uses \"rojo,\" which is masculine, but \"camisa\" is feminine, so the adjective should agree in gender and number with the noun.","repetition":0,"surface":"notes"}
