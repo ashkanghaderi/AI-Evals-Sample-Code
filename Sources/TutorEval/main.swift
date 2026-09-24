@@ -6,6 +6,8 @@ import TutorCore
 // tutor-eval run   [--repeats N] [--sampling default|greedy|seed:N] [--limit N] [--explain-in German]
 // tutor-eval languages [--check fa,de]
 // tutor-eval quotes <english-run.jsonl> <translated-run.jsonl> [--json]
+// tutor-eval judge-run --source <run.jsonl> --judge on-device|cloud [--reference] [--mismatched] --out <file>
+// tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
 // tutor-eval budget <run.jsonl> [--slack 1] [--json]
 // tutor-eval checks <run.jsonl> [--labels evals/correction/explanation-labels-v1.jsonl] [--first] [--json]
@@ -47,6 +49,51 @@ case "languages":
     for code in (value("--check") ?? "").split(separator: ",") {
         let supported = model.supportsLocale(Locale(identifier: String(code)))
         print("supportsLocale(\(code)): \(supported)")
+    }
+
+case "judge-run":
+    guard let source = value("--source"), let path = value("--out") else {
+        fatalError("judge-run needs --source and --out")
+    }
+    let out = URL(fileURLWithPath: path)
+    guard !FileManager.default.fileExists(atPath: out.path) else {
+        fatalError("\(path) exists; recordings are never overwritten")
+    }
+    let records = try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: source))
+    let withReference = arguments.contains("--reference")
+    let mismatched = arguments.contains("--mismatched")
+    switch value("--judge") ?? "on-device" {
+    case "cloud":
+        // Apple's Private Cloud Compute model: larger, free, and limited by a
+        // quota. The sentences leave the device - fine for a test set with no
+        // personal data in it, and a decision to make again for anything else.
+        let model = PrivateCloudComputeLanguageModel()
+        guard case .available = model.availability else {
+            print("Private Cloud Compute is not available: \(model.availability)")
+            exit(1)
+        }
+        if model.quotaUsage.isLimitReached { print("Quota reached; try after \(String(describing: model.quotaUsage.resetDate))"); exit(1) }
+        try await Judge.run(model: model, name: "cloud", cases: cases, records: records,
+                            withReference: withReference, mismatched: mismatched, to: out)
+    default:
+        try await Judge.run(model: SystemLanguageModel.default, name: "on-device", cases: cases,
+                            records: records, withReference: withReference,
+                            mismatched: mismatched, to: out)
+    }
+    print("recorded \(path)")
+
+case "judge-grade":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval judge-grade <judge-run.jsonl>") }
+    let records = try JSONLines.read(JudgeRecord.self, from: URL(fileURLWithPath: arguments[1]))
+    let labels = try JSONLines.read(ExplanationLabel.self, from: URL(fileURLWithPath:
+        value("--labels") ?? "evals/correction/explanation-labels-v1.jsonl"))
+    let report = JudgeReport(records: records, labels: labels)
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else {
+        report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
     }
 
 case "budget":

@@ -17,6 +17,8 @@ swift test --build-system native            # EvalKit's own tests
 ./scripts/eval.sh run --sampling greedy --explain-in German         # explanations in the learner's language
 ./scripts/eval.sh languages --check fa,de                           # what the on-device model supports
 ./scripts/eval.sh checks evals/correction/runs/<file>.jsonl --labels evals/correction/explanation-labels-v1.jsonl
+./scripts/eval.sh judge-run --source evals/correction/runs/<file>.jsonl --reference --out <judge-run>.jsonl
+./scripts/eval.sh judge-grade <judge-run>.jsonl            # the judge, graded against the labels
 ```
 
 Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
@@ -35,6 +37,7 @@ Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
 | `evals/correction/perturbed-vN.jsonl` | Chapter 6: cases made by breaking correct sentences in code |
 | `evals/correction/*-review.jsonl` | Our reading of generated cases, case by case |
 | `evals/correction/explanation-labels-v1.jsonl` | Chapter 8: our verdict on 29 explanations, keyed by their exact text |
+| `evals/correction/judge-runs/` | Chapter 10: a model's verdicts on explanations, recorded like any run |
 | `evals/correction/accepted-proposals.jsonl` | Chapter 9: answers the key may be missing, waiting for a reviewer |
 | `evals/correction/prompt-history.md` | Every prompt a recorded run used, word for word |
 | `evals/<feature>/runs/` | Recorded model outputs, committed on purpose |
