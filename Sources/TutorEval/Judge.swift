@@ -117,6 +117,38 @@ enum Judge {
     }
 }
 
+/// A judge request with everything needed to send it anywhere. `judge-requests`
+/// writes these so a judge outside Swift - Chapter 10's open model - is asked
+/// exactly what the on-device judge was asked, from the same code.
+struct JudgeRequest: Codable {
+    let caseID: String
+    let input: String
+    let corrected: String
+    let hasError: Bool
+    let explanation: String
+    let withReference: Bool
+    let mismatched: Bool
+    let instructions: String
+    let request: String
+    let prompt: String
+}
+
+extension Judge {
+    static func requests(cases: [CorrectionCase], records: [CorrectionRecord],
+                         withReference: Bool, mismatched: Bool) -> [JudgeRequest] {
+        items(cases: cases, records: records, mismatched: mismatched).map { item, output, isMismatched in
+            JudgeRequest(caseID: item.id, input: item.input, corrected: output.corrected,
+                         hasError: output.hasError, explanation: output.explanation,
+                         withReference: withReference, mismatched: isMismatched,
+                         instructions: instructions,
+                         request: request(input: item.input, corrected: output.corrected,
+                                          explanation: output.explanation,
+                                          reference: withReference ? item : nil),
+                         prompt: promptVersion)
+        }
+    }
+}
+
 /// How far a judge agrees with the people who labelled the same explanations.
 struct JudgeReport: Codable {
     struct Disagreement: Codable {

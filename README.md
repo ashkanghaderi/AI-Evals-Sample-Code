@@ -21,6 +21,15 @@ swift test --build-system native            # EvalKit's own tests
 ./scripts/eval.sh judge-grade <judge-run>.jsonl            # the judge, graded against the labels
 ```
 
+Chapter 10's open-weights judge is the one part that is not Swift. It is
+optional, runs on Apple silicon, and downloads a 4.3 GB model once:
+
+```bash
+python3 -m venv ~/.venvs/judge && ~/.venvs/judge/bin/pip install mlx-lm
+./scripts/eval.sh judge-requests --source evals/correction/runs/<file>.jsonl --reference > requests.jsonl
+~/.venvs/judge/bin/python scripts/open_judge.py requests.jsonl evals/correction/judge-runs/<name>.jsonl
+```
+
 Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
 `ios/` (generate it with `xcodegen generate`).
 
@@ -37,6 +46,7 @@ Requires Xcode 27, macOS 27, and Apple Intelligence enabled. The iOS app is in
 | `evals/correction/perturbed-vN.jsonl` | Chapter 6: cases made by breaking correct sentences in code |
 | `evals/correction/*-review.jsonl` | Our reading of generated cases, case by case |
 | `evals/correction/explanation-labels-v1.jsonl` | Chapter 8: our verdict on 29 explanations, keyed by their exact text |
+| `evals/correction/judge-requests/` | Chapter 10: the exact requests every judge was sent |
 | `evals/correction/judge-runs/` | Chapter 10: a model's verdicts on explanations, recorded like any run |
 | `evals/correction/accepted-proposals.jsonl` | Chapter 9: answers the key may be missing, waiting for a reviewer |
 | `evals/correction/prompt-history.md` | Every prompt a recorded run used, word for word |

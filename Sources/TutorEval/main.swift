@@ -7,6 +7,7 @@ import TutorCore
 // tutor-eval languages [--check fa,de]
 // tutor-eval quotes <english-run.jsonl> <translated-run.jsonl> [--json]
 // tutor-eval judge-run --source <run.jsonl> --judge on-device|cloud [--reference] [--mismatched] --out <file>
+// tutor-eval judge-requests --source <run.jsonl> [--reference] [--mismatched]   (JSON lines to stdout)
 // tutor-eval judge-grade <judge-run.jsonl> [--labels ...] [--json]
 // tutor-eval fuzzy <run.jsonl> [--json]
 // tutor-eval budget <run.jsonl> [--slack 1] [--json]
@@ -81,6 +82,17 @@ case "judge-run":
                             mismatched: mismatched, to: out)
     }
     print("recorded \(path)")
+
+case "judge-requests":
+    guard let source = value("--source") else { fatalError("judge-requests needs --source") }
+    let records = try JSONLines.read(CorrectionRecord.self, from: URL(fileURLWithPath: source))
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = [.sortedKeys, .withoutEscapingSlashes]
+    for request in Judge.requests(cases: cases, records: records,
+                                  withReference: arguments.contains("--reference"),
+                                  mismatched: arguments.contains("--mismatched")) {
+        print(String(decoding: try encoder.encode(request), as: UTF8.self))
+    }
 
 case "judge-grade":
     guard arguments.count > 1 else { fatalError("usage: tutor-eval judge-grade <judge-run.jsonl>") }
