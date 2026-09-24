@@ -18,6 +18,8 @@ import TutorCore
 // tutor-eval flashcards-grade <file> [--json]
 // tutor-eval conversation-run --scripts <file> --out <file> [--sampling greedy|default] [--repeats N]
 // tutor-eval conversation-grade <file> --scripts <file> [--json]
+// tutor-eval tools-run --out <file> [--sampling greedy|default] [--repeats N] [--variant strict]
+// tutor-eval tools-grade <file> [--json]
 // tutor-eval model-info [--json]
 // tutor-eval drift <baseline-run.jsonl> <current-run.jsonl> [--json]   (exits 1 on any change)
 // tutor-eval agreement <judge-run.jsonl> [<second-judge-run.jsonl>] [--json]
@@ -279,6 +281,33 @@ case "conversation-run", "conversation-grade":
         guard arguments.count > 1 else { fatalError("usage: tutor-eval conversation-grade <file>") }
         let report = ConversationReport(scripts: scripts, records: try JSONLines.read(
             ConversationRecord.self, from: URL(fileURLWithPath: arguments[1])))
+        if arguments.contains("--json") {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+            print(String(decoding: try encoder.encode(report), as: UTF8.self))
+        } else {
+            report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
+        }
+    }
+
+case "tools-run", "tools-grade":
+    let requests = try JSONLines.read(ToolRequest.self, from: URL(fileURLWithPath:
+        value("--requests") ?? "evals/tools/requests-v1.jsonl"))
+    if arguments.first == "tools-run" {
+        guard let path = value("--out") else { fatalError("tools-run needs --out") }
+        guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+        let options = value("--sampling") == "default"
+            ? GenerationOptions(maximumResponseTokens: 256)
+            : GenerationOptions(samplingMode: .greedy, maximumResponseTokens: 256)
+        try await ToolEval.run(requests: requests,
+                               dictionary: try ToolEval.dictionary(from: "evals/flashcards/texts-v1.jsonl"),
+                               options: options, repeats: Int(value("--repeats") ?? "1") ?? 1,
+                               strict: value("--variant") == "strict", to: URL(fileURLWithPath: path))
+        print("recorded \(path)")
+    } else {
+        guard arguments.count > 1 else { fatalError("usage: tutor-eval tools-grade <file>") }
+        let report = ToolReport(requests: requests, records: try JSONLines.read(
+            ToolRecord.self, from: URL(fileURLWithPath: arguments[1])))
         if arguments.contains("--json") {
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]

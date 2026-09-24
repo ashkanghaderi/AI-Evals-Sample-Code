@@ -1,0 +1,72 @@
+{"answer":"'Maleta' means suitcase.","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":1489,"repetition":0,"requestID":"look-maleta"}
+{"answer":"\"Abuelo\" means \"grandfather\" or \"grandpa.\"","calls":[{"argument":"abuelo","tool":"lookUpWord"}],"latencyMilliseconds":1077,"repetition":0,"requestID":"look-abuelo"}
+{"answer":"\"Boda\" means \"wedding.\"","calls":[{"argument":"boda","tool":"lookUpWord"}],"latencyMilliseconds":1057,"repetition":0,"requestID":"look-boda"}
+{"answer":"\"Biblioteca\" means \"library\" in English.","calls":[{"argument":"biblioteca","tool":"lookUpWord"}],"latencyMilliseconds":1158,"repetition":0,"requestID":"look-biblioteca"}
+{"answer":"'Llueve' means \"rain\" or \"rains\" as a verb.","calls":[{"argument":"llueve","tool":"lookUpWord"}],"latencyMilliseconds":1177,"repetition":0,"requestID":"look-llueve"}
+{"answer":"'Cansado' means tired.","calls":[{"argument":"cansado","tool":"lookUpWord"}],"latencyMilliseconds":1062,"repetition":0,"requestID":"look-cansado"}
+{"answer":"The word 'ordenador' is not found in the dictionary.","calls":[{"argument":"ordenador","tool":"lookUpWord"}],"latencyMilliseconds":1067,"repetition":0,"requestID":"unknown-ordenador"}
+{"answer":"I couldn't find the meaning of 'gato' in the dictionary. It might be a typo or a less common word.","calls":[{"argument":"gato","tool":"lookUpWord"}],"latencyMilliseconds":1340,"repetition":0,"requestID":"unknown-gato"}
+{"answer":"'Boda' has been added to your review list.","calls":[{"argument":"boda","tool":"addToReviewList"}],"latencyMilliseconds":1035,"repetition":0,"requestID":"add-boda"}
+{"answer":"The word \"tren\" has been added to your review list.","calls":[{"argument":"tren","tool":"addToReviewList"}],"latencyMilliseconds":1095,"repetition":0,"requestID":"add-tren"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":886,"repetition":0,"requestID":"progress-en"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":862,"repetition":0,"requestID":"progress-es"}
+{"answer":"'Maleta' means suitcase. It has been added to your review list.","calls":[{"argument":"maleta","tool":"lookUpWord"},{"argument":"maleta","tool":"addToReviewList"}],"latencyMilliseconds":1449,"repetition":0,"requestID":"both-maleta"}
+{"answer":"'Regalo' means gift or present. It has been added to your review list.","calls":[{"argument":"regalo","tool":"lookUpWord"},{"argument":"regalo","tool":"addToReviewList"}],"latencyMilliseconds":1483,"repetition":0,"requestID":"both-regalo"}
+{"answer":"Hello! How can I help you with Spanish learning today?","calls":[],"latencyMilliseconds":647,"repetition":0,"requestID":"none-hi"}
+{"answer":"You're welcome! Have a great day!","calls":[],"latencyMilliseconds":567,"repetition":0,"requestID":"none-thanks"}
+{"answer":"- Use **ser** for permanent characteristics, identities, and essential traits.\n- Use **estar** for temporary states, locations, and conditions.","calls":[],"latencyMilliseconds":1021,"repetition":0,"requestID":"none-grammar"}
+{"answer":"'Tren' means 'train.' Let me know if there's anything else you need!","calls":[{"argument":"tren","tool":"lookUpWord"}],"latencyMilliseconds":1238,"repetition":0,"requestID":"noadd-tren"}
+{"answer":"'Regalo' means gift or present.","calls":[{"argument":"regalo","tool":"lookUpWord"}],"latencyMilliseconds":1014,"repetition":0,"requestID":"noadd-regalo"}
+{"answer":"I can't remove a word from your review list. If you want to remove it, you can ask me to add it back to the list, or let me know if you have another request.","calls":[],"latencyMilliseconds":1279,"repetition":0,"requestID":"noadd-remove"}
+{"answer":"'Maleta' is now on your review list.","calls":[{"argument":"maleta","tool":"addToReviewList"}],"latencyMilliseconds":1070,"repetition":0,"requestID":"noadd-question"}
+{"answer":"- **pan**: bread  \n- **café**: coffee","calls":[{"argument":"pan","tool":"lookUpWord"},{"argument":"café","tool":"lookUpWord"}],"latencyMilliseconds":1340,"repetition":0,"requestID":"look-two"}
+{"answer":"\"Llevo una maleta pequeña\" means \"I am carrying a small suitcase.\"","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":1208,"repetition":0,"requestID":"look-sentence"}
+{"answer":"You've reviewed 12 words today. 'Perro' has been added to your review list.","calls":[{"argument":"","tool":"todaysProgress"},{"argument":"perro","tool":"addToReviewList"}],"latencyMilliseconds":1428,"repetition":0,"requestID":"progress-then-add"}
+{"answer":"'Maleta' means suitcase.","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":993,"repetition":1,"requestID":"look-maleta"}
+{"answer":"\"Abuelo\" means grandfather, grandpa.","calls":[{"argument":"abuelo","tool":"lookUpWord"}],"latencyMilliseconds":1026,"repetition":1,"requestID":"look-abuelo"}
+{"answer":"\"Boda\" means \"wedding.\"","calls":[{"argument":"boda","tool":"lookUpWord"}],"latencyMilliseconds":1057,"repetition":1,"requestID":"look-boda"}
+{"answer":"\"Biblioteca\" means \"library\" in English.","calls":[{"argument":"biblioteca","tool":"lookUpWord"}],"latencyMilliseconds":1162,"repetition":1,"requestID":"look-biblioteca"}
+{"answer":"\"Llueve\" means \"rain\" or \"rains\" (from the verb \"llover\").","calls":[{"argument":"llueve","tool":"lookUpWord"}],"latencyMilliseconds":1211,"repetition":1,"requestID":"look-llueve"}
+{"answer":"\"Cansado\" means \"tired.\"","calls":[{"argument":"cansado","tool":"lookUpWord"}],"latencyMilliseconds":1058,"repetition":1,"requestID":"look-cansado"}
+{"answer":"The word 'ordenador' is not found in the dictionary.","calls":[{"argument":"ordenador","tool":"lookUpWord"}],"latencyMilliseconds":1064,"repetition":1,"requestID":"unknown-ordenador"}
+{"answer":"The word 'gato' is not found in the dictionary.","calls":[{"argument":"gato","tool":"lookUpWord"}],"latencyMilliseconds":1064,"repetition":1,"requestID":"unknown-gato"}
+{"answer":"'Boda' has been added to your review list.","calls":[{"argument":"boda","tool":"addToReviewList"}],"latencyMilliseconds":1040,"repetition":1,"requestID":"add-boda"}
+{"answer":"The word \"tren\" has been added to your review list.","calls":[{"argument":"tren","tool":"addToReviewList"}],"latencyMilliseconds":1102,"repetition":1,"requestID":"add-tren"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":884,"repetition":1,"requestID":"progress-en"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":867,"repetition":1,"requestID":"progress-es"}
+{"answer":"'Maleta' means suitcase. It's now on your review list.","calls":[{"argument":"maleta","tool":"addToReviewList"},{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":1457,"repetition":1,"requestID":"both-maleta"}
+{"answer":"'Regalo' means gift or present. It has been added to your review list.","calls":[{"argument":"regalo","tool":"lookUpWord"},{"argument":"regalo","tool":"addToReviewList"}],"latencyMilliseconds":1477,"repetition":1,"requestID":"both-regalo"}
+{"answer":"Hello! How can I help you with Spanish learning today?","calls":[],"latencyMilliseconds":643,"repetition":1,"requestID":"none-hi"}
+{"answer":"You're welcome! Have a great day!","calls":[],"latencyMilliseconds":565,"repetition":1,"requestID":"none-thanks"}
+{"answer":"Use **ser** for permanent characteristics, essential traits, and events that are not changeable. Use **estar** for temporary states, locations, and actions in progress.","calls":[],"latencyMilliseconds":1165,"repetition":1,"requestID":"none-grammar"}
+{"answer":"I've confirmed that \"tren\" means \"train.\" Let me know if you need anything else!","calls":[{"argument":"tren","tool":"lookUpWord"}],"latencyMilliseconds":1198,"repetition":1,"requestID":"noadd-tren"}
+{"answer":"'Regalo' means gift or present.","calls":[{"argument":"regalo","tool":"lookUpWord"}],"latencyMilliseconds":1015,"repetition":1,"requestID":"noadd-regalo"}
+{"answer":"I can't remove 'boda' from your review list. You can ask me to add it instead.","calls":[],"latencyMilliseconds":849,"repetition":1,"requestID":"noadd-remove"}
+{"answer":"'Maleta' is now on your review list.","calls":[{"argument":"maleta","tool":"addToReviewList"}],"latencyMilliseconds":1062,"repetition":1,"requestID":"noadd-question"}
+{"answer":"- Pan: bread\n- Café: coffee","calls":[{"argument":"pan","tool":"lookUpWord"},{"argument":"café","tool":"lookUpWord"}],"latencyMilliseconds":1254,"repetition":1,"requestID":"look-two"}
+{"answer":"\"Llevo una maleta pequeña\" means \"I carry a small suitcase.\"","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":1171,"repetition":1,"requestID":"look-sentence"}
+{"answer":"You have reviewed 12 words today. I've added 'perro' to your review list.","calls":[{"argument":"","tool":"todaysProgress"},{"argument":"perro","tool":"addToReviewList"}],"latencyMilliseconds":1429,"repetition":1,"requestID":"progress-then-add"}
+{"answer":"'Maleta' means suitcase.","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":991,"repetition":2,"requestID":"look-maleta"}
+{"answer":"'Abuelo' means grandfather or grandpa.","calls":[{"argument":"abuelo","tool":"lookUpWord"}],"latencyMilliseconds":1059,"repetition":2,"requestID":"look-abuelo"}
+{"answer":"\"Boda\" means \"wedding.\"","calls":[{"argument":"boda","tool":"lookUpWord"}],"latencyMilliseconds":1056,"repetition":2,"requestID":"look-boda"}
+{"answer":"\"Biblioteca\" means \"library\" in English.","calls":[{"argument":"biblioteca","tool":"lookUpWord"}],"latencyMilliseconds":1153,"repetition":2,"requestID":"look-biblioteca"}
+{"answer":"'Llueve' means \"rain\" or \"rains.\"","calls":[{"argument":"llueve","tool":"lookUpWord"}],"latencyMilliseconds":1116,"repetition":2,"requestID":"look-llueve"}
+{"answer":"\"Cansado\" means \"tired.\"","calls":[{"argument":"cansado","tool":"lookUpWord"}],"latencyMilliseconds":1062,"repetition":2,"requestID":"look-cansado"}
+{"answer":"The word 'ordenador' is not found in the dictionary.","calls":[{"argument":"ordenador","tool":"lookUpWord"}],"latencyMilliseconds":1065,"repetition":2,"requestID":"unknown-ordenador"}
+{"answer":"The word 'gato' is not found in the dictionary. It might be a typo or a slang term.","calls":[{"argument":"gato","tool":"lookUpWord"}],"latencyMilliseconds":1288,"repetition":2,"requestID":"unknown-gato"}
+{"answer":"'Boda' has been added to your review list.","calls":[{"argument":"boda","tool":"addToReviewList"}],"latencyMilliseconds":1037,"repetition":2,"requestID":"add-boda"}
+{"answer":"The word \"tren\" has been added to your review list.","calls":[{"argument":"tren","tool":"addToReviewList"}],"latencyMilliseconds":1098,"repetition":2,"requestID":"add-tren"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":883,"repetition":2,"requestID":"progress-en"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":863,"repetition":2,"requestID":"progress-es"}
+{"answer":"'Maleta' means suitcase. It has been added to your review list.","calls":[{"argument":"maleta","tool":"lookUpWord"},{"argument":"maleta","tool":"addToReviewList"}],"latencyMilliseconds":1447,"repetition":2,"requestID":"both-maleta"}
+{"answer":"'Regalo' means \"gift\" or \"present.\" It has been added to your review list.","calls":[{"argument":"regalo","tool":"lookUpWord"},{"argument":"regalo","tool":"addToReviewList"}],"latencyMilliseconds":1583,"repetition":2,"requestID":"both-regalo"}
+{"answer":"Hello! How can I help you with Spanish learning today?","calls":[],"latencyMilliseconds":639,"repetition":2,"requestID":"none-hi"}
+{"answer":"You're welcome! Have a great day!","calls":[],"latencyMilliseconds":566,"repetition":2,"requestID":"none-thanks"}
+{"answer":"Use **ser** for permanent characteristics, identities, and essential qualities. Use **estar** for temporary states, locations, and conditions.\n\nWould you like to add any Spanish words to your review list to practice?","calls":[],"latencyMilliseconds":1387,"repetition":2,"requestID":"none-grammar"}
+{"answer":"I added 'tren' to your review list, even though you mentioned you knew it. Let's focus on new words.","calls":[{"argument":"tren","tool":"addToReviewList"}],"latencyMilliseconds":1456,"repetition":2,"requestID":"noadd-tren"}
+{"answer":"'Regalo' means \"gift\" or \"present.\"","calls":[{"argument":"regalo","tool":"lookUpWord"}],"latencyMilliseconds":1050,"repetition":2,"requestID":"noadd-regalo"}
+{"answer":"I can't remove words from your review list. You can just skip 'boda' when reviewing.","calls":[],"latencyMilliseconds":883,"repetition":2,"requestID":"noadd-remove"}
+{"answer":"'Maleta' is now on your review list.","calls":[{"argument":"maleta","tool":"addToReviewList"}],"latencyMilliseconds":1056,"repetition":2,"requestID":"noadd-question"}
+{"answer":"- Pan: bread\n- Café: coffee","calls":[{"argument":"pan","tool":"lookUpWord"},{"argument":"café","tool":"lookUpWord"}],"latencyMilliseconds":1243,"repetition":2,"requestID":"look-two"}
+{"answer":"'Llevo una maleta pequeña' means 'I am carrying a small suitcase.'","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":1273,"repetition":2,"requestID":"look-sentence"}
+{"answer":"You've reviewed 12 words today. 'Perro' has been added to your review list.","calls":[{"argument":"","tool":"todaysProgress"},{"argument":"perro","tool":"addToReviewList"}],"latencyMilliseconds":1426,"repetition":2,"requestID":"progress-then-add"}

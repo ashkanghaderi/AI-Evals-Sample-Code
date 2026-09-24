@@ -1,0 +1,24 @@
+{"id": "look-maleta", "request": "What does 'maleta' mean?", "expected": [{"tool": "lookUpWord", "accepted": ["maleta"]}], "answerMustContain": ["suitcase"]}
+{"id": "look-abuelo", "request": "¿Qué significa 'abuelo'?", "expected": [{"tool": "lookUpWord", "accepted": ["abuelo"]}], "answerMustContain": ["grandfather", "grandpa"]}
+{"id": "look-boda", "request": "What's the meaning of boda?", "expected": [{"tool": "lookUpWord", "accepted": ["boda"]}], "answerMustContain": ["wedding"]}
+{"id": "look-biblioteca", "request": "What does biblioteca mean in English?", "expected": [{"tool": "lookUpWord", "accepted": ["biblioteca"]}], "answerMustContain": ["library"]}
+{"id": "look-llueve", "request": "What does 'llueve' mean?", "expected": [{"tool": "lookUpWord", "accepted": ["llueve", "llover"]}], "answerMustContain": ["rain"]}
+{"id": "look-cansado", "request": "¿Qué quiere decir 'cansado'?", "expected": [{"tool": "lookUpWord", "accepted": ["cansado"]}], "answerMustContain": ["tired"]}
+{"id": "unknown-ordenador", "request": "What does 'ordenador' mean?", "expected": [{"tool": "lookUpWord", "accepted": ["ordenador"]}], "answerMustContain": null}
+{"id": "unknown-gato", "request": "What does 'gato' mean?", "expected": [{"tool": "lookUpWord", "accepted": ["gato"]}], "answerMustContain": null}
+{"id": "add-boda", "request": "Add 'boda' to my review list, please.", "expected": [{"tool": "addToReviewList", "accepted": ["boda"]}], "answerMustContain": null}
+{"id": "add-tren", "request": "Guarda la palabra 'tren' en mi lista de repaso.", "expected": [{"tool": "addToReviewList", "accepted": ["tren"]}], "answerMustContain": null}
+{"id": "progress-en", "request": "How many words have I reviewed today?", "expected": [{"tool": "todaysProgress", "accepted": [""]}], "answerMustContain": ["12", "twelve"]}
+{"id": "progress-es", "request": "¿Cuántas palabras he repasado hoy?", "expected": [{"tool": "todaysProgress", "accepted": [""]}], "answerMustContain": ["12", "twelve"]}
+{"id": "both-maleta", "request": "What does 'maleta' mean? Please add it to my list too.", "expected": [{"tool": "lookUpWord", "accepted": ["maleta"]}, {"tool": "addToReviewList", "accepted": ["maleta"]}], "answerMustContain": ["suitcase"]}
+{"id": "both-regalo", "request": "What does 'regalo' mean? And save it to my review list.", "expected": [{"tool": "lookUpWord", "accepted": ["regalo"]}, {"tool": "addToReviewList", "accepted": ["regalo"]}], "answerMustContain": ["gift", "present"]}
+{"id": "none-hi", "request": "Hi!", "expected": [], "answerMustContain": null}
+{"id": "none-thanks", "request": "Thanks, that's all for today.", "expected": [], "answerMustContain": null}
+{"id": "none-grammar", "request": "When do I use ser instead of estar?", "expected": [], "answerMustContain": null}
+{"id": "noadd-tren", "request": "I already know 'tren', so don't add it to my list.", "expected": [], "answerMustContain": null}
+{"id": "noadd-regalo", "request": "What does 'regalo' mean? I don't need it on my list.", "expected": [{"tool": "lookUpWord", "accepted": ["regalo"]}], "answerMustContain": ["gift", "present"]}
+{"id": "noadd-remove", "request": "Remove 'boda' from my review list.", "expected": [], "answerMustContain": null}
+{"id": "noadd-question", "request": "Is 'maleta' already on my review list?", "expected": [], "answerMustContain": null}
+{"id": "look-two", "request": "What do 'pan' and 'café' mean?", "expected": [{"tool": "lookUpWord", "accepted": ["pan"]}, {"tool": "lookUpWord", "accepted": ["café", "cafe"]}], "answerMustContain": ["bread", "coffee"]}
+{"id": "look-sentence", "request": "What does 'Llevo una maleta pequeña' mean?", "expected": [], "answerMustContain": null}
+{"id": "progress-then-add", "request": "How many words did I review today? Also add 'perro' to my list.", "expected": [{"tool": "todaysProgress", "accepted": [""]}, {"tool": "addToReviewList", "accepted": ["perro"]}], "answerMustContain": ["12", "twelve"]}

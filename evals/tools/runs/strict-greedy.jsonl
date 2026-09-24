@@ -1,0 +1,24 @@
+{"answer":"'Maleta' means suitcase.","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":1545,"repetition":0,"requestID":"look-maleta"}
+{"answer":"'Abuelo' means grandfather or grandpa.","calls":[{"argument":"abuelo","tool":"lookUpWord"}],"latencyMilliseconds":1047,"repetition":0,"requestID":"look-abuelo"}
+{"answer":"\"Boda\" means \"wedding.\"","calls":[{"argument":"boda","tool":"lookUpWord"}],"latencyMilliseconds":1053,"repetition":0,"requestID":"look-boda"}
+{"answer":"\"Biblioteca\" means \"library\" in English.","calls":[{"argument":"biblioteca","tool":"lookUpWord"}],"latencyMilliseconds":1139,"repetition":0,"requestID":"look-biblioteca"}
+{"answer":"'Llueve' means 'rain' or 'rains' (from the verb 'llover').","calls":[{"argument":"llueve","tool":"lookUpWord"}],"latencyMilliseconds":1199,"repetition":0,"requestID":"look-llueve"}
+{"answer":"\"Cansado\" means tired.","calls":[{"argument":"cansado","tool":"lookUpWord"}],"latencyMilliseconds":1091,"repetition":0,"requestID":"look-cansado"}
+{"answer":"The word 'ordenador' is not found in the dictionary.","calls":[{"argument":"ordenador","tool":"lookUpWord"}],"latencyMilliseconds":1059,"repetition":0,"requestID":"unknown-ordenador"}
+{"answer":"The word 'gato' is not found in the dictionary.","calls":[{"argument":"gato","tool":"lookUpWord"}],"latencyMilliseconds":1064,"repetition":0,"requestID":"unknown-gato"}
+{"answer":"'Boda' has been added to your review list.","calls":[{"argument":"boda","tool":"addToReviewList"}],"latencyMilliseconds":1047,"repetition":0,"requestID":"add-boda"}
+{"answer":"I've added 'tren' to your review list.","calls":[{"argument":"tren","tool":"addToReviewList"}],"latencyMilliseconds":1072,"repetition":0,"requestID":"add-tren"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":856,"repetition":0,"requestID":"progress-en"}
+{"answer":"You have reviewed 12 words today.","calls":[{"argument":"","tool":"todaysProgress"}],"latencyMilliseconds":883,"repetition":0,"requestID":"progress-es"}
+{"answer":"'Maleta' means suitcase. It has been added to your review list.","calls":[{"argument":"maleta","tool":"lookUpWord"},{"argument":"maleta","tool":"addToReviewList"}],"latencyMilliseconds":1358,"repetition":0,"requestID":"both-maleta"}
+{"answer":"'Regalo' means gift or present. It has been added to your review list.","calls":[{"argument":"regalo","tool":"lookUpWord"},{"argument":"regalo","tool":"addToReviewList"}],"latencyMilliseconds":1460,"repetition":0,"requestID":"both-regalo"}
+{"answer":"Hello! How can I help you with Spanish learning today?","calls":[],"latencyMilliseconds":678,"repetition":0,"requestID":"none-hi"}
+{"answer":"You're welcome! Have a great day!","calls":[],"latencyMilliseconds":570,"repetition":0,"requestID":"none-thanks"}
+{"answer":"Use **ser** for permanent traits or characteristics (e.g., nationality, time, origin). Use **estar** for temporary states or conditions (e.g., location, emotions).","calls":[],"latencyMilliseconds":1227,"repetition":0,"requestID":"none-grammar"}
+{"answer":"I mistakenly added 'tren' to your review list. Let me know if you'd like to remove it.","calls":[{"argument":"tren","tool":"addToReviewList"}],"latencyMilliseconds":1188,"repetition":0,"requestID":"noadd-tren"}
+{"answer":"'Regalo' means gift, present.","calls":[{"argument":"regalo","tool":"lookUpWord"}],"latencyMilliseconds":1026,"repetition":0,"requestID":"noadd-regalo"}
+{"answer":"I can't remove words from your review list. You can ask me to add a new word instead.","calls":[],"latencyMilliseconds":907,"repetition":0,"requestID":"noadd-remove"}
+{"answer":"'Maleta' is now on your review list.","calls":[{"argument":"maleta","tool":"addToReviewList"}],"latencyMilliseconds":1111,"repetition":0,"requestID":"noadd-question"}
+{"answer":"- **pan**: bread  \n- **café**: coffee","calls":[{"argument":"pan","tool":"lookUpWord"},{"argument":"café","tool":"lookUpWord"}],"latencyMilliseconds":1326,"repetition":0,"requestID":"look-two"}
+{"answer":"\"Llevo una maleta pequeña\" means \"I am carrying a small suitcase.\"","calls":[{"argument":"maleta","tool":"lookUpWord"}],"latencyMilliseconds":1179,"repetition":0,"requestID":"look-sentence"}
+{"answer":"You reviewed 12 words today. I've added 'perro' to your review list.","calls":[{"argument":"","tool":"todaysProgress"},{"argument":"perro","tool":"addToReviewList"}],"latencyMilliseconds":1435,"repetition":0,"requestID":"progress-then-add"}
