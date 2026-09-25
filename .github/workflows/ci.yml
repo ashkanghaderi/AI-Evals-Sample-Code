@@ -1,8 +1,15 @@
 # Chapter 22: the same gates as scripts/ci.sh, on a hosted runner.
 # Hosted runners have no Apple Intelligence, so nothing here calls a model:
 # the recordings were made on a developer's Mac and are only graded here.
+#
+# Manual for now. The first run (September 2026) found macos-latest on
+# macOS 26.6 / Xcode 26.6 / Swift 6.3, a release behind this package, and the
+# build failed. A workflow that fails on every push teaches everyone to ignore
+# it; one that skips quietly checks nothing. Until hosted runners carry
+# Xcode 27, run scripts/ci.sh before pushing, and trigger this by hand to see
+# whether the runners have caught up.
 name: evals
-on: [push, pull_request]
+on: [workflow_dispatch]
 jobs:
   gates:
     runs-on: macos-latest

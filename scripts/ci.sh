@@ -31,7 +31,8 @@ gate() {   # gate NAME COMMAND...
     fi
 }
 
-$SWIFT build $BUILD -c release > /tmp/ci-build.log 2>&1 || { echo "FAIL  build"; exit 1; }
+$SWIFT build $BUILD -c release > /tmp/ci-build.log 2>&1 || {
+    echo "FAIL  build"; grep -m 5 "error:" /tmp/ci-build.log; exit 1; }
 EVAL=$(ls -t .build/*/release/tutor-eval .build/out/Products/Release/tutor-eval 2>/dev/null | head -1)
 MINIMAL=$(ls -t .build/*/release/minimal-eval .build/out/Products/Release/minimal-eval 2>/dev/null | head -1)
 
