@@ -1,0 +1,12 @@
+{
+  "written": "2026-09-25, after the split run and before any run of the hybrid",
+  "change": "Paragraphs of at most 8 sentences in one call, as shipped today; longer ones sentence by sentence",
+  "why_a_v2": "criteria.json compared the split corrector with the single-sentence baseline, and it passed; but against what ships today it corrected fewer sentences in paragraphs of 2 to 16, and was far slower. v1 asked the wrong question. v1 stays as written.",
+  "ship_only_if": {
+    "charactersKeptAtLeast": 0.95,
+    "sentencesRightAtLeastShippedAtEverySize": true,
+    "failedCallsAtMost": 0,
+    "medianMillisecondsPerSentenceAtMost": 2000
+  },
+  "threshold": "8, not 16: sixteen sentences ran away to the context limit in Chapter 13 before the cap existed"
+}
