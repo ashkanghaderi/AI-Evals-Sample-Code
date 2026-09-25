@@ -1,0 +1,18 @@
+{
+  "written": "2026-09-25, before any run of the split corrector",
+  "change": "Correct a paragraph sentence by sentence (NLTokenizer) instead of in one call",
+  "paragraphs": "the first N golden sentences run together, N in 1, 2, 4, 8, 16, 32, 64",
+  "ship_only_if": {
+    "charactersKeptAtLeast": 0.95,
+    "sentencesRightAtLeastSingleSentenceBaseline": true,
+    "failedCallsAtMost": 0,
+    "singleSentenceAnswersUnchanged": true,
+    "medianMillisecondsPerSentenceAtMost": 2000
+  },
+  "why": {
+    "charactersKeptAtLeast": "Chapter 13: at 32 and 64 sentences the current feature returned 42% and 9% of the learner's text",
+    "sentencesRightAtLeastSingleSentenceBaseline": "splitting must not correct worse than asking about each sentence alone",
+    "singleSentenceAnswersUnchanged": "a one-sentence input must take exactly the path Part I measured",
+    "medianMillisecondsPerSentenceAtMost": "one call per sentence costs time; this caps the price"
+  }
+}
