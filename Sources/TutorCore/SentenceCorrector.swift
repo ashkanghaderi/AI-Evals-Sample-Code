@@ -127,8 +127,14 @@ public struct SentenceCorrector<Model: LanguageModel> {
     }
 
     func translate(_ explanation: String) async throws -> String {
+        try await translate(explanation, into: explanationLanguage)
+    }
+
+    /// The translation step on its own, so Chapter 21 can see when it is
+    /// refused instead of silently falling back to English.
+    public func translate(_ explanation: String, into language: String) async throws -> String {
         let session = LanguageModelSession(model: model, instructions: """
-            Translate the user's text from English into \(explanationLanguage). \
+            Translate the user's text from English into \(language). \
             Keep Spanish words and quoted examples exactly as they are. Reply \
             with the translation only.
             """)

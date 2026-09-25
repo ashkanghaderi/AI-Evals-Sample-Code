@@ -25,6 +25,8 @@ import TutorCore
 // tutor-eval rag-grade <file> [--queries <file>] [--json]
 // tutor-eval inject-run --surface direct|notes|tool --out <file> [--sampling greedy|default] [--repeats N] [--variant hardened]
 // tutor-eval inject-grade <file> [--json]
+// tutor-eval refusal-run --guardrails default|permissive --feature corrector|conversation|translate --out <file> [--sampling greedy|default] [--repeats N]
+// tutor-eval refusal-grade <file> [--json]
 // tutor-eval voice-status | voice-install | voice-run --out <file> | voice-grade <file> [--json]
 // tutor-eval model-info [--json]
 // tutor-eval drift <baseline-run.jsonl> <current-run.jsonl> [--json]   (exits 1 on any change)
@@ -375,6 +377,25 @@ case "inject-grade":
     } else {
         report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent)
     }
+
+case "refusal-run":
+    guard let path = value("--out") else { fatalError("refusal-run needs --out") }
+    guard !FileManager.default.fileExists(atPath: path) else { fatalError("\(path) exists") }
+    let sentences = try JSONLines.read(BenignSentence.self, from: URL(fileURLWithPath:
+        value("--sentences") ?? "evals/refusal/benign-v1.jsonl"))
+    let options = value("--sampling") == "default" ? GenerationOptions() : GenerationOptions(samplingMode: .greedy)
+    try await RefusalEval.run(sentences: sentences, guardrails: value("--guardrails") ?? "default",
+                              feature: value("--feature") ?? "corrector", options: options,
+                              repeats: Int(value("--repeats") ?? "1") ?? 1, to: URL(fileURLWithPath: path))
+    print("recorded \(path)")
+
+case "refusal-grade":
+    guard arguments.count > 1 else { fatalError("usage: tutor-eval refusal-grade <file>") }
+    let report = RefusalReport(records: try JSONLines.read(RefusalRecord.self, from: URL(fileURLWithPath: arguments[1])))
+    if arguments.contains("--json") {
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        print(String(decoding: try encoder.encode(report), as: UTF8.self))
+    } else { report.print(title: URL(fileURLWithPath: arguments[1]).lastPathComponent) }
 
 case "voice-status":
     print(await VoiceEval.status())
