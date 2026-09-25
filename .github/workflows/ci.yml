@@ -1,0 +1,17 @@
+# Chapter 22: the same gates as scripts/ci.sh, on a hosted runner.
+# Hosted runners have no Apple Intelligence, so nothing here calls a model:
+# the recordings were made on a developer's Mac and are only graded here.
+name: evals
+on: [push, pull_request]
+jobs:
+  gates:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: What this runner has
+        run: |
+          sw_vers
+          xcodebuild -version
+          swift --version
+      - name: Gates
+        run: ./scripts/ci.sh

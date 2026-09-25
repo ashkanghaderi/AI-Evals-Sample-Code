@@ -1,0 +1,6 @@
+{"gate":"tests","break":"a failing test","ciExit":1}
+{"gate":"pipe","break":"failing test piped into tail, no pipefail","ciExit":0}
+{"gate":"pipe","break":"failing test piped into tail, with pipefail","ciExit":1}
+{"gate":"audit-v1","break":"a duplicated sentence in the key","ciExit":1}
+{"gate":"ship-bar","break":"a bar of 0.95","ciExit":1}
+{"gate":"drift","break":"one answer changed by a trailing space","ciExit":1}
